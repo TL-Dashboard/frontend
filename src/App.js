@@ -1,11 +1,17 @@
 import React from 'react';
-import './App.css';
+import styled from 'styled-components'
+
+const Mainwrap = styled.div`
+  background-color: gray;
+  height: 100%;
+  width: 100%;
+`
 
 function App() {
   return (
-    <div className="App">
-
-    </div>
+    <Mainwrap>
+      
+    </Mainwrap>
   );
 }
 
