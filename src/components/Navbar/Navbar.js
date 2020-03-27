@@ -4,7 +4,7 @@ import styled from "styled-components";
 const NavbarWrap = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 100%;
   height: 80px;
   background-color: #1b212c;
@@ -15,13 +15,17 @@ const NavbarWrap = styled.div`
       display: none;
     }
   }
+  .title{
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 const Navbar = () => {
   return (
     <NavbarWrap>
       <div className="menu">Menu</div>
-      <div>Nav</div>
+      <div className='title'>User Name</div>
     </NavbarWrap>
   );
 };
