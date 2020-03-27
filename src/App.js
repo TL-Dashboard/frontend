@@ -1,17 +1,23 @@
 import React from 'react';
+import Sidebar from './components/Sidebar/Sidebar.js'
+import Navbar from './components/Navbar/Navbar.js'
+
 import styled from 'styled-components'
 
-const Mainwrap = styled.div`
+const Appwrap = styled.div`
   background-color: gray;
   height: 100%;
   width: 100%;
+  display: flex;
 `
 
 function App() {
   return (
-    <Mainwrap>
+    <Appwrap>
+      <Sidebar/>
+      <Navbar />
       
-    </Mainwrap>
+    </Appwrap>
   );
 }
 
