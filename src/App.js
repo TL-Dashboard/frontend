@@ -4,6 +4,12 @@ import Navbar from "./components/Navbar/Navbar.js";
 import Main from "./components/Main/Main.js";
 import styled from "styled-components";
 
+// * Import ContextAPI
+import withContext, { Provider } from './Context';
+// * Context Variables
+
+const SidebarWithContext = withContext(Sidebar);
+
 const AppWrap = styled.div`
   height: 100vh;
   width: 100vw;
@@ -23,15 +29,17 @@ const AppWrap = styled.div`
 
 function App() {
   return (
-    <AppWrap>
-      <div className="sidebar">
-        <Sidebar />
-      </div>
-      <div className="main">
-        <Navbar />
-        <Main />
-      </div>
-    </AppWrap>
+    <Provider>
+      <AppWrap>
+        <div className="sidebar">
+          <SidebarWithContext />
+        </div>
+        <div className="main">
+          <Navbar />
+          <Main />
+        </div>
+      </AppWrap>
+    </Provider>
   );
 }
 
