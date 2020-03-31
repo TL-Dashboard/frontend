@@ -1,4 +1,5 @@
 import React from "react";
+import Attendance from "../Attendance/Attendance.js";
 import styled from "styled-components";
 
 import withContext, { Provider } from '../../Context';
@@ -10,7 +11,6 @@ const AlertTileWithContext = withContext(AlertTile);
 const MainWrap = styled.div`
   width: 100%;
   height: 100%;
-  
   color: white;
   
   display: flex;
@@ -26,8 +26,9 @@ const MainWrap = styled.div`
   overflow-y: auto;
   
   .tile-container {
-    margin: 50px auto;
-    
+    margin-top: 40px;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -67,14 +68,13 @@ const Main = () => {
         <Tile title='Alerts'>
           <AlertTileWithContext />
         </Tile>
-
         <Tile className="tile">
           List of students who have not submitted most recent retro
         </Tile>
-        <Tile className="tile">Attendance</Tile>
-        <Tile className="tile">Tile</Tile>
-        <Tile className="tile">Tile</Tile>
-        <Tile className="tile">Tile</Tile>
+        <div className="tile"><Attendance /></div>
+        <div className="tile">Tile</div>
+        <div className="tile">Tile</div>
+        <div className="tile">Tile</div>
       </div>
     </MainWrap>
   );
