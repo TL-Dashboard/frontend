@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Context = React.createContext({});
 
@@ -8,7 +8,65 @@ export const { Consumer } = Context;
 export const Provider = ({ children }) => {
     const [ state, setState ] = useState({
         authenticatedUser: null,
+        alerts: [
+            {
+                id: 1,
+                type: 'support',
+                user: 'Roger Lind'
+            },
+            {
+                id: 2,
+                type: 'missing',
+                user: 'Katlyn Ullrich'
+            },
+            {
+                id: 3,
+                type: 'submitted',
+                user: 'Minerva Pacocha'
+            },
+            {
+                id: 4,
+                type: 'ticket',
+                user: 'Marie Rath'
+            },
+            {
+                id: 5,
+                type: 'ticket',
+                user: 'Pasquale Collins'
+            },
+            {
+                id: 6,
+                type: 'ticket',
+                user: 'Pasquale Collins'
+            },
+            {
+                id: 7,
+                type: 'ticket',
+                user: 'Pasquale Collins'
+            },
+            {
+                id: 8,
+                type: 'ticket',
+                user: 'Pasquale Collins'
+            }
+        ],
     });
+
+    const removeAlert = id => {
+        setState(prev => ({
+            ...prev,
+            alerts: prev.alerts.filter(item => item.id !== id),
+        }))
+    }
+
+    useEffect(() => {
+        setState(prev => ({
+            ...prev,
+            actions: {
+                removeAlert
+            }
+        }));
+    }, [])
 
     return (
         <Context.Provider value={state}>
