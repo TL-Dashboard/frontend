@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Context = React.createContext({});
 
@@ -34,8 +34,24 @@ export const Provider = ({ children }) => {
                 type: 'ticket',
                 user: 'Pasquale Collins'
             }
-        ]
+        ],
     });
+
+    const removeAlert = id => {
+        setState(prev => ({
+            ...prev,
+            alerts: prev.alerts.filter(item => item.id !== id),
+        }))
+    }
+
+    useEffect(() => {
+        setState(prev => ({
+            ...prev,
+            actions: {
+                removeAlert
+            }
+        }));
+    }, [])
 
     return (
         <Context.Provider value={state}>

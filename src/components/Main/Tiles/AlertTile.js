@@ -8,6 +8,13 @@ import { ReactComponent as Missing } from '../../../assets/alert-4.svg';
 
 export default ({ context }) => {
     const { alerts } = context;
+
+    const handleAlertItemClick = (event, id) => {
+        const { target } = event;
+        const { removeAlert } = context.actions;
+        removeAlert(id);
+    }
+
     return (
         <AlertContainer>
             <AlertBoxes>
@@ -29,7 +36,7 @@ export default ({ context }) => {
                     {/* Use map for alerts. */}
                     {
                         alerts.map(({ id, type, user }) => (
-                            <AlertsItem key={id} type={type}>
+                            <AlertsItem onClick={(e) => handleAlertItemClick(e, id)} key={id} type={type}>
                                 <div className='alertitem__left'>
                                     {getLogo(type)}
                                 </div>
@@ -100,6 +107,8 @@ const AlertsItem = styled.div`
     & + & {
         margin-top: 10px;
     }
+
+    &:hover{ cursor: pointer; }
 
     .alertitem{
         &__left {
