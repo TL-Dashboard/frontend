@@ -5,6 +5,8 @@ import withContext, { Provider } from '../../Context';
 
 import AlertTile from './Tiles/AlertTile';
 
+const AlertTileWithContext = withContext(AlertTile);
+
 const MainWrap = styled.div`
   width: 100%;
   height: 100%;
@@ -64,7 +66,7 @@ const Main = () => {
     <MainWrap>
       <div className="tile-container">
         <Tile title='Alerts'>
-          <AlertTile />
+          <AlertTileWithContext />
         </Tile>
 
         <Tile className="tile">

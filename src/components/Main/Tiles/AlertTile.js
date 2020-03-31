@@ -1,97 +1,95 @@
 import React from 'react'
 import styled from "styled-components";
 
-import { ReactComponent as Person } from '../../../assets/alert-1.svg';
-import { ReactComponent as Clipboard } from '../../../assets/alert-2.svg';
-import { ReactComponent as Mail } from '../../../assets/alert-3.svg';
-import { ReactComponent as Alert } from '../../../assets/alert-4.svg';
+import { ReactComponent as Support } from '../../../assets/alert-1.svg';
+import { ReactComponent as Submitted } from '../../../assets/alert-2.svg';
+import { ReactComponent as Ticket } from '../../../assets/alert-3.svg';
+import { ReactComponent as Missing } from '../../../assets/alert-4.svg';
 
 export default ({ context }) => {
+    const { alerts } = context;
     return (
         <AlertContainer>
             <AlertBoxes>
                 <AlertBox className='alert' backgroundColor='#FF8080'>
-                    <Person />
-                </AlertBox>
-                <AlertBox backgroundColor='#80D3FF'>
-                    <Clipboard />
+                    <Support />
                 </AlertBox>
                 <AlertBox backgroundColor='#80FFAC'>
-                    <Mail />
+                    <Ticket />
+                </AlertBox>
+                <AlertBox backgroundColor='#80D3FF'>
+                    <Submitted />
                 </AlertBox>
                 <AlertBox className='alert' backgroundColor='#C080FF'>
-                    <Alert />
+                    <Missing />
                 </AlertBox>
             </AlertBoxes>
             <AlertsContainer>
                 <AlertsList>
                     {/* Use map for alerts. */}
-                    <AlertsItem type='support'>
-                        <div className='alertitem__left'>
-                            <Person />
-                        </div>
-                        <div className='alertitem__right'>
-                            <p>Fern B. has requested support hours.</p>
-                        </div>
-                    </AlertsItem>
-                    <AlertsItem type='submitted'>
-                        <div className='alertitem__left'>
-                            <Clipboard />
-                        </div>
-                        <div className='alertitem__right'>
-                            <p>Zakary K. has submitted a sprint retrospective.</p>
-                        </div>
-                    </AlertsItem>
-                    <AlertsItem type='ticket'>
-                        <div className='alertitem__left'>
-                            <Alert />
-                        </div>
-                        <div className='alertitem__right'>
-                            <p>Berry F. has submitted a ticket.</p>
-                        </div>
-                    </AlertsItem>
-                    <AlertsItem type='missing'>
-                        <div className='alertitem__left'>
-                            <Alert />
-                        </div>
-                        <div className='alertitem__right'>
-                            <p>Russ H. is missing a module retrospective.</p>
-                        </div>
-                    </AlertsItem>
-                    <AlertsItem type='missing'>
-                        <div className='alertitem__left'>
-                            <Alert />
-                        </div>
-                        <div className='alertitem__right'>
-                            <p>Russ H. is missing a module retrospective.</p>
-                        </div>
-                    </AlertsItem>
-                    <AlertsItem type='missing'>
-                        <div className='alertitem__left'>
-                            <Alert />
-                        </div>
-                        <div className='alertitem__right'>
-                            <p>Russ H. is missing a module retrospective.</p>
-                        </div>
-                    </AlertsItem>
+                    {
+                        alerts.map(({ id, type, user }) => (
+                            <AlertsItem key={id} type={type}>
+                                <div className='alertitem__left'>
+                                    {getLogo(type)}
+                                </div>
+                                <div className='alertitem__right'>
+                                    <p>{getAbrevName(user)} {getEndingMessage(type)}</p>
+                                </div>
+                            </AlertsItem>
+                        ))
+                    }
+                    
                 </AlertsList>
             </AlertsContainer>
         </AlertContainer>
     )
 }
 
+const getAbrevName = name => `${name.split(" ")[0]} ${name.split(" ")[1].split("")[0]}.`
+
+const getLogo = type => {
+    switch(type) {
+        case 'support':
+            return (<Support />);
+        case 'submitted':
+            return (<Submitted />);
+        case 'missing':
+            return (<Missing />);
+        case 'ticket':
+            return <Ticket />;
+        default:
+            return (<p>Error occured.</p>);
+    }
+}
+
 const getBackgroundColor = type => {
     switch(type) {
         case 'support':
-            return "#FF8080";
+            return "#F78080";
         case 'submitted':
             return "#80D3FF";
         case 'missing':
-            return "#80FFAC";
+            return "#C080FF";
         case 'ticket':
-            return '#C080FF';
+            return '#80FFAC';
         default:
             return 'black';
+    }
+}
+
+const getEndingMessage = type => {
+    switch(type) {
+        case 'support':
+            return "has requested support hours.";
+        case 'submitted':
+            return "has submitted a retrospective.";
+        case 'missing':
+            return "is missing a retrospective.";
+        case 'ticket':
+            return 'has submitted a ticket.';
+        default:
+            return 'Error occured.';
     }
 }
 
