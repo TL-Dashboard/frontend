@@ -7,11 +7,12 @@ const Wrapper = styled.div`
     /*alerts box header*/
     .attendance-text {
         background-color: black;
+        height: 40px;
         color: white;
         margin-top: 0px;
         margin-bottom: 5px;
-        padding: 15px;
-        box-shadow: 0 8px 6px -6px gray;
+        padding: 10px 15px;
+        /* box-shadow: 0 8px 6px -6px gray; */
     }
     /*attendance form border, and it's boxes */
     .attendance-container, .smaller-containers {

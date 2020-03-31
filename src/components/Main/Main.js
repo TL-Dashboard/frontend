@@ -11,7 +11,6 @@ const AlertTileWithContext = withContext(AlertTile);
 const MainWrap = styled.div`
   width: 100%;
   height: 100%;
-  
   color: white;
   
   display: flex;
@@ -27,8 +26,9 @@ const MainWrap = styled.div`
   overflow-y: auto;
   
   .tile-container {
-    margin: 50px auto;
-    
+    margin-top: 40px;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
