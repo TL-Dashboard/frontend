@@ -11,16 +11,16 @@ export default ({ context }) => {
     return (
         <AlertContainer>
             <AlertBoxes>
-                <AlertBox className='alert' backgroundColor='#FF8080'>
+                <AlertBox className={alerts.some(i => i.type === 'support') ? 'alert' : ''} backgroundColor='#FF8080'>
                     <Support />
                 </AlertBox>
-                <AlertBox backgroundColor='#80FFAC'>
+                <AlertBox className={alerts.some(i => i.type === 'ticket') ? 'alert' : ''} backgroundColor='#80FFAC'>
                     <Ticket />
                 </AlertBox>
-                <AlertBox backgroundColor='#80D3FF'>
+                <AlertBox className={alerts.some(i => i.type === 'submitted') ? 'alert' : ''} backgroundColor='#80D3FF'>
                     <Submitted />
                 </AlertBox>
-                <AlertBox className='alert' backgroundColor='#C080FF'>
+                <AlertBox className={alerts.some(i => i.type === 'missing') ? 'alert' : ''} backgroundColor='#C080FF'>
                     <Missing />
                 </AlertBox>
             </AlertBoxes>
