@@ -39,7 +39,6 @@ const MainWrap = styled.div`
       background-color: white;
 
       margin-bottom: 20px;
-      // padding: 0 15px;
       
       border-radius: 3px;
       box-shadow: 2px 2px 10px lightgray;
