@@ -160,9 +160,11 @@ const AlertsContainer = styled.div`
     margin: 0 auto;
 
     color: black;
-    margin-top: 10px;
 
-    height: 150px;
+    height: 230px;
+
+    overflow-y: scroll;
+
 `;
 
 const AlertBoxes = styled.div`

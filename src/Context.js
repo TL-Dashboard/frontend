@@ -33,6 +33,21 @@ export const Provider = ({ children }) => {
                 id: 5,
                 type: 'ticket',
                 user: 'Pasquale Collins'
+            },
+            {
+                id: 6,
+                type: 'ticket',
+                user: 'Pasquale Collins'
+            },
+            {
+                id: 7,
+                type: 'ticket',
+                user: 'Pasquale Collins'
+            },
+            {
+                id: 8,
+                type: 'ticket',
+                user: 'Pasquale Collins'
             }
         ],
     });
