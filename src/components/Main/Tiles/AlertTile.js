@@ -35,6 +35,7 @@ export default ({ context }) => {
                 <AlertsList>
                     {/* Use map for alerts. */}
                     {
+                        alerts.length > 0 ? 
                         alerts.map(({ id, type, user }) => (
                             <AlertsItem onClick={(e) => handleAlertItemClick(e, id)} key={id} type={type}>
                                 <div className='alertitem__left'>
@@ -45,6 +46,8 @@ export default ({ context }) => {
                                 </div>
                             </AlertsItem>
                         ))
+                        :
+                        (<p>No alerts to show.</p>)
                     }
                     
                 </AlertsList>
