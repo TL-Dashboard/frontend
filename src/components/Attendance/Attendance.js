@@ -35,21 +35,25 @@ const Wrapper = styled.div`
         border-radius: 5px;
         background-color: #F0F8FF;
     }
+    #startInput, #standInput, #presentInput {
+        cursor: pointer;
+    }
     /*button styling */
     #submit-btn {
-        background-color: #80D3FF;
+        background-color: #00BFFF;
         width: 60%;
         margin-top: 3px;
         padding-top: 3px;
         padding-bottom: 3px;
-        color: #7B7B7B;
+        color: black;
         border: 1px solid lightgray;
+        cursor: pointer;
     }
     /*button hover styling */
     #submit-btn:hover {
-        background-color: #00BFFF;
+        background-color: #80D3FF;
         width: 60%;
-        color: black;
+        color: #7B7B7B;
     }
 `;
 
@@ -80,10 +84,10 @@ const Attendance = () => {
                 </div>
                 <div class="smaller-containers">
                     <label for="startInput">Start of Class</label>
-                        <input type='checkbox' id="startInput" name="startClass" />
+                        <input type='checkbox' id="startInput" name="startClass" defaultChecked />
                     <br/>
                     <label for="standInput">Stand Up</label>
-                        <input type='checkbox' id="standInput" name="standUp" />
+                        <input type='checkbox' id="standInput" name="standUp" defaultChecked />
                     
                 </div>
                 <div class="smaller-containers">
@@ -99,7 +103,7 @@ const Attendance = () => {
                             <option value='student8'>Guy Mann</option>
                         </select><br/>
                     <label for="presentInput">Present</label>
-                        <input type='checkbox' id="presentInput" name="present" />
+                        <input type='checkbox' id="presentInput" name="present" defaultChecked />
                     <label>Notes </label>
                         <input type='text' id="notesInput" name="notes" maxLength="35" size="5" />
                 </div>
