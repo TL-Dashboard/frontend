@@ -16,12 +16,12 @@ export default function TileContainer() {
             <Tile className="tile">
                 List of students who have not submitted most recent retro
             </Tile>
-            <div className="tile">
+            <Tile title="Attendance" className="tile">
                 <Attendance />
-            </div>
-            <div className="tile">Tile</div>
-            <div className="tile">Tile</div>
-            <div className="tile">Tile</div>
+            </Tile>
+            <Tile className="tile">Tile</Tile>
+            <Tile className="tile">Tile</Tile>
+            <Tile className="tile">Tile</Tile>
         </div>
     );
 }
