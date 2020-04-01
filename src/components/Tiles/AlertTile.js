@@ -17,7 +17,7 @@ export default ({ context }) => {
 
     return (
         <div className='tile__alert'>
-            <div class='tile__alert__boxes'>
+            <div className='tile__alert__boxes'>
                 <AlertBox className={`${alerts.some(i => i.type === 'support') ? 'alert' : ''} tile__alert__boxes__box`} backgroundColor='#FF8080'>
                     <Support />
                 </AlertBox>
