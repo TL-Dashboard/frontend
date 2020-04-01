@@ -124,4 +124,51 @@
             }
         }
     }
+    /*attendance form font styling*/
+    &__attendance {
+        color: #7B7B7B;
+        
+
+        /*form items styling*/
+        &__container{
+            text-align: center;
+            align-items: center;
+            margin: 0 auto;
+
+            /*more form items styling*/
+            &__smallcontainer {
+                border: 1px solid lightgray;
+                box-shadow: 0 8px 6px -6px gray;
+                background-color: #FCFCFC;        
+                margin: 20px;
+                padding: 5px;
+
+                    /*button styling*/
+                    &__submitBtn {
+                        border-radius: 5px;
+                        background-color: #F0F8FF;
+                        background-color: #00BFFF;
+                        width: 60%;
+                        margin-top: 3px;
+                        padding-top: 3px;
+                        padding-bottom: 3px;
+                        color: black;
+                        border: 1px solid lightgray;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: #80D3FF;
+                            width: 60%;
+                            color: #7B7B7B;
+                        }
+                    }
+                        /*curving edges for form selects, input */
+                        &--item {
+                            border-radius: 5px;
+                            background-color: #F0F8FF;
+                            cursor: pointer;
+                    }
+            }
+        }
+    }
 }
