@@ -1,12 +1,27 @@
 import React from "react";
-import Attendance from "../Attendance/Attendance.js";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import withContext, { Provider } from '../../Context';
 import styled from "styled-components";
 
-import withContext, { Provider } from '../../Context';
+import TileContainer from './Tiles/TileContainer';
 
-import AlertTile from './Tiles/AlertTile';
-
-const AlertTileWithContext = withContext(AlertTile);
+const Main = () => {
+  return (
+    <MainWrap>
+      <Router>
+        <Switch>
+          <Route exact path="/" render={props => <div {...props}>Login Page</div>} />
+          <Route path="/dashboard" render={props => <TileContainer {...props} />} />
+          <Route render={props => <h1>Page was not found.</h1>} />
+        </Switch>
+      </Router>
+    </MainWrap>
+  );
+};
 
 const MainWrap = styled.div`
   width: 100%;
@@ -60,39 +75,5 @@ const MainWrap = styled.div`
     }
   }
 `;
-
-const Main = () => {
-  return (
-    <MainWrap>
-      <div className="tile-container">
-        <Tile title='Alerts'>
-          <AlertTileWithContext />
-        </Tile>
-        <Tile className="tile">
-          List of students who have not submitted most recent retro
-        </Tile>
-        <div className="tile"><Attendance /></div>
-        <div className="tile">Tile</div>
-        <div className="tile">Tile</div>
-        <div className="tile">Tile</div>
-      </div>
-    </MainWrap>
-  );
-};
-
-const Tile = ({ children, title }) => {
-  return (
-    <div className='tile'>
-      {title ? (
-        <div className='tile__header'>
-          { title }
-        </div>
-      ) : (null)}
-      <div className='tile__body'>
-        {children}
-      </div>
-    </div>
-  )
-}
 
 export default Main;
