@@ -64,7 +64,6 @@ const Attendance = () => {
     /* HTML goes here */
     return(
         <Wrapper>
-        <p class="attendance-text">Attendance</p>
         <form class="attendanceForm">
             <div class="attendance-container">
                 <div class="smaller-containers">

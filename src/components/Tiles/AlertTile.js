@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from "styled-components";
 
-import { ReactComponent as Support } from '../../../assets/alert-1.svg';
-import { ReactComponent as Submitted } from '../../../assets/alert-2.svg';
-import { ReactComponent as Ticket } from '../../../assets/alert-3.svg';
-import { ReactComponent as Missing } from '../../../assets/alert-4.svg';
+import { ReactComponent as Support } from './../../assets/alert-1.svg';
+import { ReactComponent as Submitted } from './../../assets/alert-2.svg';
+import { ReactComponent as Ticket } from './../../assets/alert-3.svg';
+import { ReactComponent as Missing } from './../../assets/alert-4.svg';
 
 export default ({ context }) => {
     const { alerts } = context;
@@ -16,43 +16,42 @@ export default ({ context }) => {
     }
 
     return (
-        <AlertContainer>
-            <AlertBoxes>
-                <AlertBox className={alerts.some(i => i.type === 'support') ? 'alert' : ''} backgroundColor='#FF8080'>
+        <div className='tile__alert'>
+            <div class='tile__alert__boxes'>
+                <AlertBox className={`${alerts.some(i => i.type === 'support') ? 'alert' : ''} tile__alert__boxes__box`} backgroundColor='#FF8080'>
                     <Support />
                 </AlertBox>
-                <AlertBox className={alerts.some(i => i.type === 'ticket') ? 'alert' : ''} backgroundColor='#80FFAC'>
+                <AlertBox className={`${alerts.some(i => i.type === 'ticket') ? 'alert' : ''} tile__alert__boxes__box`} backgroundColor='#80FFAC'>
                     <Ticket />
                 </AlertBox>
-                <AlertBox className={alerts.some(i => i.type === 'submitted') ? 'alert' : ''} backgroundColor='#80D3FF'>
+                <AlertBox className={`${alerts.some(i => i.type === 'missing') ? 'alert' : ''} tile__alert__boxes__box`} backgroundColor='#80D3FF'>
                     <Submitted />
                 </AlertBox>
-                <AlertBox className={alerts.some(i => i.type === 'missing') ? 'alert' : ''} backgroundColor='#C080FF'>
+                <AlertBox className={`${alerts.some(i => i.type === 'submitted') ? 'alert' : ''} tile__alert__boxes__box`} backgroundColor='#C080FF'>
                     <Missing />
                 </AlertBox>
-            </AlertBoxes>
-            <AlertsContainer>
-                <AlertsList>
+            </div>
+            <div className='tile__alert__container'>
+                <div className='tile__alert__container__list'>
                     {/* Use map for alerts. */}
                     {
                         alerts.length > 0 ? 
                         alerts.map(({ id, type, user }) => (
-                            <AlertsItem onClick={(e) => handleAlertItemClick(e, id)} key={id} type={type}>
-                                <div className='alertitem__left'>
+                            <div className='tile__alert__container__list--item' onClick={(e) => handleAlertItemClick(e, id)} key={id} type={type}>
+                                <AlertsItemLogo type={type} className='tile__alert__container__list--item__left'>
                                     {getLogo(type)}
-                                </div>
-                                <div className='alertitem__right'>
+                                </AlertsItemLogo>
+                                <div className='tile__alert__container__list--item__right'>
                                     <p>{getAbrevName(user)} {getEndingMessage(type)}</p>
                                 </div>
-                            </AlertsItem>
+                            </div>
                         ))
                         :
                         (<p>No alerts to show.</p>)
                     }
-                    
-                </AlertsList>
-            </AlertsContainer>
-        </AlertContainer>
+                </div>
+            </div>
+        </div>
     )
 }
 
@@ -103,108 +102,10 @@ const getEndingMessage = type => {
     }
 }
 
-const AlertsItem = styled.div`
-    width: 100%;
-    display: flex;
-    
-    & + & {
-        margin-top: 10px;
-    }
-
-    &:hover{ cursor: pointer; }
-
-    .alertitem{
-        &__left {
-            height: 30px;
-            width: 30px;
-
-            background-color: ${({ type }) => getBackgroundColor(type)};
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            svg {
-                width: 10px;
-            }
-        }
-    
-        &__right{
-            height: auto;
-            width: calc(100% - 30px);
-            display: flex;
-            align-items: center;
-            padding: 5px 0 5px 10px;
-            background: #EEE;
-            p {
-                font-size: .7rem;
-                margin: 0;
-            }
-        }
-    }
-
-`;
-
-const AlertsList = styled.ul`
-    list-style: none;
-    padding: 0;
-`;
-
-const AlertContainer = styled.div`
-    background:white;
-
-    height: 260px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-`;
-
-const AlertsContainer = styled.div`
-    width: 90%;
-    margin: 0 auto;
-
-    color: black;
-
-    height: 230px;
-
-    overflow-y: scroll;
-
-`;
-
-const AlertBoxes = styled.div`
-    height: 90px;
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid black;
+const AlertsItemLogo = styled.div`
+    background-color: ${({ type }) => getBackgroundColor(type)};
 `;
 
 const AlertBox = styled.div`
     background: ${props => props.backgroundColor || "red"};
-    width: 50px; height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    svg {
-        width: 20px;
-        height: 20px;
-    }
-
-    &.alert {
-        position:relative;
-        &::after {
-            content: " ";
-            width: 10px;
-            height: 10px;
-            background:red;
-            position: absolute;
-            right: -5px;
-            top: -5px;
-            border-radius: 100%;
-            border: 2px solid white;
-
-        }
-    }
 `;
