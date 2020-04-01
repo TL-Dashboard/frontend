@@ -4,6 +4,7 @@ import withContext, { Provider } from '../../Context';
 
 import Attendance from "../Tiles/Attendance.js";
 import AlertTile from '../Tiles/AlertTile';
+import MissingWork from "../Tiles/MissingWork";
 
 const AlertTileWithContext = withContext(AlertTile);
 
@@ -14,10 +15,12 @@ const Main = () => {
         <Tile className='tile' title='Alerts'>
           <AlertTileWithContext />
         </Tile>
-        <div title='Attendance' className="tile">
-          List of students who have not submitted most recent retro
-        </div>
-        <Tile title='Attendance' className="tile"><Attendance /></Tile>
+        <Tile className="tile" title='Missing Work'>
+          <MissingWork />
+        </Tile>
+        <Tile className="tile" title='Attendance'>
+          <Attendance />
+        </Tile>
         <div className="tile">Tile</div>
         <div className="tile">Tile</div>
         <div className="tile">Tile</div>
