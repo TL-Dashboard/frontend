@@ -23,8 +23,8 @@ const MissingWork = () => {
     return(
     <Wrapper1>
         
-        <p class="missing-work-text">These students have missing modules/retros</p>
-        <ul class="missing-work-students">
+        <p className="missing-work-text">These students have missing modules/retros</p>
+        <ul className="missing-work-students">
 
             <li>John Smith</li>
 
