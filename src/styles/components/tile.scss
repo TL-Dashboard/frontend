@@ -138,8 +138,7 @@
             /*more form items styling*/
             &__smallcontainer {
                 border: 1px solid lightgray;
-                box-shadow: 0 8px 6px -6px gray;
-                background-color: #FCFCFC;        
+                background-color: #EEEEEE;        
                 margin: 20px;
                 padding: 5px;
 
@@ -147,7 +146,7 @@
                     &__submitBtn {
                         border-radius: 5px;
                         background-color: #F0F8FF;
-                        background-color: #00BFFF;
+                        background-color: #80D3FF;
                         width: 60%;
                         margin-top: 3px;
                         padding-top: 3px;
@@ -157,7 +156,7 @@
                         cursor: pointer;
 
                         &:hover {
-                            background-color: #80D3FF;
+                            background-color: #00BFFF;
                             width: 60%;
                             color: #7B7B7B;
                         }
