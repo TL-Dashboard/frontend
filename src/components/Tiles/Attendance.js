@@ -1,16 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-const Wrapper = styled.div` 
-    
-`;
+
 
 const Attendance = () => {
-/*other functions */
 
     /* HTML goes here */
     return(
-        <Wrapper>
+        <div>
         <form className="tile__attendance">
             <div className="tile__attendance__container">
                 <div className="tile__attendance__container__smallcontainer">
@@ -59,7 +56,7 @@ const Attendance = () => {
                 </div>
             </div>
         </form>
-        </Wrapper>
+        </div>
     )
 }
 
