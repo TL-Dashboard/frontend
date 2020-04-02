@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Route } from "react-router-dom";
 import styled from "styled-components";
 
@@ -19,22 +19,15 @@ const MainContainer = styled.div`
 `;
 
 const Main = props => {
-  // console.log("rendering main", props.context);
 
   const { updateState } = props.context.actions
 
   useEffect(() => {
     if (!props.context.data.length) {
-      console.log('getting')
       const id = getUser()
       getStudentData(updateState, id)
     }
   }, [props.context.data.length, updateState]);
-
-  // useEffect(() => {
-  //   const id = getUser()
-  //   getStudentData(updateState, id)
-  // }, [updateState]);
 
   return (
     <MainContainer>

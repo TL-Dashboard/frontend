@@ -96,7 +96,6 @@ const LogoWrapper = styled.div`
 `;
 
 const Sidebar = (props) => {
-  console.log('sidebar', props)
 
   const user = props.context.user
 

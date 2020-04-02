@@ -2,11 +2,10 @@ import { axiosWithAuth } from './axiosWithAuth';
 
 export const getStudentData = (updateState, id) => {
     updateState('isLoading', true);
-    console.log('getStudentData')
     axiosWithAuth()
         .get(`/teamleads/${id}/studentdata`)
         .then(res => {
-            // console.log(res.data)
+            console.log('getting student data:', res.data)
             updateState('data', res.data)
             updateState('isLoading', false)
         })
