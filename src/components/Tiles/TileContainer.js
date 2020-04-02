@@ -7,7 +7,7 @@ import MissingWork from "./MissingWork.js";
 import AttendanceChart from './AttendanceChart';
 import GradesChart from './GradesChart';
 
-import withContext, { Provider } from "../../Context";
+import withContext from "../../Context";
 import RecentSubmissions from "./RecentSubmissions.js";
 
 const AlertTileWithContext = withContext(AlertTile);
