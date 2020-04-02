@@ -17,7 +17,7 @@ const Login = () => {
                     <input className="login__container__items__input" type="password" />
                 </div>
                 <div className="login__container__items">
-                        <input className="login__container__items__input__submitButn" type="submit" />
+                    <input className="login__container__items__input__submitButn" type="submit" />
                 </div>            
                 <div className="login__container__forgotText">
                     <p>Forgot <a className="login__container__forgotText__forgotLinks" href="/">Username/Password?</a></p>
