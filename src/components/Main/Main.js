@@ -33,7 +33,12 @@ const Main = (props) => {
       </div>
     <div className='main'>
         <Navbar />
-        <TileContainer />
+        <Router>
+          <Switch>
+            <Route exact path='/dashboard/overview' component={TileContainer} />
+            <Route render={props => <h1>Page was not found.</h1>} />
+          </Switch>
+        </Router>
     </div>
     </MainContainer>
   );
