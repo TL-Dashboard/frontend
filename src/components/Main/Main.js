@@ -19,13 +19,13 @@ const MainContainer = styled.div`
 `;
 
 const Main = props => {
-
+  // console.log('main props', props.context)
   const { updateState } = props.context.actions
 
   useEffect(() => {
     if (!props.context.data.length) {
-      const id = getUser()
-      getStudentData(updateState, id)
+      const user = getUser(updateState)
+      getStudentData(updateState, user.id)
     }
   }, [props.context.data.length, updateState]);
 

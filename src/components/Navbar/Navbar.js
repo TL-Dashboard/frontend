@@ -57,7 +57,7 @@ const Navbar = ({ context }) => {
 					<ul>
 						{sidebarLinks.map((item, index) => (
 							<Link key={index} to={item.link}>
-								<li className={`links__link ${item.current ? "current" : ""}`}>{item.title}</li>
+								<li className={`links__link ${item.current ? "current" : ""}`} onClick={() => setOpen(!open)}>{item.title}</li>
 							</Link>
 						))}
 					</ul>
