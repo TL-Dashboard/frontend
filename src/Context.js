@@ -25,8 +25,11 @@ export const Provider = ({ children }) => {
         isAuthenticated: false,
         isLoading: false,
         error: null,
-        data: [],
         user: {},
+        students: {},
+        tickets: [],
+        assignments: [],
+        cohorts: [],
         actions: {
             removeAlert,
             updateState

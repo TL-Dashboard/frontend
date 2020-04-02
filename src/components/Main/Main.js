@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Route } from "react-router-dom";
 import styled from "styled-components";
 
-import { getStudentData, getUser } from "../../utils";
+import { getStudentData, getUser, getTickets } from "../../utils";
 import Sidebar from "../Sidebar/Sidebar.js";
 import Navbar from "../Navbar/Navbar.js";
 import TileContainer from "../Tiles/TileContainer";
@@ -23,11 +23,12 @@ const Main = props => {
   const { updateState } = props.context.actions
 
   useEffect(() => {
-    if (!props.context.data.length) {
+    if (!props.context.students.length) {
       const user = getUser(updateState)
       getStudentData(updateState, user.id)
+      getTickets(updateState, user.id)
     }
-  }, [props.context.data.length, updateState]);
+  }, [props.context.students.length, updateState]);
 
   return (
     <MainContainer>

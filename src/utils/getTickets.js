@@ -1,12 +1,12 @@
 import { axiosWithAuth } from './axiosWithAuth';
 
-export const getStudentData = (updateState, id) => {
+export const getTickets = (updateState, id) => {
     updateState('isLoading', true);
     axiosWithAuth()
-        .get(`/teamleads/${id}/studentdata`)
+        .get(`/tickets/query/filter?teamlead_id=${id}`)
         .then(res => {
-            console.log('getting student data:', res.data)
-            updateState('students', res.data)
+            console.log('getting tickets:', res.data)
+            updateState('tickets', res.data)
             updateState('isLoading', false)
         })
         .catch(err => {
