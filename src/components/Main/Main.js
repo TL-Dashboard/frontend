@@ -7,6 +7,8 @@ import Sidebar from "../Sidebar/Sidebar.js";
 import Navbar from "../Navbar/Navbar.js";
 import TileContainer from "../Tiles/TileContainer";
 
+import { Switch } from 'react-router-dom';
+
 const MainContainer = styled.div`
   height: 100vh;
   width: 100vw;
@@ -36,8 +38,11 @@ const Main = props => {
         <Sidebar {...props} />
       </div>
       <div className="main">
-          <Navbar {...props} />
+        <Navbar {...props} />
+        <Switch>
           <Route path="/dashboard/overview" component={TileContainer} />
+          <Route render={props => <h1>Page was not found.</h1>} />
+        </Switch>
       </div>
     </MainContainer>
   );
