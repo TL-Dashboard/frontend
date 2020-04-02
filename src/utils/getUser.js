@@ -7,7 +7,7 @@ export const getUser = (updateState) => {
         img_url: (sessionStorage.getItem('img_url')),
         type: (sessionStorage.getItem('type')),
         fifth_day: JSON.parse(sessionStorage.getItem('fifth_day')),
-        chort_id: JSON.parse(sessionStorage.getItem('cohort_id'))
+        cohort_id: JSON.parse(sessionStorage.getItem('cohort_id'))
     }
     updateState('user', user)
     return !!user ? user : { id: '', first_name: 'Error' };

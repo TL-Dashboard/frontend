@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Route } from "react-router-dom";
 import styled from "styled-components";
 
-import { getStudentData, getUser, getTickets } from "../../utils";
+import { getStudentData, getUser, getTickets, getAssignments, getCohorts } from "../../utils";
 import Sidebar from "../Sidebar/Sidebar.js";
 import Navbar from "../Navbar/Navbar.js";
 import TileContainer from "../Tiles/TileContainer";
@@ -29,6 +29,8 @@ const Main = props => {
       const user = getUser(updateState)
       getStudentData(updateState, user.id)
       getTickets(updateState, user.id)
+      getAssignments(updateState, user.cohort_id)
+      getCohorts(updateState, user.cohort_id)
     }
   }, [props.context.students.length, updateState]);
 
