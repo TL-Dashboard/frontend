@@ -95,7 +95,11 @@ const LogoWrapper = styled.div`
   }
 `;
 
-const Sidebar = () => {
+const Sidebar = (props) => {
+  console.log('sidebar', props)
+
+  const user = props.context.user
+
   const sidebarLinks = [
     {
       title: "Dashboard",
@@ -133,7 +137,7 @@ const Sidebar = () => {
       <SidebarUserInfo>
         <div className='user--image'></div>
         <div className='user--info'>
-          <div className='name'>{`{user name}`}</div>
+          <div className='name'>{`${user.first_name}`}</div>
           <div className='title'>{`{title}`}</div>
           <div className='email'>{`{email}`}</div>
         </div>

@@ -25,6 +25,8 @@ export const Provider = ({ children }) => {
         isAuthenticated: false,
         isLoading: false,
         error: null,
+        data: [],
+        user: {},
         actions: {
             removeAlert,
             updateState

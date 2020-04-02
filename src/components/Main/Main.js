@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 import styled from "styled-components";
 
-import { getStudentData } from "../../utils";
+import { getStudentData, getUser } from "../../utils";
 import Sidebar from "../Sidebar/Sidebar.js";
 import Navbar from "../Navbar/Navbar.js";
 import TileContainer from "../Tiles/TileContainer";
@@ -19,13 +19,27 @@ const MainContainer = styled.div`
 `;
 
 const Main = props => {
-  console.log("rendering main", props.context);
-  const context = props.context;
+  // console.log("rendering main", props.context);
+
+  const { updateState } = props.context.actions
+
+  useEffect(() => {
+    if (!props.context.data.length) {
+      console.log('getting')
+      const id = getUser()
+      getStudentData(updateState, id)
+    }
+  }, [props.context.data.length, updateState]);
+
+  // useEffect(() => {
+  //   const id = getUser()
+  //   getStudentData(updateState, id)
+  // }, [updateState]);
 
   return (
     <MainContainer>
       <div className="sidebar">
-        <Sidebar />
+        <Sidebar {...props} />
       </div>
       <div className="main">
         <Navbar />

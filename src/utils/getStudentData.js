@@ -1,28 +1,18 @@
 import { axiosWithAuth } from './axiosWithAuth';
 
-export const getStudentData = (values, updateState, redirect) => {
-    // updateState('isLoading', true);
+export const getStudentData = (updateState, id) => {
+    updateState('isLoading', true);
     console.log('getStudentData')
-    // axiosWithAuth()
-    //     .get('/', values)
-    //     .then(res => {
-    //         const { token } = res.data;
-    //         console.log('user logged in', res.data);
-    //         const data = {
-    //             id: res.data.id,
-    //             first_name: res.data.first_name,
-    //         };
-    //         sessionStorage.setItem('token', token);
-    //         sessionStorage.setItem('user', JSON.stringify(data.id));
-    //         sessionStorage.setItem('username', (data.first_name));
-    //         // updateState('isAuthenticated', true);
-    //         // updateState('isLoading', false);
-    //         // updateState('error', false);
-    //         redirect();
-    //     })
-    //     .catch(err => {
-    //         // console.log(err)
-    //         // updateState('error', err);
-    //         // updateState('isLoading', false);
-    //     })
+    axiosWithAuth()
+        .get(`/teamleads/${id}/studentdata`)
+        .then(res => {
+            // console.log(res.data)
+            updateState('data', res.data)
+            updateState('isLoading', false)
+        })
+        .catch(err => {
+            console.log(err)
+            updateState('error', err);
+            updateState('isLoading', false);
+        })
 }
