@@ -4,10 +4,10 @@ import styled from "styled-components";
 import Burger from "./Burger/index";
 
 const Navbar = ({ context }) => {
-	const [open, setOpen] = useState(false);
-
+  const [open, setOpen] = useState(false);
+  const cohorts = context.cohorts;
   const user = context.user;
-  const { first_name, type, email } = user;
+  const { first_name, last_name, type, email } = user;
   
   const sidebarLinks = [
     {
@@ -47,9 +47,9 @@ const Navbar = ({ context }) => {
 			<DropDown className={`${open ? "active" : ""}`}>
 				<SidebarUserInfo>
 					<div className='user--image'></div>
-					<div className='user--info'>
-						<div className='name'>{`${user.first_name}`}</div>
-						<div className='title'>{`${type}`}</div>
+						<div className='user--info'>
+						<div className='name'>{`${first_name} ${last_name}`}</div>
+						<div className='title'>{`${type} ${cohorts.name}`}</div>
 						<div className='email'>{`${email}`}</div>
 					</div>
 				</SidebarUserInfo>

@@ -29,7 +29,7 @@ export const Provider = ({ children }) => {
         students: {},
         tickets: [],
         assignments: [],
-        cohorts: [],
+        cohorts: {},
         actions: {
             removeAlert,
             updateState

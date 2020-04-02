@@ -6,7 +6,7 @@ export const getCohorts = (updateState, id) => {
         .get(`/cohorts/${id}`)
         .then(res => {
             console.log('getting cohort data:', res.data)
-            updateState('students', res.data)
+            updateState('cohorts', res.data)
             updateState('isLoading', false)
         })
         .catch(err => {
