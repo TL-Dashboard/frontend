@@ -39,7 +39,6 @@ const Main = props => {
       <div className="main">
         <Navbar {...props} />
         <Switch>
-          
           <Route path="/dashboard/overview" component={TileContainer} />
           <Route render={props => <h1>Page was not found.</h1>} />
         </Switch>
