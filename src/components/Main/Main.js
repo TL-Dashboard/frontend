@@ -7,14 +7,15 @@ import {
 
 import withContext, { Provider } from '../../Context';
 
-import TileContainer from './Tiles/TileContainer';
+import TileContainer from '../Tiles/TileContainer';
+import Login from '../Login/Login.js';
 
 const Main = () => {
   return (
     <div className='main'>
       <Router>
           <Switch>
-            <Route exact path="/" render={props => <div {...props}>Login Page</div>} />
+            <Route exact path="/" render={props => <Login {...props} />} />
             <Route path="/dashboard" render={props => <TileContainer {...props} />} />
             <Route render={props => <h1>Page was not found.</h1>} />
           </Switch>

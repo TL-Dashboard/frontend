@@ -1,13 +1,14 @@
 import React from "react";
 
-import Attendance from "../../Tiles/Attendance";
-import AlertTile from "../../Tiles/AlertTile";
-import MissingWork from "../../Tiles/MissingWork.js";
+import Attendance from "./Attendance.js";
+import AlertTile from "./AlertTile.js";
+import MissingWork from "./MissingWork.js";
 
-import AttendanceChart from '../../Tiles/AttendanceChart';
-import GradesChart from '../../Tiles/GradesChart';
+import AttendanceChart from './AttendanceChart';
+import GradesChart from './GradesChart';
 
-import withContext, { Provider } from "../../../Context";
+import withContext, { Provider } from "../../Context";
+import RecentSubmissions from "./RecentSubmissions.js";
 
 const AlertTileWithContext = withContext(AlertTile);
 
@@ -29,7 +30,9 @@ export default function TileContainer() {
             <Tile title='Student Grades' className="tile">
                 <GradesChart />
             </Tile>
-            <Tile title='Tile6' className="tile">Tile</Tile>
+            <Tile className="tile" title="Recent Submissions">
+                <RecentSubmissions/>
+            </Tile>
         </div>
     );
 }
