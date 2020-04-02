@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 import { ReactComponent as Logo } from '../../assets/LambdaLogo.svg';
-import { CoverageMap } from "istanbul-lib-coverage";
 
 const SidebarWrap = styled.div`
   display: flex;

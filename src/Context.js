@@ -7,7 +7,9 @@ export const { Consumer } = Context;
 
 export const Provider = ({ children }) => {
     const [ state, setState ] = useState({
-        authenticatedUser: null,
+        isAuthenticated: false,
+        isLoading: false,
+        error: null,
         alerts: [
             {
                 id: 1,
@@ -59,11 +61,20 @@ export const Provider = ({ children }) => {
         }))
     }
 
+    const updateState = (key, value) =>{
+        // console.log("updating", key, value)
+        setState(prev => ({
+            ...prev,
+            [key]: value
+        }))
+    }
+
     useEffect(() => {
         setState(prev => ({
             ...prev,
             actions: {
-                removeAlert
+                removeAlert,
+                updateState
             }
         }));
     }, [])
