@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-
+import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/LambdaLogo.svg';
-import { CoverageMap } from "istanbul-lib-coverage";
 
 const SidebarWrap = styled.div`
   display: flex;
@@ -96,31 +95,35 @@ const LogoWrapper = styled.div`
   }
 `;
 
-const Sidebar = () => {
+const Sidebar = (props) => {
+  console.log('sidebar', props)
+
+  const user = props.context.user
+
   const sidebarLinks = [
     {
       title: "Dashboard",
-      link: "/dashboard",
-      current: true
+      link: "/dashboard/overview",
+      current: false
     },
     {
       title: "Alerts",
-      link: "/alerts",
+      link: "/dashboard/alerts",
       current: false
     },
     {
       title: "Attendance",
-      link: "/attendance",
+      link: "/dashboard/attendance",
       current: false
     },
     {
       title: "Unsubmitted Retros",
-      link: "/unsubmittedretros",
+      link: "/dashboard/unsubmittedretros",
       current: false
     },
     {
       title: "Grade Tracker",
-      link: "/gradetracker",
+      link: "/dashboard/gradetracker",
       current: false
     }
   ]
@@ -134,7 +137,7 @@ const Sidebar = () => {
       <SidebarUserInfo>
         <div className='user--image'></div>
         <div className='user--info'>
-          <div className='name'>{`{user name}`}</div>
+          <div className='name'>{`${user.first_name}`}</div>
           <div className='title'>{`{title}`}</div>
           <div className='email'>{`{email}`}</div>
         </div>
@@ -143,9 +146,9 @@ const Sidebar = () => {
         <ul>
           {
             sidebarLinks.map((item, index) => (
-              <a key={index} href={item.link}>
+              <Link key={index} to={item.link}>
                 <li className={`links__link ${item.current ? 'current' : ''}`}>{item.title}</li>
-              </a>
+              </Link>
             ))
           }
         </ul>

@@ -10,7 +10,7 @@ export default ({ context }) => {
     const { alerts } = context;
 
     const handleAlertItemClick = (event, id) => {
-        const { target } = event;
+        // const { target } = event;
         const { removeAlert } = context.actions;
         removeAlert(id);
     }
