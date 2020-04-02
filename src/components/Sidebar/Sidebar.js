@@ -99,27 +99,27 @@ const Sidebar = () => {
   const sidebarLinks = [
     {
       title: "Dashboard",
-      link: "/dashboard",
+      link: "/dashboard/overview",
       current: true
     },
     {
       title: "Alerts",
-      link: "/alerts",
+      link: "/dashboard/alerts",
       current: false
     },
     {
       title: "Attendance",
-      link: "/attendance",
+      link: "/dashboard/attendance",
       current: false
     },
     {
       title: "Unsubmitted Retros",
-      link: "/unsubmittedretros",
+      link: "/dashboard/unsubmittedretros",
       current: false
     },
     {
       title: "Grade Tracker",
-      link: "/gradetracker",
+      link: "/dashboard/gradetracker",
       current: false
     }
   ]

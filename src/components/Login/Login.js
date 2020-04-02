@@ -5,8 +5,8 @@ import { authenticateUser } from '../../utils';
 
 
 const Login = (props) => {
-    console.log(props)
-    // const { isLoading, error } = props.context;
+
+    const { isLoading, error } = props.context;
     const [login, setLogin] = useState({
         email: "",
         password: "",
@@ -18,14 +18,12 @@ const Login = (props) => {
             ...login,
             [event.target.name]: event.target.value
         })
-        console.log(login)
     }
 
     const handleSubmit = (event) => {
         event.preventDefault()
         const { updateState } = props.context.actions;
-        // updateState("error", true)
-        authenticateUser(login, updateState, () => props.history.push('/dashboard'));
+        authenticateUser(login, updateState, () => props.history.push('/dashboard/overview'));
     }
 
     return(
@@ -47,8 +45,8 @@ const Login = (props) => {
                 <div className="login__container__items">
                         <input className="login__container__items__input__submitButn" type="submit" />
                 </div>            
-                {/* {isLoading && <span>Loading...</span>}
-                {error && <span>{`${error}`}</span>}   */}
+                {isLoading && <span>Loading...</span>}
+                {error && <span>{`${error}`}</span>}  
                 <div className="login__container__forgotText">
                     <p>Forgot <a className="login__container__forgotText__forgotLinks" href="/">Username/Password?</a></p>
                 </div>

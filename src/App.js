@@ -1,14 +1,17 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from './utils/PrivateRoute.js'
 import Login from "./components/Login/Login.js"
 import Main from "./components/Main/Main.js";
 
-function App(props) {
+function App({context}) {
+
   return (
       <Router>
-          <Route exact path="/" render={props => <Login context={props.context} {...props} />} />
-          <PrivateRoute path='/dashboard' context={props.context} component={Main} />
+        <Switch>
+          <Route exact path="/" render={props => <Login context={context} {...props} />} />
+          <PrivateRoute path='/dashboard' context={context} component={Main} />
+        </Switch>
       </Router>
   );
 }
