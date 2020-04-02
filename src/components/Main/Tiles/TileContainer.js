@@ -3,7 +3,9 @@ import React from "react";
 import Attendance from "../../Tiles/Attendance";
 import AlertTile from "../../Tiles/AlertTile";
 import MissingWork from "../../Tiles/MissingWork.js";
+
 import AttendanceChart from '../../Tiles/AttendanceChart';
+import GradesChart from '../../Tiles/GradesChart';
 
 import withContext, { Provider } from "../../../Context";
 
@@ -21,10 +23,12 @@ export default function TileContainer() {
             <Tile className="tile" title="Attendance">
                 <Attendance />
             </Tile>
-            <Tile title='Students Attendance' className="tile">
+            <Tile title='Student Attendance' className="tile">
                 <AttendanceChart />
             </Tile>
-            <Tile title='Tile5' className="tile">Tile</Tile>
+            <Tile title='Student Grades' className="tile">
+                <GradesChart />
+            </Tile>
             <Tile title='Tile6' className="tile">Tile</Tile>
         </div>
     );

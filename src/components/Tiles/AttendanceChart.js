@@ -2,7 +2,7 @@ import React from "react";
 
 import { Bar } from "react-chartjs-2";
 
-function GradesChart() {
+function AttendanceChart() {
     const data = {
         labels: ["Carmela F.", "Angel H.", "Maxime R.", "Elouise B.", "Sabrina K.", "Evans H.", "Torrance L.", "Oswald D."],
         datasets: [
@@ -46,4 +46,4 @@ function GradesChart() {
     );
 }
 
-export default GradesChart;
+export default AttendanceChart;
