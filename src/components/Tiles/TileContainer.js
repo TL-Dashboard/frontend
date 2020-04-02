@@ -4,6 +4,9 @@ import Attendance from "./Attendance.js";
 import AlertTile from "./AlertTile.js";
 import MissingWork from "./MissingWork.js";
 
+import AttendanceChart from './AttendanceChart';
+import GradesChart from './GradesChart';
+
 import withContext, { Provider } from "../../Context";
 import RecentSubmissions from "./RecentSubmissions.js";
 
@@ -21,8 +24,12 @@ export default function TileContainer() {
             <Tile className="tile" title="Attendance">
                 <Attendance />
             </Tile>
-            <Tile className="tile">Tile</Tile>
-            <Tile className="tile">Tile</Tile>
+            <Tile title='Student Attendance' className="tile">
+                <AttendanceChart />
+            </Tile>
+            <Tile title='Student Grades' className="tile">
+                <GradesChart />
+            </Tile>
             <Tile className="tile" title="Recent Submissions">
                 <RecentSubmissions/>
             </Tile>
@@ -30,7 +37,7 @@ export default function TileContainer() {
     );
 }
 
-const Tile = ({ children, title }) => {
+const Tile = ({ children, title, ...rest }) => {
     return (
         <div className="tile">
             {title ? <div className="tile__header">{title}</div> : null}
