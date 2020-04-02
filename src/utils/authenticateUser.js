@@ -7,10 +7,6 @@ export const authenticateUser = (values, updateState, redirect) => {
         .then(res => {
             const { token } = res.data;
             console.log('user logged in', res.data);
-            // const data = {
-            //     id: res.data.id,
-            //     first_name: res.data.first_name,
-            // };
             sessionStorage.setItem('token', token);
             sessionStorage.setItem('user_id', JSON.stringify(res.data.id));
             sessionStorage.setItem('email', (res.data.email));
@@ -27,7 +23,6 @@ export const authenticateUser = (values, updateState, redirect) => {
             redirect();
         })
         .catch(err => {
-            // console.log(err)
             updateState('error', err);
             updateState('isLoading', false);
         })

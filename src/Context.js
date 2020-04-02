@@ -75,18 +75,6 @@ export const Provider = ({ children }) => {
         ],
     });
 
-
-
-    // useEffect(() => {
-    //     setState(prev => ({
-    //         ...prev,
-    //         actions: {
-    //             removeAlert,
-    //             updateState
-    //         }
-    //     }));
-    // }, [])
-
     return (
         <Context.Provider value={state}>
             { children }
