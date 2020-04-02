@@ -12,7 +12,6 @@ function App({context}) {
         <Switch>
           <Route exact path="/" render={props => <Login context={context} {...props} />} />
           <PrivateRoute path='/dashboard' context={context} component={Main} />
-          <PrivateRoute path='/dashboard/alerts' context={context} component={AlertTile} />
         </Switch>
       </Router>
   );

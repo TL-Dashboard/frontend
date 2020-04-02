@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/LambdaLogo.svg';
 
 const SidebarWrap = styled.div`
@@ -104,7 +104,7 @@ const Sidebar = (props) => {
     {
       title: "Dashboard",
       link: "/dashboard/overview",
-      current: true
+      current: false
     },
     {
       title: "Alerts",
@@ -146,9 +146,9 @@ const Sidebar = (props) => {
         <ul>
           {
             sidebarLinks.map((item, index) => (
-              <a key={index} href={item.link}>
+              <Link key={index} to={item.link}>
                 <li className={`links__link ${item.current ? 'current' : ''}`}>{item.title}</li>
-              </a>
+              </Link>
             ))
           }
         </ul>
