@@ -11,8 +11,8 @@
     justify-content: center;
 
         &__logo{
-            height: 100px;
-            width: 250px;
+            margin: 20px;
+            width: 200px;
             fill: red;
         }
 
@@ -22,8 +22,9 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 25%;
-        height: 35%;
+        width: 350px;
+        height: 400px;
+        margin: 15px;
         border-radius: 20px;
         color: black;
         text-align: center;
