@@ -11,12 +11,12 @@ export const authenticateUser = (values, updateState, redirect) => {
             sessionStorage.setItem('user_id', JSON.stringify(res.data.id));
             sessionStorage.setItem('email', (res.data.email));
             sessionStorage.setItem('first_name', (res.data.first_name));
-            sessionStorage.setItem('last_name', (res.data.first_name));
+            sessionStorage.setItem('last_name', (res.data.last_name));
             sessionStorage.setItem('img_url', (res.data.img_url))
             sessionStorage.setItem('type', (res.data.type))
-            sessionStorage.setItem('fifth_day', (res.data.fifth_day))
-            sessionStorage.setItem('cohort_id', (res.data.cohort_id))
-            updateState('user', res.data)
+            sessionStorage.setItem('fifth_day', JSON.stringify(res.data.fifth_day || null))
+            sessionStorage.setItem('cohort_id', JSON.stringify(res.data.cohort_id || null))
+            // updateState('user', res.data)
             updateState('isAuthenticated', true);
             updateState('isLoading', false);
             updateState('error', false);
