@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Burger from "./Burger/index";
 
-const Navbar = () => {
-	const [open, setOpen] = useState(false);
+const Navbar = ({ context }) => {
+
+  const { username } = context.user;
+  const [open, setOpen] = useState(false);
 	return (
 		<>
 			<NavbarWrap>
 				<div className='menu'>
 					<Burger open={open} setOpen={setOpen} />
 				</div>
-				<div className='title'>User Name</div>
+        <div className='title'>{username ? username : "Error, please login again."}</div>
       </NavbarWrap>
       
 		</>

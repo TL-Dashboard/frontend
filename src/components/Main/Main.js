@@ -35,7 +35,7 @@ const Main = props => {
         <Sidebar {...props} />
       </div>
       <div className="main">
-        <Navbar />
+          <Navbar {...props} />
           <Route path="/dashboard/overview" component={TileContainer} />
           <Route render={props => <h1>Page was not found.</h1>} />
       </div>
