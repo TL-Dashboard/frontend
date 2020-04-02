@@ -3,6 +3,7 @@ import React from "react";
 import Attendance from "../../Tiles/Attendance";
 import AlertTile from "../../Tiles/AlertTile";
 import MissingWork from "../../Tiles/MissingWork.js";
+import AttendanceChart from '../../Tiles/AttendanceChart';
 
 import withContext, { Provider } from "../../../Context";
 
@@ -20,14 +21,16 @@ export default function TileContainer() {
             <Tile className="tile" title="Attendance">
                 <Attendance />
             </Tile>
-            <Tile className="tile">Tile</Tile>
-            <Tile className="tile">Tile</Tile>
-            <Tile className="tile">Tile</Tile>
+            <Tile title='Students Attendance' className="tile">
+                <AttendanceChart />
+            </Tile>
+            <Tile title='Tile5' className="tile">Tile</Tile>
+            <Tile title='Tile6' className="tile">Tile</Tile>
         </div>
     );
 }
 
-const Tile = ({ children, title }) => {
+const Tile = ({ children, title, ...rest }) => {
     return (
         <div className="tile">
             {title ? <div className="tile__header">{title}</div> : null}
