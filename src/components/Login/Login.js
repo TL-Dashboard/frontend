@@ -5,8 +5,8 @@ import { authenticateUser } from '../../utils';
 
 
 const Login = (props) => {
-
-    const { isLoading, error } = props.context;
+    console.log(props)
+    // const { isLoading, error } = props.context;
     const [login, setLogin] = useState({
         email: "",
         password: "",
@@ -47,8 +47,8 @@ const Login = (props) => {
                 <div className="login__container__items">
                         <input className="login__container__items__input__submitButn" type="submit" />
                 </div>            
-                {isLoading && <span>Loading...</span>}
-                {error && <span>{`${error}`}</span>}  
+                {/* {isLoading && <span>Loading...</span>}
+                {error && <span>{`${error}`}</span>}   */}
                 <div className="login__container__forgotText">
                     <p>Forgot <a className="login__container__forgotText__forgotLinks" href="/">Username/Password?</a></p>
                 </div>
