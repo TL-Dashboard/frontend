@@ -6,7 +6,7 @@ return (
         <form className="review">
     
     <div className="review__container">
-        
+
     <div>
         <p>TL Form</p>
     </div>
@@ -31,10 +31,18 @@ return (
 
     <div className="review__container__smallcontainer">
     <label>Notes </label>
-        <input type='text' className="review__container__smallcontainer--item" name="notes" maxLength="50" size="5" />
+        <input type='text' className="review__container__smallcontainer--item" name="notes" maxLength="50" size="22" />
     </div>
+    <div>
+        <input className="review__container__smallcontainer__submitBtn" type="submit" />
+    </div>
+    </div>
+    
+    </form>
+    
 
-
+    <form className="reviewStudent">
+    <div className="review__container">
     <div>
         <p>Student Form</p>
     </div>
@@ -61,15 +69,15 @@ return (
 
     <div className="review__container__smallcontainer">
     <label>Notes </label>
-        <input type='text' className="review__container__smallcontainer--item" name="notes" maxLength="50" size="5" />
+        <input type='text' className="review__container__smallcontainer--item" name="notes" maxLength="50" size="22" />
     </div>
 
     <div>
         <input className="review__container__smallcontainer__submitBtn" type="submit" />
     </div>
     </div>
-        </form>
-
+        
+</form>
     </div>
 )
 }
