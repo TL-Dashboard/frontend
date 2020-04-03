@@ -6,6 +6,7 @@ export const getCohorts = (updateState, id) => {
         .get(`/cohorts/${id}`)
         .then(res => {
             console.log('getting cohort data:', res.data)
+            sessionStorage.setItem('cohort_name', (res.data.name))
             updateState('cohorts', res.data)
             updateState('isLoading', false)
         })

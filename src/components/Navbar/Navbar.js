@@ -5,9 +5,8 @@ import Burger from "./Burger/index";
 
 const Navbar = ({ context }) => {
   const [open, setOpen] = useState(false);
-  const cohorts = context.cohorts;
   const user = context.user;
-  const { first_name, last_name, type, email } = user;
+  const { first_name, last_name, type, email, cohort_name } = user;
   
   const sidebarLinks = [
     {
@@ -49,7 +48,7 @@ const Navbar = ({ context }) => {
 					<div className='user--image'></div>
 						<div className='user--info'>
 						<div className='name'>{`${first_name} ${last_name}`}</div>
-						<div className='title'>{`${type} ${cohorts.name}`}</div>
+						<div className='title'>{`${type} ${cohort_name}`}</div>
 						<div className='email'>{`${email}`}</div>
 					</div>
 				</SidebarUserInfo>
@@ -110,18 +109,22 @@ const NavbarWrap = styled.div`
 const SidebarUserInfo = styled.div`
 	display: flex;
 	flex-direction: column;
-  align-items: center;
+  	align-items: center;
 
 	margin-top: 50px;
 
 	div.user--image {
 		width: 100px;
 		height: 100px;
-    margin-bottom: 15px;
+    	margin-bottom: 15px;
 		border-radius: 15%;
 
 		background: url("https://api.adorable.io/avatars/130/play@adorable.io.png") center center no-repeat;
 		background-size: cover;
+
+	}
+	div.user--info{
+		text-align: center;
 	}
 `;
 
