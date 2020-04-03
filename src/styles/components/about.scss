@@ -1,19 +1,18 @@
 .about {
     color: black;
-    background-color: white;
     margin: 200px 10px;
     text-align: center;
-    border-radius: 3px;
-    box-shadow: 2px 2px 10px lightgray;
     display: flex;
     flex-wrap: wrap;
-    
     justify-content: space-around;
     
         &__container {
+            background-color: white;
             margin: 20px;
             width: 350px;
             height: 350px;
+            border-radius: 3px;
+            box-shadow: 2px 2px 10px lightgray;
             display: flex;
             align-items: center;
             justify-content: space-around;
