@@ -20,9 +20,11 @@ const MainContainer = styled.div`
   }
 `;
 
-const Main = props => {
+const Main = (props) => {
   // console.log('main props', props.context)
-  const { updateState } = props.context.actions
+
+  const { context } = props;
+  const { updateState } = context.actions
 
   useEffect(() => {
     if (!props.context.students.length) {
@@ -42,7 +44,7 @@ const Main = props => {
       <div className="main">
         <Navbar {...props} />
         <Switch>
-          <Route path="/dashboard/overview" component={TileContainer} />
+          <Route path="/dashboard/overview" render={props => <TileContainer context={context} {...props} />} />
           <Route render={props => <h1>Page was not found.</h1>} />
         </Switch>
       </div>

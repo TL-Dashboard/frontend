@@ -97,7 +97,7 @@ const LogoWrapper = styled.div`
 
 const Sidebar = (props) => {
 
-  console.log('sidebar', props.context)
+  // console.log('sidebar', props.context)
   const cohorts = props.context.cohorts;
   const user = props.context.user;
   const { first_name, last_name, type, email } = user;
