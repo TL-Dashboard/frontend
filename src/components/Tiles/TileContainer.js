@@ -13,13 +13,14 @@ import RecentSubmissions from "./RecentSubmissions.js";
 const AlertTileWithContext = withContext(AlertTile);
 
 export default function TileContainer(props) {
+    
     return (
         <div className="main-container">
             <Tile title="Alerts">
                 <AlertTileWithContext />
             </Tile>
             <Tile className="tile" title="Missing Work">
-                <MissingWork />
+                <MissingWork {...props}/>
             </Tile>
             <Tile className="tile" title="Attendance">
                 <Attendance />
