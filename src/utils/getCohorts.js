@@ -1,12 +1,12 @@
 import { axiosWithAuth } from './axiosWithAuth';
 
-export const getStudentData = (updateState, id) => {
+export const getCohorts = (updateState, id) => {
     updateState('isLoading', true);
     axiosWithAuth()
-        .get(`/teamleads/${id}/studentdata`)
+        .get(`/cohorts/${id}`)
         .then(res => {
-            console.log('getting student data:', res.data)
-            updateState('students', res.data)
+            console.log('getting cohort data:', res.data)
+            updateState('cohorts', res.data)
             updateState('isLoading', false)
         })
         .catch(err => {

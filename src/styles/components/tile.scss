@@ -168,11 +168,15 @@
             }
         }
     }
-    &__missing  {
+    //end __
+    &__missing {
         color: black;
-        margin: 10px;
+        margin: 5px;
         padding: 5px;
-
+        height: 340px;
+        font-size: 0.8rem;
+        overflow-y: auto;
+        overflow-x: hidden;
         &__headers {
             display: flex;
             justify-content: space-around;
@@ -185,35 +189,78 @@
                 background-color: #EEEEEE;
                 color: black;
                 display: flex;
-                justify-content: space-around;
+                justify-content: left;
+                align-items: center;
                 text-align: center;
                 margin-bottom: 5px;
-                padding-top: 5px;
-                padding-bottom: 5px;
-                p {
-                    margin: 1px;
+                padding: 5px 0;
+                height: 65px;
+                a {
+                    text-decoration: none;
+                    color: black;
                 }
 
                 &__student {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    min-width: 70px;
+                    height: 60px;
                     background-color: #FF8080;
-                    width: 60px;
-            
-                    &__assignment {
-                        background-color: #C080FF;
-                        width: 80px;
+                    &:hover{
+                        cursor: pointer;
+                        background-color: rgb(230, 230, 230)
+                    }
+                    p{
+                        margin: 1px;
+                    }
+                    &__module {
+                        // border: 1px solid red;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: rgb(192, 128, 255);
+                        width: 260px;
+                        height: 60px;
+                        padding: 10px;
+                        &:hover{
+                            cursor: pointer;
+                            background-color: rgb(209, 162, 255)
+                        }
+                    
                 }
+                &__sprint {
+                    // border: 1px solid red;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: rgb(244, 128, 255);
+                    width: 260px;
+                    height: 60px;
+                    padding: 10px;
+                    &:hover{
+                        cursor: pointer;
+                        background-color: rgb(249, 189, 255)
+                    }
+                
+            }
                 
             }
         }
     }
-    &__submitted {
+    //end __missing
+    &__recent {
         color: black;
-        margin: 10px;
-        padding: 5px;
-
+        // margin: 2px;
+        padding: 10px;
+        height: 350px;
+        // overflow-y: auto;
+        font-size: 0.7rem;
         &__headers {
             display: flex;
             justify-content: space-around;
+            margin-bottom: 5px;
             p {
                 margin: 0;
             }
@@ -223,25 +270,76 @@
                 background-color: #EEEEEE;
                 color: black;
                 display: flex;
-                justify-content: space-around;
+                justify-content: left;
+                align-items: center;
                 text-align: center;
                 margin-bottom: 5px;
-                padding-top: 5px;
-                padding-bottom: 5px;
-                p {
-                    margin: 1px;
+                padding: 5px 0;
+                height: 50px;
+                a {
+                    text-decoration: none;
+                    color: black;
                 }
-
                 &__student {
-                    background-color: #80FFAC;
-                    width: 60px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: rgb(212, 212, 212);
+                    min-width: 70px;
+                    height: 35px;
+                    &:hover{
+                        cursor: pointer;
+                        background-color: rgb(230, 230, 230)
+                    }
+                    p{
+                        margin: 1px;
+                    }
             
-                    &__assignment {
-                        background-color: #C080FF;
-                        width: 80px;
+                    &__module {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: rgb(128, 255, 172);
+                        width: 100%;
+                        height: 35px;
+                        padding: 10px;
+                        &:hover{
+                            cursor: pointer;
+                            background-color: rgb(176, 255, 204)
+                        }
+                    
                 }
+                    &__sprint {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: rgb(128, 211, 255);
+                        width: 100%;
+                        height: 35px;
+                        padding: 10px;
+                        &:hover{
+                            cursor: pointer;
+                            background-color: rgb(189, 229, 251);
+                        }
                 
+                }
+            }
+            &__review {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgb(241, 201, 201);
+                width: 45px;
+                height: 35px;
+                padding: 10px;
+                &:hover{
+                    cursor: pointer;
+                    background-color: rgb(245, 213, 255);
+                }
+        
             }
         }
     }
+    //end __recent
 }

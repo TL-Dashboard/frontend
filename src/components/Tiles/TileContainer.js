@@ -12,26 +12,27 @@ import RecentSubmissions from "./RecentSubmissions.js";
 
 const AlertTileWithContext = withContext(AlertTile);
 
-export default function TileContainer() {
+export default function TileContainer(props) {
+    
     return (
         <div className="main-container">
             <Tile title="Alerts">
                 <AlertTileWithContext />
             </Tile>
             <Tile className="tile" title="Missing Work">
-                <MissingWork />
+                <MissingWork {...props}/>
             </Tile>
             <Tile className="tile" title="Attendance">
                 <Attendance />
             </Tile>
-            <Tile title='Student Attendance' className="tile">
+            <Tile className="tile" title='Student Attendance'>
                 <AttendanceChart />
             </Tile>
-            <Tile title='Student Grades' className="tile">
+            <Tile className="tile" title='Student Grades'>
                 <GradesChart />
             </Tile>
             <Tile className="tile" title="Recent Submissions">
-                <RecentSubmissions/>
+                <RecentSubmissions {...props}/>
             </Tile>
         </div>
     );

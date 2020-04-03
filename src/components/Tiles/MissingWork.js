@@ -1,77 +1,76 @@
 import React from "react";
 
+const MissingWork = ({context}) => {
 
-const MissingWork = () => {
+    const assignments = context.assignments;
+    const students = context.students;
+
+    let missing = []
+
+    function compare(a, b) {
+        const itemA = a.assignment.id;
+        const itemB = b.assignment.id;
+      
+        let comparison = 0;
+        if (itemA > itemB) {
+          comparison = 1;
+        } else if (itemA < itemB) {
+          comparison = -1;
+        }
+        return comparison * -1;
+    }
+
+    const checkIfRetroExistsForAssignment = () => {
+        if (students.length > 0) {
+            students.map(student => {
+                if (student.retros.length < 5){
+                    for (let i = 5; i >= 0; i--){
+                        if (student.retros[i]?.assignment_id === undefined){
+                            // console.log(student.first_name, 'missing!', assignments[i].id)
+                            missing = [ ...missing,
+                                { student: student,
+                                  assignment: assignments[i]  
+                                }
+                            ]
+                        }else {
+                            // console.log('submitted', assignments[i])
+                        }
+                    }
+                }
+                missing.sort(compare)
+                // console.log(missing)
+                return missing
+            })
+        }
+    }
+    
     return(
     <div className="tile__missing">
         <div className="tile__missing__headers">
             <p>Student</p>
             <p>Assignment</p>
         </div>
-        <div className="tile__missing__container">
-            <div className="tile__missing__container__student">
-                <p>John</p>
-            </div>
-            <div className="tile__missing__container__student__assignment">
-                <p>User Inter</p>
-            </div>
-        </div>
-        <div className="tile__missing__container">
-            <div className="tile__missing__container__student">
-                <p>Eric</p>
-            </div>
-            <div className="tile__missing__container__student__assignment">
-                <p>JavaScript</p>
-            </div>
-        </div>
-        <div className="tile__missing__container">
-            <div className="tile__missing__container__student">
-                <p>Fig</p>
-            </div>
-            <div className="tile__missing__container__student__assignment">
-                <p>Git For W</p>
-            </div>
-        </div>
-        <div className="tile__missing__container">
-            <div className="tile__missing__container__student">
-                <p>Hans</p>
-            </div>
-            <div className="tile__missing__container__student__assignment">
-                <p>Sprint</p>
-            </div>
-        </div>
-        <div className="tile__missing__container">
-            <div className="tile__missing__container__student">
-                <p>Jane</p>
-            </div>
-            <div className="tile__missing__container__student__assignment">
-                <p>Advanced</p>
-            </div>
-        </div>
-        <div className="tile__missing__container">
-            <div className="tile__missing__container__student">
-                <p>Eleanor</p>
-            </div>
-            <div className="tile__missing__container__student__assignment">
-                <p>WEB Java</p>
-            </div>
-        </div>
-        <div className="tile__missing__container">
-            <div className="tile__missing__container__student">
-                <p>Jimmy</p>
-            </div>
-            <div className="tile__missing__container__student__assignment">
-                <p>Algorithm</p>
-            </div>
-        </div>
-        <div className="tile__missing__container">
-            <div className="tile__missing__container__student">
-                <p>Jack</p>
-            </div>
-            <div className="tile__missing__container__student__assignment">
-                <p>Graphs</p>
-            </div>
-        </div>
+        {checkIfRetroExistsForAssignment()}
+       { 
+            missing.length > 0 ? 
+            (
+            missing.map((item, index) =>(
+                <div className="tile__missing__container" key={index}>
+                    <div className="tile__missing__container__student">
+                        <p>{item.student.first_name}</p>
+                        <p>{item.student.last_name}</p>
+                    </div>
+                    <a href={item.assignment.url} target="_blank" rel="noopener noreferrer">
+                        <div className={`tile__missing__container__student__${item.assignment.type}`}>
+                            <p>{item.assignment.name}</p>
+                        </div>
+                    </a>
+                </div>
+                ))               
+            ):(
+            <span>Loading...</span>
+            )
+        }
     </div>
     )
 }

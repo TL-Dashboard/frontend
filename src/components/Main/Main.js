@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Route } from "react-router-dom";
 import styled from "styled-components";
 
-import { getStudentData, getUser } from "../../utils";
+import { getStudentData, getUser, getTickets, getAssignments, getCohorts } from "../../utils";
 import Sidebar from "../Sidebar/Sidebar.js";
 import Navbar from "../Navbar/Navbar.js";
 import TileContainer from "../Tiles/TileContainer";
@@ -20,16 +20,21 @@ const MainContainer = styled.div`
   }
 `;
 
-const Main = props => {
+const Main = (props) => {
   // console.log('main props', props.context)
-  const { updateState } = props.context.actions
+
+  const { context } = props;
+  const { updateState } = context.actions
 
   useEffect(() => {
-    if (!props.context.data.length) {
+    if (!props.context.students.length) {
       const user = getUser(updateState)
       getStudentData(updateState, user.id)
+      getTickets(updateState, user.id)
+      getAssignments(updateState, user.cohort_id)
+      getCohorts(updateState, user.cohort_id)
     }
-  }, [props.context.data.length, updateState]);
+  }, [props.context.students.length, updateState]);
 
   return (
     <MainContainer>
@@ -39,7 +44,7 @@ const Main = props => {
       <div className="main">
         <Navbar {...props} />
         <Switch>
-          <Route path="/dashboard/overview" component={TileContainer} />
+          <Route path="/dashboard/overview" render={props => <TileContainer context={context} {...props} />} />
           <Route render={props => <h1>Page was not found.</h1>} />
         </Switch>
       </div>
