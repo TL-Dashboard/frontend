@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
-import { Route } from "react-router-dom";
+
 import styled from "styled-components";
 
 import { getStudentData, getUser, getTickets, getAssignments, getCohorts } from "../../utils";
 import Sidebar from "../Sidebar/Sidebar.js";
 import Navbar from "../Navbar/Navbar.js";
 import TileContainer from "../Tiles/TileContainer";
+import Review from "../ReviewForm/Review.js";
 
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 const MainContainer = styled.div`
   height: 100vh;
@@ -45,6 +46,7 @@ const Main = (props) => {
         <Navbar {...props} />
         <Switch>
           <Route path="/dashboard/overview" render={props => <TileContainer context={context} {...props} />} />
+          <Route path="/dashboard/review" render={props => <Review context={context} {...props} />} />
           <Route render={props => <h1>Page was not found.</h1>} />
         </Switch>
       </div>
