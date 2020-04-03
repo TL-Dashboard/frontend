@@ -128,6 +128,11 @@ const Sidebar = (props) => {
       title: "Grade Tracker",
       link: "/dashboard/gradetracker",
       current: false
+    },
+    {
+      title: "About",
+      link: "/dashboard/about",
+      current: false
     }
   ]
 
