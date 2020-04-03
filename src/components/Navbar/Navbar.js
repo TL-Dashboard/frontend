@@ -34,7 +34,7 @@ const Navbar = ({ context }) => {
       title: "Grade Tracker",
       link: "/dashboard/gradetracker",
       current: false
-    }
+	}
   ]
 	return (
 		<>
