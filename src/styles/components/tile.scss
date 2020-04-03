@@ -233,7 +233,10 @@
                 margin-bottom: 5px;
                 padding: 5px 0;
                 height: 50px;
-
+                a {
+                    text-decoration: none;
+                    color: black;
+                }
                 &__student {
                     display: flex;
                     flex-direction: column;
@@ -258,10 +261,6 @@
                         width: 100%;
                         height: 35px;
                         padding: 10px;
-                        a {
-                            text-decoration: none;
-                            color: black;
-                        }
                         &:hover{
                             cursor: pointer;
                             background-color: rgb(176, 255, 204)
@@ -276,16 +275,26 @@
                         width: 100%;
                         height: 35px;
                         padding: 10px;
-                        a {
-                            text-decoration: none;
-                            color: black;
-                        }
                         &:hover{
                             cursor: pointer;
                             background-color: rgb(189, 229, 251);
                         }
                 
                 }
+            }
+            &__review {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgb(241, 201, 201);
+                width: 45px;
+                height: 35px;
+                padding: 10px;
+                &:hover{
+                    cursor: pointer;
+                    background-color: rgb(245, 213, 255);
+                }
+        
             }
         }
     }

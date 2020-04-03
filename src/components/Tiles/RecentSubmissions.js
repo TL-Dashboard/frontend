@@ -6,6 +6,16 @@ const RecentSubmissions = ({context}) => {
     const assignments = context.assignments;
     const students = context.students;
 
+    const checkIfGradeExistsForRetro = (retroId, grades) =>{
+        // console.log('check grades')
+        for (let i = 0; i < grades.length; i++){
+            if (grades[i].retro_id === retroId){
+                // console.log('found', grades[i].retro_id, retroId)
+                return true
+            }else return false
+        }
+    }
+
     return (
         <div className="tile__recent">
             <div className="tile__recent__headers">
@@ -23,6 +33,13 @@ const RecentSubmissions = ({context}) => {
                         <div className={`tile__recent__container__student__${assignments[student.retros[0].assignment_id - 1].type}`}>
                             <Link to={student.retros[0].url}><p>{assignments[student.retros[0].assignment_id - 1].name}</p></Link>
                         </div>
+                        {!checkIfGradeExistsForRetro(student.retros[0].id, student.grades) && (
+                            <Link to='/dashboard/review'>
+                            <div className="tile__recent__container__review">
+                                <p>Review</p>
+                            </div>
+                            </Link>
+                            )}
                     </div>
                 ))
                 ):(
