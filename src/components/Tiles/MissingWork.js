@@ -8,8 +8,8 @@ const MissingWork = ({context}) => {
     let missing = []
 
     function compare(a, b) {
-        const itemA = a.assignment.id;
-        const itemB = b.assignment.id;
+        const itemA = a.assignment?.id;
+        const itemB = b.assignment?.id;
       
         let comparison = 0;
         if (itemA > itemB) {
@@ -51,8 +51,8 @@ const MissingWork = ({context}) => {
             <p>Assignment</p>
         </div>
         {checkIfRetroExistsForAssignment()}
-       { 
-            missing.length > 0 ? 
+        { 
+            missing.length > 0 && assignments.length > 0  && students.length > 0 ? 
             (
             missing.map((item, index) =>(
                 <div className="tile__missing__container" key={index}>
