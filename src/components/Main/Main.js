@@ -6,7 +6,8 @@ import { getStudentData, getUser, getTickets, getAssignments, getCohorts } from 
 import Sidebar from "../Sidebar/Sidebar.js";
 import Navbar from "../Navbar/Navbar.js";
 import TileContainer from "../Tiles/TileContainer";
-import Review from "../ReviewForm/Review.js";
+import Review from "../Forms/Review.js";
+import Retro from "../Forms/Retro.js";
 
 import { Switch, Route } from 'react-router-dom';
 
@@ -47,6 +48,7 @@ const Main = (props) => {
         <Switch>
           <Route path="/dashboard/overview" render={props => <TileContainer context={context} {...props} />} />
           <Route path="/dashboard/review" render={props => <Review context={context} {...props} />} />
+          <Route path="/dashboard/retro" render={props => <Retro context={context} {...props} />} />
           <Route render={props => <h1>Page was not found.</h1>} />
         </Switch>
       </div>
