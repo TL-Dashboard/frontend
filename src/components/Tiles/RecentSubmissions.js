@@ -8,16 +8,19 @@ const RecentSubmissions = ({context}) => {
 
     return (
         <div className="tile__recent">
+            <div className="tile__recent__headers">
+                <p>Most recently submitted retro:</p>
+            </div>
             {
-                students.length > 0 ? 
+                students.length > 0 && assignments.length > 0 ? 
                 (
                 students.map((student, index) => (
                     <div className="tile__recent__container" key={index}>
                         <div className="tile__recent__container__student">
                             <p>{student.first_name}</p>
+                            <p>{student.last_name}</p>
                         </div>
                         <div className={`tile__recent__container__student__${assignments[student.retros[0].assignment_id - 1].type}`}>
-                            {console.log(assignments[student.retros[0].assignment_id - 1].type)}
                             <Link to={student.retros[0].url}><p>{assignments[student.retros[0].assignment_id - 1].name}</p></Link>
                         </div>
                     </div>

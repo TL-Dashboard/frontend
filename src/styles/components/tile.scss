@@ -209,14 +209,15 @@
     //end __missing
     &__recent {
         color: black;
-        margin: 2px;
+        // margin: 2px;
         padding: 10px;
-        height: 360px;
-        overflow-y: auto;
+        height: 350px;
+        // overflow-y: auto;
         font-size: 0.7rem;
         &__headers {
             display: flex;
             justify-content: space-around;
+            margin-bottom: 5px;
             p {
                 margin: 0;
             }
@@ -235,11 +236,19 @@
 
                 &__student {
                     display: flex;
+                    flex-direction: column;
                     align-items: center;
                     justify-content: center;
-                    background-color: rgb(181, 198, 207);
+                    background-color: rgb(212, 212, 212);
                     min-width: 70px;
                     height: 35px;
+                    &:hover{
+                        cursor: pointer;
+                        background-color: rgb(230, 230, 230)
+                    }
+                    p{
+                        margin: 1px;
+                    }
             
                     &__module {
                         display: flex;
@@ -255,7 +264,7 @@
                         }
                         &:hover{
                             cursor: pointer;
-                            background-color: rgb(124, 209, 154)
+                            background-color: rgb(176, 255, 204)
                         }
                     
                 }
@@ -273,7 +282,7 @@
                         }
                         &:hover{
                             cursor: pointer;
-                            background-color: rgb(124, 193, 230);
+                            background-color: rgb(189, 229, 251);
                         }
                 
                 }
