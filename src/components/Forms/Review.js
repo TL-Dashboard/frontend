@@ -8,11 +8,62 @@ const Review = ({ context }) => {
     buttonDisable: false
   });
 
+  const [stars, setStars] = useState([
+      false, false, false
+  ]);
+
   const { assignments, retro, students } = context;
 
   const currentAssignment = assignments[retro.assignment_id - 1];
 
 //   console.log(currentAssignment);
+
+  const handleStars = (event, star) => {
+      event.preventDefault()
+      if (star === 0){
+        if (stars[0]){
+            setStars([
+                stars[0] = true,
+                stars[1] = false,
+                stars[2] = false
+            ])
+        } else{
+            setStars([
+                stars[0] = true,
+                stars[1] = false,
+                stars[2] = false
+            ])
+        }
+      } else if (star === 1){
+        if (stars[1]){
+            setStars([
+                stars[0] = true,
+                stars[1] = false,
+                stars[2] = false
+            ])
+        } else{
+            setStars([
+                stars[0] = true,
+                stars[1] = true,
+                stars[2] = false
+            ])
+        }
+      } else if (star === 2){
+          if (stars[2]){
+            setStars([
+                stars[0] = true,
+                stars[1] = true,
+                stars[2] = false
+            ])
+        } else{
+            setStars([
+                stars[0] = true,
+                stars[1] = true,
+                stars[2] = true
+            ])
+        }
+      }
+  }
 
   const handleChanges = event => {
     event.preventDefault();
@@ -86,16 +137,13 @@ const Review = ({ context }) => {
           </div>
           <div className="review__container__smallcontainer">
             <label htmlFor="review__container__smallcontainer--item">
-              Grade{" "}
+              Grade:
             </label>
-            <select
-              className="review__container__smallcontainer--item"
-              name="date"
-            >
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-            </select>
+            <div className='stars'>
+                <span className={`star-${stars[0]}`} onClick={e => handleStars(e, 0)}>{"\u2605"}</span>
+                <span className={`star-${stars[1]}`} onClick={e => handleStars(e, 1)}>{"\u2605"}</span>
+                <span className={`star-${stars[2]}`} onClick={e => handleStars(e, 2)}>{"\u2605"}</span>
+            </div>
           </div>
 
           <div className="review__container__smallcontainer">
