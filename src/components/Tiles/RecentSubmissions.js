@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const RecentSubmissions = ({context}) => {
+const RecentSubmissions = React.memo(({context}) => {
     // console.log('students', context.students)
+    // console.log('submissions tile render')
     const assignments = context.assignments;
     const students = context.students;
 
@@ -14,6 +15,11 @@ const RecentSubmissions = ({context}) => {
                 return true
             }else return false
         }
+    }
+
+    const handleReviewClick = (retro) => {
+        console.log(retro)
+        context.actions.updateState('retro', retro)
     }
 
     return (
@@ -35,7 +41,7 @@ const RecentSubmissions = ({context}) => {
                         </div>
                         {!checkIfGradeExistsForRetro(student.retros[0].id, student.grades) && (
                             <Link to='/dashboard/review'>
-                            <div className="tile__recent__container__review">
+                            <div className="tile__recent__container__review" onClick={() => handleReviewClick(student.retros[0])}>
                                 <p>Review</p>
                             </div>
                             </Link>
@@ -48,6 +54,6 @@ const RecentSubmissions = ({context}) => {
             }
         </div>
     )
-}
+})
 
 export default RecentSubmissions;

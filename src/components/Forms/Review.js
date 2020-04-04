@@ -1,26 +1,88 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Review = props => {
+const Review = ({ context }) => {
+  //   console.log(context.retro.assignment_id);
+
+  const [form, setForm] = useState({
+    notes: '',
+    buttonDisable: false
+  });
+
+  const { assignments, retro, students } = context;
+
+  const currentAssignment = assignments[retro.assignment_id - 1];
+
+//   console.log(currentAssignment);
+
+  const handleChanges = event => {
+    event.preventDefault();
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value
+    });
+    console.log(form.notes)
+  };
+
+  const handleSubmit = () => {
+    console.log("submitting");
+    setForm({
+      ...form,
+      buttonDisable: true
+    });
+  };
+
   return (
     <div>
-      <form className="review">
+      {students.length && (
+      <form className="review" method="dialog" onSubmit={handleSubmit}>
         <div className="review__container">
           <div>
-            <p>TL Form</p>
+            <p>Module Review</p>
           </div>
-
           <div className="review__container__smallcontainer">
             <label htmlFor="review__container__smallcontainer--item">
-              Date{" "}
+              Student Name:
             </label>
-            <select
-              className="review__container__smallcontainer--item"
-              name="date"
-            >
-              <option value="today">Today</option>
-              <option value="tomorrow">Tomorrow</option>
-              <option value="yesterday">Yesterday</option>
-            </select>
+            {retro?.id ? (
+                <div className="review__container__smallcontainer--selected">
+                    {students[retro.student_id - 1].first_name} {students[retro.student_id - 1].last_name}
+                </div>
+            ):(
+                <select
+                className="review__container__smallcontainer--item"
+                name="date"
+                >
+                    {
+                        students.map((student, index) => {
+                            return <option value={student.id} key={index}>{student.first_name} {student.last_name}</option>
+                        })
+                    }
+                </select>
+            )}
+          </div>
+          <div className="review__container__smallcontainer">
+            <label htmlFor="review__container__smallcontainer--item">
+              Module:
+            </label>
+            {!retro?.id ? (
+                <div className="review__container__smallcontainer--selected">
+                    {currentAssignment.name}
+                </div>
+            ):(
+                <select
+                className="review__container__smallcontainer--item"
+                name="module"
+                onChange={handleChanges}
+                required
+                >
+                    <option disabled value='test'>Choose an assignment</option>
+                    {
+                        assignments.map((assignment, index) => {
+                            return <option value={assignment.id} key={index}>{assignment.name}</option>
+                        })
+                    }
+                </select>
+            )}
           </div>
           <div className="review__container__smallcontainer">
             <label htmlFor="review__container__smallcontainer--item">
@@ -44,16 +106,19 @@ const Review = props => {
               name="notes"
               maxLength="50"
               size="22"
+              onChange={handleChanges}
             />
           </div>
           <div>
             <input
               className="review__container__smallcontainer__submitBtn"
               type="submit"
+              disabled={form.buttonDisable}
             />
           </div>
         </div>
       </form>
+      )}
     </div>
   );
 };

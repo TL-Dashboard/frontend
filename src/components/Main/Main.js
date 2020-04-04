@@ -24,7 +24,7 @@ const MainContainer = styled.div`
 
 const Main = (props) => {
   // console.log('main props', props.context)
-
+  // console.log('main render')
   const { context } = props;
   const { updateState } = context.actions
 
