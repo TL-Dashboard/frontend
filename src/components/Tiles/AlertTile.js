@@ -7,27 +7,25 @@ import { ReactComponent as Ticket } from './../../assets/alert-3.svg';
 import { ReactComponent as Missing } from './../../assets/alert-4.svg';
 
 export default ({ context }) => {
-    const { alerts } = context;
+    const { tickets } = context;
 
     const handleAlertItemClick = (event, id) => {
-        // const { target } = event;
-        const { removeAlert } = context.actions;
-        removeAlert(id);
+
     }
 
     return (
         <div className='tile__alert'>
             <div className='tile__alert__boxes'>
-                <AlertBox className={`${alerts.some(i => i.type === 'support') ? 'alert' : ''} tile__alert__boxes__box`} backgroundColor='#FF8080'>
+                <AlertBox className={`${tickets.some(i => i.type === 'Support Hours') ? 'alert' : ''} tile__alert__boxes__box`} backgroundColor='#FF8080'>
                     <Support />
                 </AlertBox>
-                <AlertBox className={`${alerts.some(i => i.type === 'ticket') ? 'alert' : ''} tile__alert__boxes__box`} backgroundColor='#80FFAC'>
+                <AlertBox className={`${tickets.some(i => i.type === 'Other') ? 'alert' : ''} tile__alert__boxes__box`} backgroundColor='#80FFAC'>
                     <Ticket />
                 </AlertBox>
-                <AlertBox className={`${alerts.some(i => i.type === 'missing') ? 'alert' : ''} tile__alert__boxes__box`} backgroundColor='#80D3FF'>
+                <AlertBox className={`${tickets.some(i => i.type === 'Grades') ? 'alert' : ''} tile__alert__boxes__box`} backgroundColor='#80D3FF'>
                     <Submitted />
                 </AlertBox>
-                <AlertBox className={`${alerts.some(i => i.type === 'submitted') ? 'alert' : ''} tile__alert__boxes__box`} backgroundColor='#C080FF'>
+                <AlertBox className={`${tickets.some(i => i.type === 'Attendance') ? 'alert' : ''} tile__alert__boxes__box`} backgroundColor='#C080FF'>
                     <Missing />
                 </AlertBox>
             </div>
@@ -35,14 +33,14 @@ export default ({ context }) => {
                 <div className='tile__alert__container__list'>
                     {/* Use map for alerts. */}
                     {
-                        alerts.length > 0 ? 
-                        alerts.map(({ id, type, user }) => (
+                        tickets.length > 0 ? 
+                        tickets.map(({ id, type, posted_by, description }) => (
                             <div className='tile__alert__container__list--item' onClick={(e) => handleAlertItemClick(e, id)} key={id} type={type}>
                                 <AlertsItemLogo type={type} className='tile__alert__container__list--item__left'>
                                     {getLogo(type)}
                                 </AlertsItemLogo>
                                 <div className='tile__alert__container__list--item__right'>
-                                    <p>{getAbrevName(user)} {getEndingMessage(type)}</p>
+                                    <p>{getAbrevName(posted_by)} {description}</p>
                                 </div>
                             </div>
                         ))
@@ -59,13 +57,13 @@ const getAbrevName = name => `${name.split(" ")[0]} ${name.split(" ")[1].split("
 
 const getLogo = type => {
     switch(type) {
-        case 'support':
+        case 'Support Hours':
             return (<Support />);
-        case 'submitted':
+        case 'Other':
             return (<Submitted />);
-        case 'missing':
+        case 'Grades':
             return (<Missing />);
-        case 'ticket':
+        case 'Attendance':
             return <Ticket />;
         default:
             return (<p>Error occured.</p>);
@@ -74,16 +72,16 @@ const getLogo = type => {
 
 const getBackgroundColor = type => {
     switch(type) {
-        case 'support':
+        case 'Support Hours':
             return "#F78080";
-        case 'submitted':
+        case 'Other':
             return "#80D3FF";
-        case 'missing':
+        case 'Grades':
             return "#C080FF";
-        case 'ticket':
+        case 'Attendance':
             return '#80FFAC';
         default:
-            return 'black';
+            return 'darkgrey';
     }
 }
 
