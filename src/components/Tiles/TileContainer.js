@@ -7,17 +7,17 @@ import MissingWork from "./MissingWork.js";
 import AttendanceChart from './AttendanceChart';
 import GradesChart from './GradesChart';
 
-import withContext from "../../Context";
+// import withContext from "../../Context";
 import RecentSubmissions from "./RecentSubmissions.js";
 
-const AlertTileWithContext = withContext(AlertTile);
+// const AlertTileWithContext = withContext(AlertTile);
 
 export default function TileContainer(props) {
     
     return (
         <div className="main-container">
-            <Tile title="Alerts">
-                <AlertTileWithContext />
+            <Tile title="Tickets">
+                <AlertTile {...props} />
             </Tile>
             <Tile className="tile" title="Missing Work">
                 <MissingWork {...props}/>

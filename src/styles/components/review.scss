@@ -123,6 +123,35 @@
                     }
                 }
             }
+            .mood{
+                width: 50px;
+                height: 45px;
+                display: flex;
+                justify-content: space-between;
+                font-size: 35px;
+                .mood-false{
+                    margin: 0 5px;
+                    color: grey;
+                    -webkit-text-stroke: 1px black;
+                    transition: all 700ms;
+                    &:hover{
+                        cursor: pointer;
+                        transform: scale(1.3);
+                        color: rgb(177, 182, 102);
+                    }
+                }
+                .mood-true{
+                    margin: 0 5px;
+                    color: yellow;
+                    -webkit-text-stroke: 1px black;
+                    transition: all 700ms;
+                    transform: scale(1.3);
+                    &:hover{
+                        cursor: pointer;
+                        color: rgb(177, 182, 102);
+                    }
+                }
+            }
         }
     }
 }
