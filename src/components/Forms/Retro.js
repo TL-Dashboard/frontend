@@ -27,7 +27,7 @@ const Retro = props => {
 
   const handleStars = (event, star) => {
     event.preventDefault();
-    starLogic(star, stars, setStars);
+    starLogic(star, stars, setStars, true);
     setForm({
       ...form,
       requiredWarning: false
@@ -174,24 +174,24 @@ const Retro = props => {
                   <span>Mood:</span>
                 )}
               </label>
-              <div className="stars">
+              <div className="mood">
                 <span
-                  className={`star-${stars[0]}`}
+                  className={`mood-${stars[0]}`}
                   onClick={e => handleStars(e, 0)}
                 >
-                  {"\u2605"}
+                  {"\uD83D\uDE25"}
                 </span>
                 <span
-                  className={`star-${stars[1]}`}
+                  className={`mood-${stars[1]}`}
                   onClick={e => handleStars(e, 1)}
                 >
-                  {"\u2605"}
+                  {"\uD83D\uDE42"}
                 </span>
                 <span
-                  className={`star-${stars[2]}`}
+                  className={`mood-${stars[2]}`}
                   onClick={e => handleStars(e, 2)}
                 >
-                  {"\u2605"}
+                  {"\uD83D\uDE0E"}
                 </span>
               </div>
             </div>
