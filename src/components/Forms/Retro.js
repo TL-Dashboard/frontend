@@ -81,8 +81,8 @@ const Retro = props => {
       {students.length && (
         <form className="review" method="dialog" onSubmit={handleSubmit}>
           <div className="review__container">
-            <div>
-              <p>Module Review</p>
+            <div className="review__container__header">
+              <p>Retro Review</p>
             </div>
             <div className="review__container__smallcontainer">
               <label htmlFor="review__container__smallcontainer--item">
@@ -162,6 +162,7 @@ const Retro = props => {
                 name="url"
                 maxLength="2048"
                 placeholder="Submission URL"
+                required
                 onChange={handleChanges}
               />
             </div>
@@ -202,7 +203,7 @@ const Retro = props => {
                 className="review__container__smallcontainer--item"
                 name="notes"
                 maxLength="2048"
-                placeholder="Why did you give the score that you did?"
+                placeholder="How do you feel you did on this assignment?"
                 onChange={handleChanges}
               />
             </div>

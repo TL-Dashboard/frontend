@@ -80,7 +80,7 @@ const Review = props => {
       {students.length && (
         <form className="review" method="dialog" onSubmit={handleSubmit}>
           <div className="review__container">
-            <div>
+            <div className="review__container__header">
               <p>Module Review</p>
             </div>
             <div className="review__container__smallcontainer">
