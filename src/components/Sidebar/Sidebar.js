@@ -128,8 +128,22 @@ const Sidebar = (props) => {
       title: "Grade Tracker",
       link: "/dashboard/gradetracker",
       current: false
-    }
+    },
+    {
+      title: "Review Form",
+      link: "/dashboard/review",
+      current: false
+    },
+    {
+      title: "Retro Form",
+      link: "/dashboard/retro",
+      current: false
+    },
   ]
+
+  const handleLogout = () => {
+    sessionStorage.clear()
+  }
 
   return (  
     <SidebarWrap>
@@ -154,6 +168,9 @@ const Sidebar = (props) => {
               </Link>
             ))
           }
+           <Link to="/" onClick={handleLogout}>
+                <li className={`links__link`}>Logout</li>
+            </Link>
         </ul>
       </StyledNav>
     </SidebarWrap>
