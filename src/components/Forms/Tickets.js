@@ -51,7 +51,7 @@ const Tickets = props => {
 
   return (
     <div>
-      {students.length && (
+      {students.length && sectionleads.length ? (
         <form className="review" method="dialog" onSubmit={handleSubmit}>
           <div className="review__container">
             <div className="review__container__header">
@@ -152,6 +152,8 @@ const Tickets = props => {
             </div>
           </div>
         </form>
+      ):(
+        <div>Loading...</div>
       )}
     </div>
   );
