@@ -10,7 +10,7 @@ import { ReactComponent as Missing } from './../../assets/alert-4.svg';
 export default ({ context }) => {
     const { tickets } = context;
 
-    const [deleteTicket, setDeleteTicket] = useState({
+    const [ticketToDelete, setTicketToDelete] = useState({
         warn: false
     })
 
@@ -24,7 +24,7 @@ export default ({ context }) => {
             }
             putTicket(ticket, context.actions.updateState )
         } else if (status === 'Completed'){
-            setDeleteTicket({
+            setTicketToDelete({
                 warn: true,
                 id: id,
                 status: "Completed"
@@ -33,21 +33,22 @@ export default ({ context }) => {
 
     }
 
-    const handleDeleteTicket = (e, shouldDelete) =>{
+    const handleTicketToDelete = (event, shouldDelete) =>{
+        event.preventDefault()
         if (shouldDelete){
-            console.log('deleting...', deleteTicket)
-            delTicket(deleteTicket, context.actions.updateState)
+            console.log('deleting...', ticketToDelete)
+            delTicket(ticketToDelete, context.actions.updateState)
         } else {
             console.log('update')
-            putTicket({id: deleteTicket.id, status:"In-Progress"}, context.actions.updateState)
+            putTicket({id: ticketToDelete.id, status:"In-Progress"}, context.actions.updateState)
         }
-        setDeleteTicket({warn: false})
+        setTicketToDelete({warn: false})
     }
 
     return (
         <div className='tile__alert'>
             <div className='tile__alert__boxes'>
-                <AlertBox className={`${tickets.some(i => i.type === 'Support Hours' && i.status !== "Completed") ? 'alert' : ''} tile__alert__boxes__box`} backgroundColor='#FF8080'>
+                <AlertBox className={`${tickets.some(i => i.type === 'Support Hours' && i.status !== "Completed") ? 'alert' : ''} tile__alert__boxes__box`} backgroundColor='#C080FF'>
                     <Support />
                 </AlertBox>
                 <AlertBox className={`${tickets.some(i => i.type === 'Other'  && i.status !== "Completed") ? 'alert' : ''} tile__alert__boxes__box`} backgroundColor='#80FFAC'>
@@ -56,21 +57,21 @@ export default ({ context }) => {
                 <AlertBox className={`${tickets.some(i => i.type === 'Grades'  && i.status !== "Completed") ? 'alert' : ''} tile__alert__boxes__box`} backgroundColor='#80D3FF'>
                     <Submitted />
                 </AlertBox>
-                <AlertBox className={`${tickets.some(i => i.type === 'Attendance'  && i.status !== "Completed") ? 'alert' : ''} tile__alert__boxes__box`} backgroundColor='#C080FF'>
+                <AlertBox className={`${tickets.some(i => i.type === 'Attendance'  && i.status !== "Completed") ? 'alert' : ''} tile__alert__boxes__box`} backgroundColor='#FF8080'>
                     <Missing />
                 </AlertBox>
             </div>
             <div className='tile__alert__container'>
                 <div className='tile__alert__container__list'>
                     {/* Use map for alerts. */}
-                    {deleteTicket.warn ? (
-                        <div>
+                    {ticketToDelete.warn ? (
+                        <div className='delete-alert'>
                             <p>Delete Ticket?</p>
                             <div>
-                                <button onClick={(e) => handleDeleteTicket(e, true)}>Yes</button>
-                                <button onClick={(e) => setDeleteTicket({warn: false})}>No</button>
+                                <button id="yes" onClick={(e) => handleTicketToDelete(e, true)}>Yes</button>
+                                <button id="no" onClick={() => setTicketToDelete({warn: false})}>No</button>
                             </div>
-                            <button onClick={(e) => handleDeleteTicket(e, false)}>Mark as In Progress</button>
+                            <button id="in-progress" onClick={(e) => handleTicketToDelete(e, false)}>Mark as In Progress</button>
                         </div>
                     ):(
                     // <>
@@ -78,8 +79,9 @@ export default ({ context }) => {
                         tickets.length > 0 ? 
                         tickets.map(({ id, type, posted_by, description, status }) => (
                             <div className='tile__alert__container__list--item' onClick={(e) => handleAlertItemClick(e, id, status)} key={id} type={type}>
-                                <AlertsItemLogo type={type} className='tile__alert__container__list--item__left'>
+                                <AlertsItemLogo type={type} className={`tile__alert__container__list--item__left`}>
                                     {getLogo(type)}
+                                    <span><span id={`${status}`}>{"\u2713"}</span></span>
                                 </AlertsItemLogo>
                                 <div className={`tile__alert__container__list--item__right--${status}`}>
                                     <p>{getAbrevName(posted_by)} {description}</p>
@@ -92,6 +94,10 @@ export default ({ context }) => {
                     // </>
                     )}
                 </div>
+
+            </div>
+            <div className='submit-btn'>
+                <button>New Ticket</button>
             </div>
         </div>
     )
@@ -104,11 +110,12 @@ const getLogo = type => {
         case 'Support Hours':
             return (<Support />);
         case 'Other':
-            return (<Submitted />);
-        case 'Grades':
-            return (<Missing />);
-        case 'Attendance':
             return <Ticket />;
+        case 'Grades':
+            return (<Submitted />);
+        case 'Attendance':
+            return (<Missing />);
+
         default:
             return (<p>Error occured.</p>);
     }
@@ -117,32 +124,32 @@ const getLogo = type => {
 const getBackgroundColor = type => {
     switch(type) {
         case 'Support Hours':
-            return "#F78080";
-        case 'Other':
-            return "#80D3FF";
-        case 'Grades':
             return "#C080FF";
+        case 'Other':
+            return "#80FFAC";
+        case 'Grades':
+            return "#80D3FF";
         case 'Attendance':
-            return '#80FFAC';
+            return '#FF8080';
         default:
             return 'darkgrey';
     }
 }
 
-const getEndingMessage = type => {
-    switch(type) {
-        case 'support':
-            return "has requested support hours.";
-        case 'submitted':
-            return "has submitted a retrospective.";
-        case 'missing':
-            return "is missing a retrospective.";
-        case 'ticket':
-            return 'has submitted a ticket.';
-        default:
-            return 'Error occured.';
-    }
-}
+// const getEndingMessage = type => {
+//     switch(type) {
+//         case 'support':
+//             return "has requested support hours.";
+//         case 'submitted':
+//             return "has submitted a retrospective.";
+//         case 'missing':
+//             return "is missing a retrospective.";
+//         case 'ticket':
+//             return 'has submitted a ticket.';
+//         default:
+//             return 'Error occured.';
+//     }
+// }
 
 const AlertsItemLogo = styled.div`
     background-color: ${({ type }) => getBackgroundColor(type)};

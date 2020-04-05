@@ -1,6 +1,5 @@
 import { axiosWithAuth } from './axiosWithAuth';
 import { getUser } from './getUser';
-import { updateState } from '../Context'
 
 export const getTickets = (updateState, id) => {
     updateState('isLoading', true);
