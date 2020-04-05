@@ -7,7 +7,8 @@ import { ReactComponent as Submitted } from './../../assets/alert-2.svg';
 import { ReactComponent as Ticket } from './../../assets/alert-3.svg';
 import { ReactComponent as Missing } from './../../assets/alert-4.svg';
 
-export default ({ context }) => {
+export default (props) => {
+    const context = props.context
     const { tickets } = context;
 
     const [ticketToDelete, setTicketToDelete] = useState({
@@ -43,6 +44,11 @@ export default ({ context }) => {
             putTicket({id: ticketToDelete.id, status:"In-Progress"}, context.actions.updateState)
         }
         setTicketToDelete({warn: false})
+    }
+
+    const handleNewTicket = (event) =>{
+        event.preventDefault()
+        props.history.push("/dashboard/tickets")
     }
 
     return (
@@ -97,7 +103,7 @@ export default ({ context }) => {
 
             </div>
             <div className='submit-btn'>
-                <button>New Ticket</button>
+                <button onClick={handleNewTicket}>New Ticket</button>
             </div>
         </div>
     )

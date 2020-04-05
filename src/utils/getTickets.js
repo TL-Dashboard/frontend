@@ -16,6 +16,22 @@ export const getTickets = (updateState, id) => {
             updateState('isLoading', false);
         })
 }
+export const postTicket = (ticket, updateState, redirect) => {
+    updateState('isLoading', true);
+    axiosWithAuth()
+        .post(`/tickets`, ticket)
+        .then(res => {
+            console.log('ticket posted:', res.data)
+            getTickets(updateState, getUser().id)
+            updateState('isLoading', false)
+            redirect()
+        })
+        .catch(err => {
+            console.log(err)
+            updateState('error', err);
+            updateState('isLoading', false);
+        })
+}
 
 export const putTicket = (ticket, updateState) => {
     updateState('isLoading', true);

@@ -6,6 +6,7 @@ import { getStudentData, getUser, getTickets, getAssignments, getCohorts } from 
 import Sidebar from "../Sidebar/Sidebar.js";
 import Navbar from "../Navbar/Navbar.js";
 import TileContainer from "../Tiles/TileContainer";
+import Tickets from "../Forms/Tickets.js";
 import Review from "../Forms/Review.js";
 import Retro from "../Forms/Retro.js";
 import About from "../About/About.js";
@@ -48,6 +49,7 @@ const Main = (props) => {
         <Navbar {...props} />
         <Switch>
           <Route path="/dashboard/overview" render={props => <TileContainer context={context} {...props} />} />
+          <Route path="/dashboard/tickets" render={props => <Tickets context={context} {...props} />} />
           <Route path="/dashboard/review" render={props => <Review context={context} {...props} />} />
           <Route path="/dashboard/retro" render={props => <Retro context={context} {...props} />} />
           <Route path="/dashboard/about" render={props => <About context={context} {...props} />} />

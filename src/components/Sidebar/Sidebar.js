@@ -143,8 +143,8 @@ const Sidebar = props => {
       current: false
     },
     {
-      title: "Alerts",
-      link: "/dashboard/alerts",
+      title: "Tickets",
+      link: "/dashboard/tickets",
       current: false
     },
     {
