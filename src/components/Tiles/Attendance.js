@@ -1,6 +1,7 @@
 import React from "react";
 
-const Attendance = () => {
+const Attendance = (props) => {
+    console.log(props)
     return (
         <div>
             <form className="tile__attendance">
