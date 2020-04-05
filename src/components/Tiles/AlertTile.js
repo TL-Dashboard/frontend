@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from "styled-components";
-import { putTicket } from '../../utils';
+import { putTicket, delTicket } from '../../utils';
 
 import { ReactComponent as Support } from './../../assets/alert-1.svg';
 import { ReactComponent as Submitted } from './../../assets/alert-2.svg';
@@ -9,6 +9,10 @@ import { ReactComponent as Missing } from './../../assets/alert-4.svg';
 
 export default ({ context }) => {
     const { tickets } = context;
+
+    const [deleteTicket, setDeleteTicket] = useState({
+        warn: false
+    })
 
     const handleAlertItemClick = (event, id, status) => {
         event.preventDefault()
@@ -19,8 +23,25 @@ export default ({ context }) => {
                 status: "Completed"
             }
             putTicket(ticket, context.actions.updateState )
+        } else if (status === 'Completed'){
+            setDeleteTicket({
+                warn: true,
+                id: id,
+                status: "Completed"
+            })
         }
 
+    }
+
+    const handleDeleteTicket = (e, shouldDelete) =>{
+        if (shouldDelete){
+            console.log('deleting...', deleteTicket)
+            delTicket(deleteTicket, context.actions.updateState)
+        } else {
+            console.log('update')
+            putTicket({id: deleteTicket.id, status:"In-Progress"}, context.actions.updateState)
+        }
+        setDeleteTicket({warn: false})
     }
 
     return (
@@ -42,7 +63,18 @@ export default ({ context }) => {
             <div className='tile__alert__container'>
                 <div className='tile__alert__container__list'>
                     {/* Use map for alerts. */}
-                    {
+                    {deleteTicket.warn ? (
+                        <div>
+                            <p>Delete Ticket?</p>
+                            <div>
+                                <button onClick={(e) => handleDeleteTicket(e, true)}>Yes</button>
+                                <button onClick={(e) => setDeleteTicket({warn: false})}>No</button>
+                            </div>
+                            <button onClick={(e) => handleDeleteTicket(e, false)}>Mark as In Progress</button>
+                        </div>
+                    ):(
+                    // <>
+                    // {
                         tickets.length > 0 ? 
                         tickets.map(({ id, type, posted_by, description, status }) => (
                             <div className='tile__alert__container__list--item' onClick={(e) => handleAlertItemClick(e, id, status)} key={id} type={type}>
@@ -56,7 +88,9 @@ export default ({ context }) => {
                         ))
                         :
                         (<p>No tickets to show.</p>)
-                    }
+                    // }
+                    // </>
+                    )}
                 </div>
             </div>
         </div>
