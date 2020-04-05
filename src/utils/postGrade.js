@@ -8,6 +8,7 @@ export const postGrade = (data, updateState, redirect) => {
         .then(res => {
             console.log('grade posted:', res.data)
             getStudentData(updateState, data.teamlead_id)
+            updateState('retro', {})
             updateState('isLoading', false)
             redirect()
         })

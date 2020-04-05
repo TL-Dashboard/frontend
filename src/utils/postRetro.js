@@ -8,6 +8,7 @@ export const postRetro = (data, updateState, redirect) => {
         .then(res => {
             console.log('retro posted:', res.data)
             getStudentData(updateState, data.teamlead_id)
+            updateState('retro', {})
             updateState('isLoading', false)
             redirect()
         })
