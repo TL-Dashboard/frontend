@@ -26,9 +26,10 @@ export const Provider = ({ children }) => {
         isLoading: false,
         error: null,
         user: {},
-        students: {},
+        students: [],
         tickets: [],
         assignments: [],
+        sectionleads: [],
         cohorts: {},
         actions: {
             removeAlert,
