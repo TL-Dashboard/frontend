@@ -1,14 +1,16 @@
 import { axiosWithAuth } from './axiosWithAuth';
+import { getStudentData } from './getStudentData'
 
-export const getCohorts = (updateState, id) => {
+export const postRetro = (data, updateState, redirect) => {
     updateState('isLoading', true);
     axiosWithAuth()
-        .get(`/cohorts/${id}`)
+        .post(`/retros`, data)
         .then(res => {
-            console.log('getting cohort data:', res.data)
-            sessionStorage.setItem('cohort_name', (res.data.name))
-            updateState('cohorts', res.data)
+            console.log('retro posted:', res.data)
+            getStudentData(updateState, data.teamlead_id)
+            updateState('retro', {})
             updateState('isLoading', false)
+            redirect()
         })
         .catch(err => {
             console.log(err)

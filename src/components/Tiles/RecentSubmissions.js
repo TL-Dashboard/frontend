@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const RecentSubmissions = ({context}) => {
     // console.log('students', context.students)
+    // console.log('submissions tile render')
     const assignments = context.assignments;
     const students = context.students;
 
@@ -14,6 +15,11 @@ const RecentSubmissions = ({context}) => {
                 return true
             }else return false
         }
+    }
+
+    const handleReviewClick = (retro) => {
+        // console.log(retro)
+        context.actions.updateState('retro', retro)
     }
 
     return (
@@ -30,12 +36,14 @@ const RecentSubmissions = ({context}) => {
                             <p>{student.first_name}</p>
                             <p>{student.last_name}</p>
                         </div>
-                        <div className={`tile__recent__container__student__${assignments[student.retros[0].assignment_id - 1].type}`}>
-                            <Link to={student.retros[0].url}><p>{assignments[student.retros[0].assignment_id - 1].name}</p></Link>
-                        </div>
+                        <Link to={student.retros[0].url} className={`tile__recent__container__student__${assignments[student.retros[0].assignment_id - 1].type}`}>
+                            <div>
+                                <p>{assignments[student.retros[0].assignment_id - 1].name}</p>
+                            </div>
+                        </Link>
                         {!checkIfGradeExistsForRetro(student.retros[0].id, student.grades) && (
                             <Link to='/dashboard/review'>
-                            <div className="tile__recent__container__review">
+                            <div className="tile__recent__container__review" onClick={() => handleReviewClick(student.retros[0])}>
                                 <p>Review</p>
                             </div>
                             </Link>
