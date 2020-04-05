@@ -10,3 +10,4 @@ export { getCurrentDate } from './getCurrentDate';
 export { starLogic } from './starLogic';
 export { postGrade } from './postGrade';
 export { postRetro } from './postRetro';
+export { putTicket } from './putTicket';
