@@ -6,3 +6,5 @@ export { getStudentData } from './getStudentData';
 export { getTickets } from './getTickets';
 export { getAssignments } from './getAssignments';
 export { getCohorts } from './getCohorts';
+export { getCurrentDate } from './getCurrentDate';
+export { starLogic } from './starLogic';
