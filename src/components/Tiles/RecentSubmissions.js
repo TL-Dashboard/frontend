@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const RecentSubmissions = React.memo(({context}) => {
+const RecentSubmissions = ({context}) => {
     // console.log('students', context.students)
     // console.log('submissions tile render')
     const assignments = context.assignments;
@@ -18,7 +18,7 @@ const RecentSubmissions = React.memo(({context}) => {
     }
 
     const handleReviewClick = (retro) => {
-        console.log(retro)
+        // console.log(retro)
         context.actions.updateState('retro', retro)
     }
 
@@ -36,9 +36,11 @@ const RecentSubmissions = React.memo(({context}) => {
                             <p>{student.first_name}</p>
                             <p>{student.last_name}</p>
                         </div>
-                        <div className={`tile__recent__container__student__${assignments[student.retros[0].assignment_id - 1].type}`}>
-                            <Link to={student.retros[0].url}><p>{assignments[student.retros[0].assignment_id - 1].name}</p></Link>
-                        </div>
+                        <Link to={student.retros[0].url} className={`tile__recent__container__student__${assignments[student.retros[0].assignment_id - 1].type}`}>
+                            <div>
+                                <p>{assignments[student.retros[0].assignment_id - 1].name}</p>
+                            </div>
+                        </Link>
                         {!checkIfGradeExistsForRetro(student.retros[0].id, student.grades) && (
                             <Link to='/dashboard/review'>
                             <div className="tile__recent__container__review" onClick={() => handleReviewClick(student.retros[0])}>
@@ -54,6 +56,6 @@ const RecentSubmissions = React.memo(({context}) => {
             }
         </div>
     )
-})
+}
 
 export default RecentSubmissions;

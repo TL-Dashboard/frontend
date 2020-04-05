@@ -40,6 +40,7 @@
                     border-radius: 5px;
                     background-color: #80D3FF;
                     margin-top: 3px;
+                    margin-bottom: 10px;
                     padding: 8px 32px 8px 32px;
                     color: black;
                     border: 1px solid lightgray;
@@ -47,7 +48,7 @@
 
                     &:hover {
                         background-color: #00BFFF;
-                        color: #7B7B7B;
+                        color: rgb(255, 255, 255);
                     }
                 }
 
@@ -56,12 +57,25 @@
                 }
 
                 &--selected {
-                    height: 35px;
-                    // border: 1px solid grey;
+                    min-height: 35px;
                     padding: 6px;
                     border-radius: 3px;
                     background-color: #F0F8FF;
-            }
+                }
+                &--sprint {
+                    min-height: 35px;
+                    color: rgb(167, 0, 0);
+                    padding: 6px;
+                    border-radius: 3px;
+                    background-color: #F0F8FF;
+                }
+                &--module {
+                    min-height: 35px;
+                    color: rgb(0, 66, 97);
+                    padding: 6px;
+                    border-radius: 3px;
+                    background-color: #F0F8FF;
+                }
             .stars{
                 width: 50px;
                 display: flex;

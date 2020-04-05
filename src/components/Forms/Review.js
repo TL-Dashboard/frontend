@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { getCurrentDate, starLogic } from "../../utils";
+import { getCurrentDate, starLogic, postGrade, getUser } from "../../utils";
 
-const Review = ({ context }) => {
+const Review = props => {
   //   console.log(context.retro.assignment_id);
-  const { assignments, retro, students, user } = context;
+  // console.log('render review')
+  const { assignments, retro, students } = props.context;
 
   const currentAssignment = assignments[retro.assignment_id - 1];
 
@@ -16,10 +17,10 @@ const Review = ({ context }) => {
     date: getCurrentDate("-"),
     grade: null,
     notes: "",
-    student_id: null,
-    assignment_id: null,
-    teamlead_id: null,
-    retro_id: null
+    student_id: students[retro?.student_id - 1]?.id,
+    assignment_id: retro?.assignment_id,
+    teamlead_id: getUser().id,
+    retro_id: retro?.id || 0
   });
 
   const [stars, setStars] = useState([false, false, false]);
@@ -37,32 +38,25 @@ const Review = ({ context }) => {
     });
   };
 
+  const handleSelect = event => {
+      event.preventDefault()
+      setFormData({
+        ...formData,
+        [event.target.name]: Number(event.target.value)
+      });
+      // console.log(formData);
+  }
+
   const handleChanges = event => {
     event.preventDefault();
     setFormData({
       ...formData,
       [event.target.name]: event.target.value
     });
-    console.log(formData);
+    // console.log(formData);
   };
 
   const handleSubmit = () => {
-    if (retro?.id) {
-      setFormData({
-        ...formData,
-        student_id: students[retro.student_id - 1].id,
-        assignment_id: retro.assignment_id,
-        teamlead_id: user.id,
-        retro_id: retro.id
-      });
-    } else {
-      setFormData({
-        ...formData,
-        teamlead_id: user.id,
-        retro_id: 0 //need to set backend to allow nulls?
-      });
-    }
-
     if (!formData.grade) {
       setForm({
         ...form,
@@ -71,11 +65,14 @@ const Review = ({ context }) => {
     } else {
       setForm({
         ...form,
-        buttonDisable: true
+        buttonDisable: false
       });
-      console.log("submitting");
+      // console.log("submitting");
+      postGrade(formData, props.context.actions.updateState, () =>
+        props.history.push("/dashboard/overview")
+      );
     }
-    console.log(formData);
+    // console.log(formData);
   };
 
   return (
@@ -100,7 +97,7 @@ const Review = ({ context }) => {
                   className="review__container__smallcontainer--item"
                   name="student_id"
                   defaultValue={""}
-                  onChange={handleChanges}
+                  onChange={handleSelect}
                   required
                 >
                   <option value="" disabled>
@@ -118,17 +115,28 @@ const Review = ({ context }) => {
             </div>
             <div className="review__container__smallcontainer">
               <label htmlFor="review__container__smallcontainer--item">
-                Module:
+                {retro?.id ? (
+                  <span>
+                    {currentAssignment.type.replace(/^\w/, c =>
+                      c.toUpperCase()
+                    )}
+                    :
+                  </span>
+                ) : (
+                  <span>Assignment:</span>
+                )}
               </label>
               {retro?.id ? (
-                <div className="review__container__smallcontainer--selected">
-                  {currentAssignment.name}
+                <div
+                  className={`review__container__smallcontainer--${currentAssignment.type}`}
+                >
+                  <a href={retro.url} target="_blank" rel="noopener noreferrer">{currentAssignment.name}</a>
                 </div>
               ) : (
                 <select
                   className="review__container__smallcontainer--item"
                   name="assignment_id"
-                  onChange={handleChanges}
+                  onChange={handleSelect}
                   defaultValue={""}
                   required
                 >

@@ -10,6 +10,10 @@ export const getUser = (updateState) => {
         cohort_id: JSON.parse(sessionStorage.getItem('cohort_id')),
         cohort_name: (sessionStorage.getItem('cohort_name'))
     }
-    updateState('user', user)
+    if (updateState){
+        updateState('user', user)}
+    else{
+        
+    } 
     return !!user ? user : { id: '', first_name: 'Error' };
 }

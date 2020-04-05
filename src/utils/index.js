@@ -8,3 +8,4 @@ export { getAssignments } from './getAssignments';
 export { getCohorts } from './getCohorts';
 export { getCurrentDate } from './getCurrentDate';
 export { starLogic } from './starLogic';
+export { postGrade } from './postGrade';
