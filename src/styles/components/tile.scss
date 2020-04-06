@@ -542,8 +542,10 @@
         &__headers {
             display: flex;
             justify-content: space-around;
+            margin-top: -5px;
             margin-bottom: 5px;
             p {
+                font-size: 0.8rem;
                 margin: 0;
             }
         }
