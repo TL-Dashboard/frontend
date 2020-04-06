@@ -146,10 +146,11 @@ const Attendance = props => {
                 <select
                   className="tile__attendance__container__smallcontainer--item--date"
                   name="date"
+                  onChange={e => handleAttendance(e, "all")}
                 >
-                  <option value="1">Today</option>
-                  <option value="2">Tomorrow</option>
-                  <option value="3">Yesterday</option>
+                  <option value={getCurrentDate("-")}>{getCurrentDate("-")}</option>
+                  <option value={getCurrentDate("-", -1)}>{getCurrentDate("-", -1)}</option>
+                  <option value={getCurrentDate("-", -2)}>{getCurrentDate("-", -2)}</option>
                 </select>
               </div>
               <div className={`time_slot-${form.requiredWarning}`}>
@@ -185,7 +186,7 @@ const Attendance = props => {
             </div>
             <div className="tile__attendance__container__smallcontainer">
               <label htmlFor="tile__attendance__container__smallcontainer--item">
-                Unit:{" "}
+                Unit:{"  "}
               </label>
               <select
                 className="tile__attendance__container__smallcontainer--item--assignments"
@@ -207,34 +208,90 @@ const Attendance = props => {
             </div>
             <div className="tile__attendance__container__smallcontainer">
               <label htmlFor="tile__attendance__container__smallcontainer--item">
-                Module:{" "}
+                Module:{"            "}
               </label>
               {form.unit === "Web Fundamentals" && assignmentsList()}
               {form.unit === "Web Applications I" && assignmentsList()}
             </div>
             <div className="tile__attendance__container__smallcontainer">
-              <label htmlFor="tile__attendance__container__smallcontainer--item">
-                {students.map((student, index) => {
-                  return (
-                    <div key={index}>
-                      {student.first_name} {student.last_name}
-                      <input
-                        type="text"
-                        name="notes"
-                        onChange={e => handleAttendance(e, index)}
-                      ></input>
-                      <input
-                        type="checkbox"
-                        name="present"
-                        value="true"
-                        onChange={e => handleAttendance(e, index)}
-                      ></input>
-                    </div>
-                  );
-                })}
-              </label>
+              <div className="students">
+                <div className="students--labels">
+                  <label
+                    htmlFor="tile__attendance__container__smallcontainer--item--students"
+                    id="student"
+                  >
+                    Student:
+                  </label>
+                  <label
+                    htmlFor="tile__attendance__container__smallcontainer--item--students"
+                    id="notes"
+                  >
+                    Notes:
+                  </label>
+                  <label
+                    htmlFor="tile__attendance__container__smallcontainer--item--students"
+                    id="present"
+                  >
+                    Present:
+                  </label>
+                </div>
+                <div className="students--list">
+                  {students.map((student, index) => {
+                    return (
+                      <div className="students--list--container" key={index}>
+                        <div className="names">
+                          {student.first_name} {`${student.last_name}`}
+                        </div>
+                        <textarea
+                          className="notes"
+                          type="text"
+                          name="notes"
+                          onChange={e => handleAttendance(e, index)}
+                        ></textarea>
+                        <input
+                          type="checkbox"
+                          name="present"
+                          value="true"
+                          onChange={e => handleAttendance(e, index)}
+                        ></input>
+                      </div>
+                    );
+                  })}
+{/*                   
+                  <div className="students--list--container">
+                    <div className="names">Test Test</div>
+                    <textarea
+                      className="notes"
+                      type="text"
+                      name="notes"
+                      onChange={e => handleAttendance(e)}
+                    ></textarea>
+                    <input
+                      type="checkbox"
+                      name="present"
+                      value="true"
+                      onChange={e => handleAttendance(e)}
+                    ></input>
+                  </div>
+                  <div className="students--list--container">
+                    <div className="names">Test Test</div>
+                    <textarea
+                      className="notes"
+                      type="text"
+                      name="notes"
+                      onChange={e => handleAttendance(e)}
+                    ></textarea>
+                    <input
+                      type="checkbox"
+                      name="present"
+                      value="true"
+                      onChange={e => handleAttendance(e)}
+                    ></input>
+                  </div> */}
+                </div>
+              </div>
             </div>
-            <div className="tile__attendance__container__smallcontainer">
+            <div className="tile__attendance__container__smallcontainer" id="submit">
               <input
                 className="tile__attendance__container__smallcontainer__submitBtn"
                 type="submit"

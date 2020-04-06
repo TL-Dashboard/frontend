@@ -1,6 +1,11 @@
-export function getCurrentDate(separator = "") {
+export function getCurrentDate(separator = "", minus) {
   let newDate = new Date();
-  let day = newDate.getDate();
+  let day
+  if (minus){
+    day = (newDate.getDate()+minus);
+  } else {
+    day = newDate.getDate()
+  }
   let month = newDate.getMonth() + 1;
   let year = newDate.getFullYear();
 
