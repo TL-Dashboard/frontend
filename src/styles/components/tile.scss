@@ -1,7 +1,8 @@
 .tile {
     width: 350px;
-    height: 400px;
+    height: 430px;
     background-color: white;
+    // border: 1px solid red;
 
     margin: 20px 10px;
 
@@ -23,8 +24,8 @@
     }
 
     &__alert {
-        height: 260px;
-
+        height: 390px;
+        // border: 1px solid red;
         background: white;
 
         border-bottom-left-radius: 5px;
@@ -90,8 +91,7 @@
 
             color: black;
 
-            height: 230px;
-
+            height: 260px;
             overflow-y: auto;
 
             &__list {
@@ -224,7 +224,7 @@
                 display: flex;
                 // justify-content: center;
                 // border: 1px solid lightgray;
-                background-color: #EEEEEE;        
+                background-color: rgb(235, 230, 241);        
                 margin: 5px;
                 padding: 3px 5px;
                 font-size: 0.9rem;
@@ -266,7 +266,7 @@
                 .students{
                     width: 100%;
                     // border: 1px solid red;
-                    height: 195px;
+                    height: 225px;
                     overflow-y: auto;
                     &--labels{
                         display: flex;
