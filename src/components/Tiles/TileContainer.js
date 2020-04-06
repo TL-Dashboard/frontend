@@ -4,8 +4,8 @@ import Attendance from "./Attendance.js";
 import AlertTile from "./AlertTile.js";
 import MissingWork from "./MissingWork.js";
 
-import AttendanceChart from './AttendanceChart';
-import GradesChart from './GradesChart';
+import AttendanceTile from './AttendanceTile.js';
+import GradesTile from './GradesTile.js';
 
 // import withContext from "../../Context";
 import RecentSubmissions from "./RecentSubmissions.js";
@@ -26,10 +26,10 @@ export default function TileContainer(props) {
                 <Attendance {...props} />
             </Tile>
             <Tile className="tile" title='Student Attendance'>
-                <AttendanceChart />
+                <AttendanceTile {...props} />
             </Tile>
             <Tile className="tile" title='Student Grades'>
-                <GradesChart />
+                <GradesTile {...props} />
             </Tile>
             <Tile className="tile" title="Recent Submissions">
                 <RecentSubmissions {...props}/>
