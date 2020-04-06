@@ -223,7 +223,7 @@
             &__smallcontainer {
                 display: flex;
                 align-items: center;
-                min-height: 38px;
+                min-height: 45px;
                 // justify-content: center;
                 // border: 1px solid lightgray;
                 background-color: rgb(235, 235, 255);        
@@ -350,7 +350,7 @@
                 .students{
                     width: 100%;
                     // border: 1px solid red;
-                    height: 192px;
+                    height: 178px;
                     overflow-y: auto;
                     &--labels{
                         display: flex;
