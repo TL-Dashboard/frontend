@@ -262,7 +262,7 @@ const Attendance = props => {
                       </div>
                     );
                   })}
-                  {/*                   
+                  {/* start test additional students
                   <div className="students--list--container">
                     <div className="names">Test Test</div>
                     <textarea
@@ -292,7 +292,8 @@ const Attendance = props => {
                       value="true"
                       onChange={e => handleAttendance(e)}
                     ></input>
-                  </div> */}
+                  </div>
+                  end test additional students */}
                 </div>
               </div>
             </div>
