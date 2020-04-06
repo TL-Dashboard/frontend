@@ -212,13 +212,18 @@
                 display: flex;
                 justify-content: center;
                 border: none;
-                background-color: white; 
+                background-color: white;
+                transition: all 1000ms;
+                #success{
+                    font-size: 1.1rem;
+                    transition: all 1000ms;
+                } 
             }
             /*more form items styling*/
             &__smallcontainer {
                 display: flex;
                 // justify-content: center;
-                border: 1px solid lightgray;
+                // border: 1px solid lightgray;
                 background-color: #EEEEEE;        
                 margin: 5px;
                 padding: 3px 5px;
@@ -261,7 +266,7 @@
                 .students{
                     width: 100%;
                     // border: 1px solid red;
-                    height: 188px;
+                    height: 195px;
                     overflow-y: auto;
                     &--labels{
                         display: flex;

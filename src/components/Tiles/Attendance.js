@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { getCurrentDate, getUser } from "../../utils";
+import { getCurrentDate, getUser, postAttendance } from "../../utils";
 
 const Attendance = props => {
-  const { students, assignments } = props.context;
+  const { students, assignments, attendanceTaken } = props.context;
 
   const [form, setForm] = useState({
     startOfClass: false,
@@ -22,7 +22,7 @@ const Attendance = props => {
           return {
             date: getCurrentDate("-"),
             time_slot: "",
-            present: "",
+            present: "true",
             notes: "",
             student_id: student.id,
             assignment_id: null,
@@ -31,13 +31,21 @@ const Attendance = props => {
         })
       );
     }
-  }, [students.length]);
+  }, [students]);
 
-  const handleAttendance = (event, index) => {
+  const handleAttendance = (event, index, present) => {
     event.stopPropagation();
     const newForm = formData.map((item, fdindex) => {
       if (fdindex === index) {
-        return { ...item, [event.target.name]: event.target.value };
+        if (present === "present") {
+            if (item.present === "true"){
+                return {...item, [event.target.name]: "false"}
+            }else {
+                return { ...item, [event.target.name]: "true"};
+            }
+        } else {
+          return { ...item, [event.target.name]: event.target.value };
+        }
       } else if (index === "all") {
         return { ...item, [event.target.name]: event.target.value };
       } else if (index === "all number") {
@@ -72,15 +80,6 @@ const Attendance = props => {
     }
   };
 
-  const handleSelect = event => {
-    event.preventDefault();
-    setFormData({
-      ...formData,
-      [event.target.name]: Number(event.target.value)
-    });
-    // console.log(formData);
-  };
-
   const assignmentsList = () => {
     return (
       <select
@@ -94,15 +93,14 @@ const Attendance = props => {
         <option value="" disabled>
           Select an assignment...
         </option>
-        {assignments.map((assignment, index) => {
-          if (assignment.unit === form.unit) {
-            return (
+        {assignments.map(
+          (assignment, index) =>
+            assignment.unit === form.unit && (
               <option value={assignment.id} key={index}>
                 {assignment.name}
               </option>
-            );
-          }
-        })}
+            )
+        )}
       </select>
     );
   };
@@ -122,11 +120,10 @@ const Attendance = props => {
     if (form.standUp !== true && form.startOfClass !== true) {
       // console.log(form.standUp, form.startOfClass)
       setForm({ ...form, requiredWarning: true });
+    } else {
+        postAttendance(formData, props.context.actions.updateState);
+        props.context.actions.updateState("attendanceTaken", true);
     }
-    // setForm({ buttonDisable: true });
-    // postTicket(formData, props.context.actions.updateState, () =>
-    //   props.history.push("/dashboard/overview")
-    // );
   };
 
   return (
@@ -148,9 +145,15 @@ const Attendance = props => {
                   name="date"
                   onChange={e => handleAttendance(e, "all")}
                 >
-                  <option value={getCurrentDate("-")}>{getCurrentDate("-")}</option>
-                  <option value={getCurrentDate("-", -1)}>{getCurrentDate("-", -1)}</option>
-                  <option value={getCurrentDate("-", -2)}>{getCurrentDate("-", -2)}</option>
+                  <option value={getCurrentDate("-")}>
+                    {getCurrentDate("-")}
+                  </option>
+                  <option value={getCurrentDate("-", -1)}>
+                    {getCurrentDate("-", -1)}
+                  </option>
+                  <option value={getCurrentDate("-", -2)}>
+                    {getCurrentDate("-", -2)}
+                  </option>
                 </select>
               </div>
               <div className={`time_slot-${form.requiredWarning}`}>
@@ -252,12 +255,13 @@ const Attendance = props => {
                           type="checkbox"
                           name="present"
                           value="true"
-                          onChange={e => handleAttendance(e, index)}
+                          defaultChecked
+                          onChange={e => handleAttendance(e, index, "present")}
                         ></input>
                       </div>
                     );
                   })}
-{/*                   
+                  {/*                   
                   <div className="students--list--container">
                     <div className="names">Test Test</div>
                     <textarea
@@ -291,11 +295,18 @@ const Attendance = props => {
                 </div>
               </div>
             </div>
-            <div className="tile__attendance__container__smallcontainer" id="submit">
-              <input
-                className="tile__attendance__container__smallcontainer__submitBtn"
-                type="submit"
-              />
+            <div
+              className="tile__attendance__container__smallcontainer"
+              id="submit"
+            >
+              {attendanceTaken ? (
+                <div id="success">Attendance taken, thank you!</div>
+              ) : (
+                <input
+                  className="tile__attendance__container__smallcontainer__submitBtn"
+                  type="submit"
+                />
+              )}
             </div>
           </div>
         </form>
