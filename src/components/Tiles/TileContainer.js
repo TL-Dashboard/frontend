@@ -23,7 +23,7 @@ export default function TileContainer(props) {
                 <MissingWork {...props}/>
             </Tile>
             <Tile className="tile" title="Attendance">
-                <Attendance />
+                <Attendance {...props} />
             </Tile>
             <Tile className="tile" title='Student Attendance'>
                 <AttendanceChart />

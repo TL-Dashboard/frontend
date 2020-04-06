@@ -202,7 +202,7 @@
     /*attendance form font styling*/
     &__attendance {
         color: #7B7B7B;
-        
+        width: 350px;
         /*form items styling*/
         &__container{
             text-align: center;
@@ -211,10 +211,40 @@
 
             /*more form items styling*/
             &__smallcontainer {
+                display: flex;
                 border: 1px solid lightgray;
                 background-color: #EEEEEE;        
-                margin: 20px;
-                padding: 5px;
+                margin: 5px;
+                padding: 2px;
+                font-size: 0.9rem;
+                .date{
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-left: 5px;
+                    select{
+                        width: 100%;
+                        margin-left: 5px;
+                    }
+                }
+                .time_slot-false{
+                    display: flex;
+                    flex-direction: column;
+                    width: 80%;
+                    label.checkbox-stand-up{
+                        margin-right: 20px;
+                    }
+                }
+                .time_slot-true{
+                    display: flex;
+                    flex-direction: column;
+                    width: 80%;
+                    color: red;
+                    label.checkbox-stand-up{
+                        margin-right: 20px;
+                    }
+                }
 
                     /*button styling*/
                     &__submitBtn {
@@ -237,9 +267,17 @@
                     }
                         /*curving edges for form selects, input */
                         &--item {
+                            width: 150px;
+                            // border: 1px solid red;
                             border-radius: 5px;
                             background-color: #F0F8FF;
                             cursor: pointer;
+                            &--assignments{
+                                width: 100%;
+                            }
+                            &--date{
+                                width: 50%;
+                            }
                     }
             }
         }
