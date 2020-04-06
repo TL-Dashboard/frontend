@@ -114,8 +114,8 @@ const NavbarWrap = styled.div`
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  height: 80px;
-  min-height: 80px;
+  height: 50px;
+  min-height: 50px;
   background-color: #1b212c;
   color: white;
   @media screen and (min-width: 636px) {

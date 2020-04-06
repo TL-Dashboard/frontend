@@ -222,18 +222,76 @@
             /*more form items styling*/
             &__smallcontainer {
                 display: flex;
+                align-items: center;
+                min-height: 38px;
                 // justify-content: center;
                 // border: 1px solid lightgray;
-                background-color: rgb(235, 230, 241);        
+                background-color: rgb(235, 235, 255);        
                 margin: 5px;
                 padding: 3px 5px;
                 font-size: 0.9rem;
+                position: relative;
                 select{
                     border-radius: 3px;
                     margin-left: 3px;
+                    height: 30px;
                 }
-                input{
-                    border-radius: 3px;
+                input[type=checkbox]{
+                    position: absolute;
+                    opacity: 0;
+                    cursor: pointer;
+                    height: 0;
+                    width: 0;
+                    z-index: 10;
+                }
+                .checkmark {
+                    z-index: 1;
+                    position: absolute;
+                    top: 1px;
+                    right: 0;
+                    border: 1px solid lightgray;
+                    height: 20px;
+                    width: 20px;
+                    background-color: #eee;
+                    &:hover {
+                        background-color:  rgb(227, 255, 220);
+                        cursor: pointer;
+                    }
+                }
+                .checkmark-start {
+                    position: absolute;
+                    top: 2px;
+                    right: 4px;
+                    border: 1px solid lightgray;
+                    height: 20px;
+                    width: 20px;
+                    background-color: #eee;
+                    &:hover {
+                        background-color: rgb(205, 255, 192);
+                        cursor: pointer;
+                    }
+                }
+                .checkmark-stand-up {
+                    position: absolute;
+                    top: 24px;
+                    right: 4px;
+                    border: 1px solid lightgray;
+                    height: 20px;
+                    width: 20px;
+                    background-color: #eee;
+                    &:hover {
+                        background-color: rgb(205, 255, 192);
+                        cursor: pointer;
+                    }
+                }
+                input[type=checkbox]:checked ~ .checkmark{
+                    background-color: lightgreen;
+                }
+                input[type=checkbox]:checked ~ .checkmark-start{
+                    background-color: lightgreen;
+                }
+                input[type=checkbox]:checked ~ .checkmark-stand-up{
+                    background-color: lightgreen;
                 }
                 .date{
                     width: 100%;
@@ -249,24 +307,50 @@
                 .time_slot-false{
                     display: flex;
                     flex-direction: column;
-                    width: 80%;
+                    // border: 1px solid red;
+                    width: 120px;
+                    margin-left: 5px;
+                    
+                    div{
+                        display: flex;
+                        justify-content: space-between;
+                        // border: 1px solid blue;
+                        width: 150px;
+                        text-align: right;
+                    }
                     label.checkbox-stand-up{
+                        display: flex;
+                        justify-content: space-between;
+                        width: 120px;
                         margin-right: 20px;
+                        // border: 1px solid red;
                     }
                 }
                 .time_slot-true{
                     display: flex;
                     flex-direction: column;
-                    width: 80%;
+                    width: 120px;
+                    margin-left: 5px;
                     color: red;
+                    div{
+                        display: flex;
+                        justify-content: space-between;
+                        // border: 1px solid blue;
+                        width: 150px;
+                        text-align: right;
+                    }
                     label.checkbox-stand-up{
+                        display: flex;
+                        justify-content: space-between;
+                        width: 120px;
                         margin-right: 20px;
+                        // border: 1px solid red;
                     }
                 }
                 .students{
                     width: 100%;
                     // border: 1px solid red;
-                    height: 225px;
+                    height: 192px;
                     overflow-y: auto;
                     &--labels{
                         display: flex;
@@ -361,7 +445,7 @@
         color: black;
         margin: 5px;
         padding: 5px;
-        height: 340px;
+        height: 370px;
         font-size: 0.8rem;
         overflow-y: auto;
         overflow-x: hidden;
@@ -395,7 +479,7 @@
                     justify-content: center;
                     min-width: 70px;
                     height: 60px;
-                    background-color: #FF8080;
+                    background-color: rgb(213, 212, 255);
                     &:hover{
                         cursor: pointer;
                         background-color: rgb(230, 230, 230)
@@ -408,13 +492,13 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        background-color: rgb(192, 128, 255);
+                        background-color: rgb(207, 160, 255);
                         width: 260px;
                         height: 60px;
                         padding: 10px;
                         &:hover{
                             cursor: pointer;
-                            background-color: rgb(209, 162, 255)
+                            background-color: rgb(218, 181, 255)
                         }
                     
                 }
@@ -423,7 +507,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    background-color: rgb(244, 128, 255);
+                    background-color: rgb(249, 183, 255);
                     width: 260px;
                     height: 60px;
                     padding: 10px;
@@ -442,7 +526,7 @@
         color: black;
         // margin: 2px;
         padding: 10px;
-        height: 350px;
+        height: 380px;
         // overflow-y: auto;
         font-size: 0.7rem;
         &__headers {

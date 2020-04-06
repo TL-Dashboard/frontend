@@ -19,7 +19,7 @@ export default function TileContainer(props) {
             <Tile title="Tickets">
                 <AlertTile {...props} />
             </Tile>
-            <Tile className="tile" title="Missing Work">
+            <Tile className="tile" title="Missing Retros">
                 <MissingWork {...props}/>
             </Tile>
             <Tile className="tile" title="Attendance">

@@ -158,32 +158,30 @@ const Attendance = props => {
               </div>
               <div className={`time_slot-${form.requiredWarning}`}>
                 <div>
-                  <label htmlFor="checkbox">Start of Class:</label>
+                  <label>Start of Class:
                   <input
                     type="checkbox"
-                    className="checkbox"
                     name="time_slot"
                     value="Start"
                     checked={form.startOfClass}
                     onChange={e => handleCheckbox(e, "all")}
                   />
+                  <span className="checkmark-start" ></span>
+                  </label>
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="checkbox-stand-up"
-                    className="checkbox-stand-up"
-                  >
+                  <label>
                     Stand Up:{" "}
-                  </label>
                   <input
                     type="checkbox"
-                    className="checkbox-stand-up"
                     name="time_slot"
                     value="Stand up"
                     checked={form.standUp}
                     onChange={e => handleCheckbox(e, "all")}
-                  />
+                  ></input>
+                  <span className="checkmark-stand-up"></span>
+                  </label>
                 </div>
               </div>
             </div>
@@ -251,6 +249,7 @@ const Attendance = props => {
                           name="notes"
                           onChange={e => handleAttendance(e, index)}
                         ></textarea>
+                        <label>
                         <input
                           type="checkbox"
                           name="present"
@@ -258,6 +257,8 @@ const Attendance = props => {
                           defaultChecked
                           onChange={e => handleAttendance(e, index, "present")}
                         ></input>
+                        <span className="checkmark"></span>
+                        </label>
                       </div>
                     );
                   })}
