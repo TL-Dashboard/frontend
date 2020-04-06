@@ -24,6 +24,7 @@ export const Provider = ({ children }) => {
     const [ state, setState ] = useState({
         isAuthenticated: false,
         isLoading: false,
+        attendanceTaken: false,
         error: null,
         user: {},
         students: [],

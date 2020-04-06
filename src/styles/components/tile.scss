@@ -1,7 +1,8 @@
 .tile {
     width: 350px;
-    height: 400px;
+    height: 430px;
     background-color: white;
+    // border: 1px solid red;
 
     margin: 20px 10px;
 
@@ -23,8 +24,8 @@
     }
 
     &__alert {
-        height: 260px;
-
+        height: 390px;
+        // border: 1px solid red;
         background: white;
 
         border-bottom-left-radius: 5px;
@@ -90,8 +91,7 @@
 
             color: black;
 
-            height: 230px;
-
+            height: 260px;
             overflow-y: auto;
 
             &__list {
@@ -202,44 +202,240 @@
     /*attendance form font styling*/
     &__attendance {
         color: #7B7B7B;
-        
+        width: 350px;
         /*form items styling*/
         &__container{
             text-align: center;
             align-items: center;
             margin: 0 auto;
-
+            #submit{
+                display: flex;
+                justify-content: center;
+                border: none;
+                background-color: white;
+                transition: all 1000ms;
+                #success{
+                    font-size: 1.1rem;
+                    transition: all 1000ms;
+                } 
+            }
             /*more form items styling*/
             &__smallcontainer {
-                border: 1px solid lightgray;
-                background-color: #EEEEEE;        
-                margin: 20px;
-                padding: 5px;
-
-                    /*button styling*/
-                    &__submitBtn {
-                        border-radius: 5px;
-                        background-color: #F0F8FF;
-                        background-color: #80D3FF;
-                        width: 60%;
-                        margin-top: 3px;
-                        padding-top: 3px;
-                        padding-bottom: 3px;
-                        color: black;
-                        border: 1px solid lightgray;
+                display: flex;
+                align-items: center;
+                min-height: 45px;
+                // justify-content: center;
+                // border: 1px solid lightgray;
+                background-color: rgb(235, 235, 255);        
+                margin: 5px;
+                padding: 3px 5px;
+                font-size: 0.9rem;
+                position: relative;
+                select{
+                    border-radius: 3px;
+                    margin-left: 3px;
+                    height: 30px;
+                }
+                input[type=checkbox]{
+                    position: absolute;
+                    opacity: 0;
+                    cursor: pointer;
+                    height: 0;
+                    width: 0;
+                    z-index: 10;
+                }
+                .checkmark {
+                    z-index: 1;
+                    position: absolute;
+                    top: 1px;
+                    right: 0;
+                    border: 1px solid lightgray;
+                    height: 20px;
+                    width: 20px;
+                    background-color: #eee;
+                    &:hover {
+                        background-color:  rgb(227, 255, 220);
                         cursor: pointer;
-
-                        &:hover {
-                            background-color: #00BFFF;
-                            width: 60%;
-                            color: #7B7B7B;
+                    }
+                }
+                .checkmark-start {
+                    position: absolute;
+                    top: 2px;
+                    right: 4px;
+                    border: 1px solid lightgray;
+                    height: 20px;
+                    width: 20px;
+                    background-color: #eee;
+                    &:hover {
+                        background-color: rgb(205, 255, 192);
+                        cursor: pointer;
+                    }
+                }
+                .checkmark-stand-up {
+                    position: absolute;
+                    top: 24px;
+                    right: 4px;
+                    border: 1px solid lightgray;
+                    height: 20px;
+                    width: 20px;
+                    background-color: #eee;
+                    &:hover {
+                        background-color: rgb(205, 255, 192);
+                        cursor: pointer;
+                    }
+                }
+                input[type=checkbox]:checked ~ .checkmark{
+                    background-color: lightgreen;
+                }
+                input[type=checkbox]:checked ~ .checkmark-start{
+                    background-color: lightgreen;
+                }
+                input[type=checkbox]:checked ~ .checkmark-stand-up{
+                    background-color: lightgreen;
+                }
+                .date{
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-left: 5px;
+                    select{
+                        width: 100%;
+                        margin-left: 5px;
+                    }
+                }
+                .time_slot-false{
+                    display: flex;
+                    flex-direction: column;
+                    // border: 1px solid red;
+                    width: 120px;
+                    margin-left: 5px;
+                    
+                    div{
+                        display: flex;
+                        justify-content: space-between;
+                        // border: 1px solid blue;
+                        width: 150px;
+                        text-align: right;
+                    }
+                    label.checkbox-stand-up{
+                        display: flex;
+                        justify-content: space-between;
+                        width: 120px;
+                        margin-right: 20px;
+                        // border: 1px solid red;
+                    }
+                }
+                .time_slot-true{
+                    display: flex;
+                    flex-direction: column;
+                    width: 120px;
+                    margin-left: 5px;
+                    color: red;
+                    div{
+                        display: flex;
+                        justify-content: space-between;
+                        // border: 1px solid blue;
+                        width: 150px;
+                        text-align: right;
+                    }
+                    label.checkbox-stand-up{
+                        display: flex;
+                        justify-content: space-between;
+                        width: 120px;
+                        margin-right: 20px;
+                        // border: 1px solid red;
+                    }
+                }
+                .students{
+                    width: 100%;
+                    // border: 1px solid red;
+                    height: 178px;
+                    overflow-y: auto;
+                    &--labels{
+                        display: flex;
+                        justify-content: space-between;
+                        font-size: 0.7rem;
+                        #notes{
+                            margin-left: -60px;
                         }
                     }
+                    &--list{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        &--container{
+                            display: flex;
+                            // flex-direction: column;
+                            justify-content: space-between;
+                            align-items: center;
+                            position: relative;
+                            .names{
+                                display: flex;
+                                align-items: center;
+                                color: black;
+                                // min-width: 120px;
+                                // max-width: 100%;
+                                height: 22px;
+                                overflow: hidden;
+                            }
+                            textarea.notes{
+                                // border: 1px solid purple;
+                                width: 190px;
+                                position: absolute;
+                                height: 20px;
+                                margin: 2px;
+                                top: -1px;
+                                right: 20px;
+                            }
+                        }
+                    }
+                }
+
+                    /*button styling*/
+                    &__submitBtn{
+                        border-radius: 3px;
+                        background-color: rgb(171, 203, 214);
+                        padding: 4px 25px;
+                        color: white;
+                        border: 1px solid lightgray;
+                        cursor: pointer;
+                        &:hover {
+                            background-color: rgb(184, 228, 243);
+                            color: rgb(255, 255, 255);
+                        }
+                    }
+                    // &__submitBtn {
+                    //     border-radius: 5px;
+                    //     background-color: #F0F8FF;
+                    //     background-color: #80D3FF;
+                    //     width: 60%;
+                    //     margin-top: 3px;
+                    //     padding-top: 3px;
+                    //     padding-bottom: 3px;
+                    //     color: black;
+                    //     border: 1px solid lightgray;
+                    //     cursor: pointer;
+
+                    //     &:hover {
+                    //         background-color: #00BFFF;
+                    //         width: 60%;
+                    //         color: #7B7B7B;
+                    //     }
+                    // }
                         /*curving edges for form selects, input */
                         &--item {
+                            width: 150px;
+                            // border: 1px solid red;
                             border-radius: 5px;
                             background-color: #F0F8FF;
                             cursor: pointer;
+                            &--assignments{
+                                width: 100%;
+                            }
+                            &--date{
+                                width: 50%;
+                            }
                     }
             }
         }
@@ -249,7 +445,7 @@
         color: black;
         margin: 5px;
         padding: 5px;
-        height: 340px;
+        height: 370px;
         font-size: 0.8rem;
         overflow-y: auto;
         overflow-x: hidden;
@@ -283,7 +479,7 @@
                     justify-content: center;
                     min-width: 70px;
                     height: 60px;
-                    background-color: #FF8080;
+                    background-color: rgb(213, 212, 255);
                     &:hover{
                         cursor: pointer;
                         background-color: rgb(230, 230, 230)
@@ -296,13 +492,13 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        background-color: rgb(192, 128, 255);
+                        background-color: rgb(207, 160, 255);
                         width: 260px;
                         height: 60px;
                         padding: 10px;
                         &:hover{
                             cursor: pointer;
-                            background-color: rgb(209, 162, 255)
+                            background-color: rgb(218, 181, 255)
                         }
                     
                 }
@@ -311,7 +507,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    background-color: rgb(244, 128, 255);
+                    background-color: rgb(249, 183, 255);
                     width: 260px;
                     height: 60px;
                     padding: 10px;
@@ -330,7 +526,7 @@
         color: black;
         // margin: 2px;
         padding: 10px;
-        height: 350px;
+        height: 380px;
         // overflow-y: auto;
         font-size: 0.7rem;
         &__headers {
