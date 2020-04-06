@@ -5,6 +5,8 @@ const Attendance = props => {
   const { students, assignments } = props.context;
 
   const [form, setForm] = useState({
+    startOfClass: false,
+    standUp: false,
     requiredWarning: false,
     buttonDisable: false
   });
@@ -20,7 +22,7 @@ const Attendance = props => {
                   time_slot: "",
                   present: "",
                   notes: "",
-                  student_id: null,
+                  student_id: student.id,
                   assignment_id: null,
                   teamlead_id: getUser().id
                 }
@@ -30,7 +32,7 @@ const Attendance = props => {
   }, [students.length])
 
  const handleAttendance = (event, index) => {
-    event.preventDefault();
+    event.stopPropagation();
     const newForm = formData.map((item, fdindex) =>{
             if (fdindex === index){
                 return {...item,
@@ -38,12 +40,35 @@ const Attendance = props => {
             } else if (index === 'all') {
                 return {...item,
                     [event.target.name]: event.target.value}
+            } else if (index === 'all number') {
+                console.log('numbers', index)
+                return {...item,
+                    [event.target.name]: Number(event.target.value)}
             } else {
                 return item
             }
         })
     setFormData(newForm)
     // console.log(formData)
+ }
+
+ const handleCheckbox = (event, index) =>{
+     console.log('checkbox', event.target.value)
+     if (event.target.value === 'Start'){
+         setForm({
+             ...form,
+             startOfClass: true,
+             standUp: false
+         })
+         handleAttendance(event, index)
+    } else if (event.target.value === 'Stand up') {
+        setForm({
+            ...form,
+            startOfClass: false,
+            standUp: true
+        })
+        handleAttendance(event, index)
+    }
  }
 
   const handleSelect = event => {
@@ -101,7 +126,8 @@ const Attendance = props => {
                   className="checkbox"
                   name="time_slot"
                   value="Start"
-                  onChange={(e) => handleAttendance(e, 'all')}
+                  checked={form.startOfClass}
+                  onChange={(e) => handleCheckbox(e, 'all')}
                 />
                   </div>
                
@@ -113,6 +139,9 @@ const Attendance = props => {
                   type="checkbox"
                   className="checkbox-stand-up"
                   name="time_slot"
+                  value="Stand up"
+                  checked={form.standUp}
+                  onChange={(e) => handleCheckbox(e, 'all')}
                 />
                 </div>
               </div>
@@ -124,7 +153,7 @@ const Attendance = props => {
               <select
                 className="tile__attendance__container__smallcontainer--item--assignments"
                 name="assignment_id"
-                onChange={handleSelect}
+                onChange={(e) => handleAttendance(e, 'all number')}
                 defaultValue={""}
                 
               >
@@ -147,7 +176,7 @@ const Attendance = props => {
                         <div key={index}>
                             {student.first_name} {student.last_name}
                             <input type='text' name='notes' onChange={(e) => handleAttendance(e, index)}></input>
-                            <input type='checkbox'></input>
+                            <input type='checkbox' name='present' value="true" onChange={(e) => handleAttendance(e, index)}></input>
                         </div>
                     )
                 })}
