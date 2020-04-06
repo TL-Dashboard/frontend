@@ -243,12 +243,12 @@ const Attendance = props => {
                         <div className="names">
                           {student.first_name} {`${student.last_name}`}
                         </div>
-                        <textarea
+                        <input
                           className="notes"
                           type="text"
                           name="notes"
                           onChange={e => handleAttendance(e, index)}
-                        ></textarea>
+                        ></input>
                         <label>
                         <input
                           type="checkbox"
