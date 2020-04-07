@@ -111,7 +111,7 @@ const AlertTile = (props) => {
 
 export default AlertTile
 
-const getAbrevName = name => `${name.split(" ")[0]} ${name.split(" ")[1].split("")[0]}.`
+const getAbrevName = name => `${name.split(" ")[0]} ${name.split(" ")[1].split("")[0]}`
 
 const getLogo = type => {
     switch(type) {
