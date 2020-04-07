@@ -59,7 +59,7 @@ const Navbar = (props) => {
           <div className="user--image"></div>
           <div className="user--info">
             <div className="name">{`${first_name} ${last_name}`}</div>
-            <div className="title">{`${type} ${cohort_name}`}</div>
+            <div className="title">{`${type} ${cohort_name || `Web29`}`}</div>
             <div className="email">{`${email}`}</div>
           </div>
         </SidebarUserInfo>
