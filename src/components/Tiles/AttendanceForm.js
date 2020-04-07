@@ -134,7 +134,7 @@ const AttendanceForm = props => {
       [event.target.name]: event.target.value,
       unitSelected: true
     });
-    console.log(form.unit);
+    // console.log(form.unit);
   };
 
   const handleSubmit = async() => {

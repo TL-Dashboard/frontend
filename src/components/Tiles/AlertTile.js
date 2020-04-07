@@ -17,7 +17,7 @@ const AlertTile = (props) => {
 
     const handleAlertItemClick = (event, id, status) => {
         event.preventDefault()
-        console.log('ticket click', id, status)
+        // console.log('ticket click', id, status)
         if (status === 'In-Progress'){
             const ticket = {
                 id: id,
@@ -37,10 +37,10 @@ const AlertTile = (props) => {
     const handleTicketToDelete = (event, shouldDelete) =>{
         event.preventDefault()
         if (shouldDelete){
-            console.log('deleting...', ticketToDelete)
+            // console.log('deleting...', ticketToDelete)
             delTicket(ticketToDelete, context.actions.updateState)
         } else {
-            console.log('update')
+            // console.log('update')
             putTicket({id: ticketToDelete.id, status:"In-Progress"}, context.actions.updateState)
         }
         setTicketToDelete({warn: false})

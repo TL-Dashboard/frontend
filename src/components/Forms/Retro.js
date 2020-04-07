@@ -36,7 +36,7 @@ const Retro = props => {
       ...formData,
       mood: star + 1
     });
-    console.log(formData)
+    // console.log(formData)
   };
 
   const handleSelect = event => {
