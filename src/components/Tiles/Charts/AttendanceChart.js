@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Polar } from "react-chartjs-2";
+import { Radar } from "react-chartjs-2";
 
 function AttendanceChart({ labels, dataPoints }) {
 
@@ -16,22 +16,36 @@ function AttendanceChart({ labels, dataPoints }) {
     const data = {
         labels: labels, 
         datasets: [{
+            label: "Days Missed",
             data: dataPoints,
-            backgroundColor: lineColors
-        }]
+            pointBorderColor: lineColors,
+            borderWidth: 3,
+            borderColor: "rgba(247, 12, 12, 0.3)",
+            backgroundColor: "rgba(247, 12, 12, 0.3)",
+            fill: true
+        }],
     };
 
     const options = {
+        scale:{
+            ticks: {
+                max: 5,
+                stepSize: 1,
+                showLabelBackdrop: false,
+                // display: false,
+            }
+        },
         legend:{
-            display: true,
+            display: false,
             position: 'bottom'
-        }
+        },
     };
 
     return (
         <div>
-            <Polar
+            <Radar
                 height={300}
+                width={300}
                 data={data}
                 options={options}
             />

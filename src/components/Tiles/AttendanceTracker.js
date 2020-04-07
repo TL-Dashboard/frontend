@@ -34,14 +34,14 @@ useEffect(() => {
         students.map(student=> student.first_name)
       )
       setDataPoints(
-        students.map(student => student.attendance.filter(i => i.present === "true").length)
+        students.map(student => (5 - student.attendance.filter(i => i.present === "true").length))
       )
   }
 },[students])
 
   return (
     <div className="attendance-chart">
-      <div className="attendance-chart-title">Sprint: User Interface and Git</div>
+      <div className="attendance-chart-title">Days missed:</div>
       <AttendanceChart labels={labels} dataPoints={dataPoints} />
     </div>
   );
