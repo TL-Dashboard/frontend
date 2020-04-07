@@ -20,11 +20,11 @@ const Navbar = (props) => {
       link: "/dashboard/tickets",
       current: false
     },
-    {
-      title: "Attendance",
-      link: "/dashboard/attendance",
-      current: false
-    },
+    // {
+    //   title: "Attendance",
+    //   link: "/dashboard/attendance",
+    //   current: false
+    // },
     {
       title: "Review Form",
       link: "/dashboard/review",
@@ -41,6 +41,7 @@ const Navbar = (props) => {
     updateState('user', {})
     updateState('students', [])
     sessionStorage.clear();
+    setOpen(!open)
   };
 
   return (
@@ -77,7 +78,7 @@ const Navbar = (props) => {
             <Link to="/" onClick={handleLogout}>
               <li className={`links__link`}>Logout</li>
             </Link>
-            <Link to="/dashboard/about">
+            <Link to="/dashboard/about" onClick={() => setOpen(!open)}>
               <li className={`links__link`} id="about">
                 About
               </li>

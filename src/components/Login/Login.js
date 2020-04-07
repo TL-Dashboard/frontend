@@ -33,23 +33,22 @@ const Login = (props) => {
             <Logo className="login__logo"/>
                 <div className="login__container__items">
                     <label>Email Address</label><br/>
-                    <input className="login__container__items__input" type="email" name="email" value={login.email} onChange={handleChange}>
+                    <input className="login__container__items__input" type="email" name="email" value={login.email} onChange={handleChange} required>
                     </input>
                 </div>
                 <div className="login__container__items">
                     <label>Password</label><br/>
-                    <input className="login__container__items__input" type="password" name="password" value={login.password} onChange={handleChange}>
+                    <input className="login__container__items__input" type="password" name="password" value={login.password} onChange={handleChange} required>
                     </input>
                 </div>
                 <div className="login__container__items">
                     <input className="login__container__items__input__submitButn" type="submit" />
                 </div>            
                 {isLoading && <span>Loading...</span>}
-                {error && <span>{`${error}`}</span>}  
+                {error && <span>Unable to login, please check your password.</span>}  
                 <div className="login__container__forgotText">
                     <p>Forgot <a className="login__container__forgotText__forgotLinks" href="/">Username/Password?</a></p>
                 </div>
-
             </form>
         </div>
     )
