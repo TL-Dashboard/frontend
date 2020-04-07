@@ -49,7 +49,7 @@ const Attendance = props => {
       } else if (index === "all") {
         return { ...item, [event.target.name]: event.target.value };
       } else if (index === "all number") {
-        console.log("numbers", index);
+        // console.log("numbers", index);
         return { ...item, [event.target.name]: Number(event.target.value) };
       } else {
         return item;
@@ -60,7 +60,7 @@ const Attendance = props => {
   };
 
   const handleCheckbox = (event, index) => {
-    console.log("checkbox", event.target.value);
+    // console.log("checkbox", event.target.value);
     if (event.target.value === "Start") {
       setForm({
         ...form,
@@ -116,7 +116,7 @@ const Attendance = props => {
   };
 
   const handleSubmit = () => {
-    console.log("submitting", formData);
+    // console.log("submitting", formData);
     if (form.standUp !== true && form.startOfClass !== true) {
       // console.log(form.standUp, form.startOfClass)
       setForm({ ...form, requiredWarning: true });

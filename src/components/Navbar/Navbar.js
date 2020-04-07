@@ -52,7 +52,7 @@ const Navbar = ({ context }) => {
           <Burger open={open} setOpen={setOpen} />
         </div>
         <div className="title">
-          {first_name ? first_name : "Error, please login again."}
+          {/* {first_name ? first_name : "Error, please login again."} */}
         </div>
       </NavbarWrap>
       <DropDown className={`${open ? "active" : ""}`}>
