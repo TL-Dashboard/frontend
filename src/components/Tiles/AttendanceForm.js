@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getCurrentDate, getUser, postAttendance } from "../../utils";
 
-const Attendance = props => {
+const AttendanceForm = props => {
   const { students, assignments, attendanceTaken } = props.context;
 
   const [form, setForm] = useState({
@@ -319,4 +319,4 @@ const Attendance = props => {
   );
 };
 
-export default Attendance;
+export default AttendanceForm;

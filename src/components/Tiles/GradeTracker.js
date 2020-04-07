@@ -10,7 +10,7 @@ const lineColors = [
   "#ACE1E1"
 ];
 
-const GradesTile = props => {
+const GradeTracker = props => {
   const { students } = props.context;
   // console.log(students)
 
@@ -42,6 +42,8 @@ const GradesTile = props => {
     }
   }, [students]);
 
+//   console.log(chartData);
+
   return (
     <div className="grades-chart">
       <div className="grades-chart-title">Sprint: User Interface and Git</div>
@@ -50,4 +52,4 @@ const GradesTile = props => {
   );
 };
 
-export default GradesTile;
+export default GradeTracker;
