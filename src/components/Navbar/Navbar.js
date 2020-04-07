@@ -15,23 +15,13 @@ const Navbar = ({ context }) => {
       current: false
     },
     {
-      title: "Alerts",
-      link: "/dashboard/alerts",
+      title: "Tickets",
+      link: "/dashboard/tickets",
       current: false
     },
     {
       title: "Attendance",
       link: "/dashboard/attendance",
-      current: false
-    },
-    {
-      title: "Unsubmitted Retros",
-      link: "/dashboard/unsubmittedretros",
-      current: false
-    },
-    {
-      title: "Grade Tracker",
-      link: "/dashboard/gradetracker",
       current: false
     },
     {
@@ -45,6 +35,7 @@ const Navbar = ({ context }) => {
       current: false
     }
   ];
+
   return (
     <>
       <NavbarWrap>

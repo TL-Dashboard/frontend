@@ -1,17 +1,17 @@
 import { axiosWithAuth } from './axiosWithAuth';
 
 export const getAssignments = (updateState, id) => {
-    updateState('isLoading', true);
+    // updateState('isLoading', true);
     axiosWithAuth()
         .get(`/assignments/cohort/${id}`)
         .then(res => {
             console.log('getting assignments:', res.data)
             updateState('assignments', res.data)
-            updateState('isLoading', false)
+            // updateState('isLoading', false)
         })
         .catch(err => {
             console.log(err)
             updateState('error', err);
-            updateState('isLoading', false);
+            // updateState('isLoading', false);
         })
 }

@@ -1,12 +1,12 @@
 import { axiosWithAuth } from './axiosWithAuth';
 
 export const postAttendance = (data, updateState) => {
-    updateState('isLoading', true);
+    // updateState('isLoading', true);
     axiosWithAuth()
         .post(`/attendance`, data)
         .then(res => {
             console.log('attendance posted:', res.data)
-            updateState('isLoading', false)
+            // updateState('isLoading', false)
         })
         .then(
             updateState('attendanceTaken', true)

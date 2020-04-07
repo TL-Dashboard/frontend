@@ -153,16 +153,6 @@ const Sidebar = props => {
       current: false
     },
     {
-      title: "Unsubmitted Retros",
-      link: "/dashboard/unsubmittedretros",
-      current: false
-    },
-    {
-      title: "Grade Tracker",
-      link: "/dashboard/gradetracker",
-      current: false
-    },
-    {
       title: "Review Form",
       link: "/dashboard/review",
       current: false
@@ -188,7 +178,7 @@ const Sidebar = props => {
         <div className="user--image"></div>
         <div className="user--info">
           <div className="name">{`${first_name} ${last_name}`}</div>
-          <div className="title">{`${type} ${cohort_name}`}</div>
+          <div className="title">{`${type} ${cohort_name || `Web25`}`}</div>
           <div className="email">{`${email}`}</div>
         </div>
       </SidebarUserInfo>
