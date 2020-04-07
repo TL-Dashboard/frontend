@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AttendanceChart from './Charts/AttendanceChart.js'
 
-const AttendanceTracker = props => {
+const AttendanceRadar = props => {
   const { students } = props.context;
   // console.log(students)
 
@@ -34,17 +34,17 @@ useEffect(() => {
         students.map(student=> student.first_name)
       )
       setDataPoints(
-        students.map(student => (5 - student.attendance.filter(i => i.present === "true").length))
+        students.map(student => (6 - student.attendance.filter(i => i.present === "true").length))
       )
   }
 },[students])
 
   return (
     <div className="attendance-chart">
-      <div className="attendance-chart-title">Days missed:</div>
+      <div className="attendance-chart-title">Days absent (past five days):</div>
       <AttendanceChart labels={labels} dataPoints={dataPoints} />
     </div>
   );
 };
 
-export default AttendanceTracker;
+export default AttendanceRadar;

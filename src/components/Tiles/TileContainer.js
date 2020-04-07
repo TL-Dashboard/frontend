@@ -4,7 +4,7 @@ import AttendanceForm from "./AttendanceForm.js";
 import AlertTile from "./AlertTile.js";
 import MissingWork from "./MissingWork.js";
 
-import AttendanceTracker from './AttendanceTracker.js';
+import AttendanceRadar from './AttendanceRadar.js';
 import GradeTracker from './GradeTracker.js';
 
 // import withContext from "../../Context";
@@ -25,8 +25,8 @@ export default function TileContainer(props) {
             <Tile className="tile" title="Attendance">
                 <AttendanceForm {...props} />
             </Tile>
-            <Tile className="tile" title='Attendance Tracker'>
-                <AttendanceTracker {...props} />
+            <Tile className="tile" title='Attendance Radar'>
+                <AttendanceRadar {...props} />
             </Tile>
             <Tile className="tile" title='Grade Tracker'>
                 <GradeTracker {...props} />

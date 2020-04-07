@@ -4,21 +4,14 @@ import { Radar } from "react-chartjs-2";
 
 function AttendanceChart({ labels, dataPoints }) {
 
-    const lineColors = [
-        "#ACACE1",
-        "#C6ACE1",
-        "#E1C6AC",
-        "#E1E1AC",
-        "#ACE1AC",
-        "#ACE1E1"
-      ];
-
     const data = {
         labels: labels, 
         datasets: [{
-            label: "Days Missed",
+            // label: labels,
             data: dataPoints,
-            pointBorderColor: lineColors,
+            pointRadius: 1,
+            pointHoverRadius: 10,
+            pointBorderColor: "rgba(247, 12, 12, 0.3)",
             borderWidth: 3,
             borderColor: "rgba(247, 12, 12, 0.3)",
             backgroundColor: "rgba(247, 12, 12, 0.3)",
@@ -39,13 +32,16 @@ function AttendanceChart({ labels, dataPoints }) {
             display: false,
             position: 'bottom'
         },
+        tooltips:{
+            enabled: false
+        }
     };
 
     return (
         <div>
             <Radar
-                height={300}
-                width={300}
+                height={280}
+                width={280}
                 data={data}
                 options={options}
             />
