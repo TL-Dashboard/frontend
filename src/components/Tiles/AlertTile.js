@@ -90,7 +90,7 @@ const AlertTile = (props) => {
                                     <span><span id={`${status}`}>{"\u2713"}</span></span>
                                 </AlertsItemLogo>
                                 <div className={`tile__alert__container__list--item__right--${status}`}>
-                                    <p>{getAbrevName(posted_by)} {description}</p>
+                                    <p>{getAbrevName(posted_by)}: {description}</p>
                                 </div>
                             </div>
                         ))

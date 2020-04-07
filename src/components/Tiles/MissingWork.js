@@ -17,14 +17,14 @@ const MissingWork = ({context}) => {
         } else if (itemA < itemB) {
           comparison = -1;
         }
-        return comparison * -1;
+        return comparison;
     }
 
     const checkIfRetroExistsForAssignment = () => {
         if (students.length > 0) {
             students.map(student => {
                 if (student.retros.length < 5){
-                    for (let i = 4; i >= 0; i--){
+                    for (let i = 5; i >= 0; i--){
                         if (student.retros[i]?.assignment_id === undefined){
                             // console.log(student.first_name, 'missing!', assignments[i].id)
                             missing = [ ...missing,

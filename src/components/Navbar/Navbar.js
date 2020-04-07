@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Burger from "./Burger/index";
 
-const Navbar = ({ context }) => {
+const Navbar = (props) => {
   const [open, setOpen] = useState(false);
-  const user = context.user;
+  const { updateState } = props.context.actions
+  const user = props.context.user;
   const { first_name, last_name, type, email, cohort_name } = user;
 
   const sidebarLinks = [
@@ -35,6 +36,12 @@ const Navbar = ({ context }) => {
       current: false
     }
   ];
+
+  const handleLogout = () => {
+    updateState('user', {})
+    updateState('students', [])
+    sessionStorage.clear();
+  };
 
   return (
     <>
@@ -67,7 +74,7 @@ const Navbar = ({ context }) => {
                 </li>
               </Link>
             ))}
-            <Link to="/" onClick={() => sessionStorage.clear()}>
+            <Link to="/" onClick={handleLogout}>
               <li className={`links__link`}>Logout</li>
             </Link>
             <Link to="/dashboard/about">
