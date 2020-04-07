@@ -22,6 +22,26 @@
 
         padding-left: 15px;
     }
+    .grades-chart{
+        // margin-top: 10px;
+        padding: 3px 10px 0 10px;
+        &-title{
+            text-align: center;
+            color: black;
+            font-size: 0.9rem;
+            margin-bottom: 3px;
+        }
+    }
+    .attendance-chart{
+        // margin-top: 10px;
+        padding: 3px 10px 0 10px;
+        &-title{
+            text-align: center;
+            color: black;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+    }
 
     &__alert {
         height: 390px;
@@ -379,9 +399,9 @@
                                 height: 22px;
                                 overflow: hidden;
                             }
-                            textarea.notes{
+                            input.notes{
                                 // border: 1px solid purple;
-                                width: 190px;
+                                width: 188px;
                                 position: absolute;
                                 height: 20px;
                                 margin: 2px;
@@ -400,6 +420,7 @@
                         color: white;
                         border: 1px solid lightgray;
                         cursor: pointer;
+                        transition: all 300ms;
                         &:hover {
                             background-color: rgb(184, 228, 243);
                             color: rgb(255, 255, 255);
@@ -479,7 +500,8 @@
                     justify-content: center;
                     min-width: 70px;
                     height: 60px;
-                    background-color: rgb(213, 212, 255);
+                    background-color: rgb(212, 212, 212);
+                    transition: all 300ms;
                     &:hover{
                         cursor: pointer;
                         background-color: rgb(230, 230, 230)
@@ -492,13 +514,14 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        background-color: rgb(207, 160, 255);
+                        background-color: rgb(128, 255, 172);
                         width: 260px;
                         height: 60px;
                         padding: 10px;
+                        transition: all 300ms;
                         &:hover{
                             cursor: pointer;
-                            background-color: rgb(218, 181, 255)
+                            background-color: rgb(176, 255, 204)
                         }
                     
                 }
@@ -507,13 +530,14 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    background-color: rgb(249, 183, 255);
+                    background-color: rgb(128, 211, 255);
                     width: 260px;
                     height: 60px;
                     padding: 10px;
+                    transition: all 300ms;
                     &:hover{
                         cursor: pointer;
-                        background-color: rgb(249, 189, 255)
+                        background-color: rgb(189, 229, 251)
                     }
                 
             }
@@ -532,8 +556,10 @@
         &__headers {
             display: flex;
             justify-content: space-around;
+            margin-top: -5px;
             margin-bottom: 5px;
             p {
+                font-size: 0.8rem;
                 margin: 0;
             }
         }
@@ -562,6 +588,7 @@
                     background-color: rgb(212, 212, 212);
                     min-width: 70px;
                     height: 35px;
+                    transition: all 300ms;
                     &:hover{
                         cursor: pointer;
                         background-color: rgb(230, 230, 230)
@@ -578,7 +605,7 @@
                         width: 100%;
                         height: 35px;
                         padding: 10px;
-                        transition: all 500ms;
+                        transition: all 300ms;
                         &:hover{
                             cursor: pointer;
                             background-color: rgb(176, 255, 204)
@@ -593,7 +620,7 @@
                         width: 100%;
                         height: 35px;
                         padding: 10px;
-                        transition: all 500ms;
+                        transition: all 300ms;
                         &:hover{
                             cursor: pointer;
                             background-color: rgb(189, 229, 251);
@@ -605,7 +632,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background-color: rgb(241, 201, 201);
+                background-color: rgb(255, 214, 214);
                 width: 45px;
                 height: 35.5px;
                 padding: 10px;

@@ -1,19 +1,41 @@
 import React, { useState, useEffect } from "react";
-import { getCurrentDate, getUser, postAttendance } from "../../utils";
+import { getCurrentDate, getUser, postAttendance, getStudentData } from "../../utils";
 
-const Attendance = props => {
-  const { students, assignments, attendanceTaken } = props.context;
-
-  const [form, setForm] = useState({
+const initialFormState = {
     startOfClass: false,
     standUp: false,
     requiredWarning: false,
     buttonDisable: false,
     unit: "",
     unitSelected: false
-  });
+  }
+
+const AttendanceForm = props => {
+  const { students, assignments, attendanceTaken } = props.context;
+
+  const { updateState } = props.context.actions;
+
+  const [form, setForm] = useState(initialFormState);
 
   const [formData, setFormData] = useState([]);
+
+  // const [reset, setReset] = useState(false)
+
+  // const resetFormData = () => {
+  //   setFormData(
+  //     students.map(student => {
+  //       return {
+  //         date: getCurrentDate("-"),
+  //         time_slot: "",
+  //         present: "true",
+  //         notes: "",
+  //         student_id: student.id,
+  //         assignment_id: null,
+  //         teamlead_id: getUser().id
+  //       };
+  //     })
+  //   );
+  // }
 
   useEffect(() => {
     if (students.length) {
@@ -49,7 +71,7 @@ const Attendance = props => {
       } else if (index === "all") {
         return { ...item, [event.target.name]: event.target.value };
       } else if (index === "all number") {
-        console.log("numbers", index);
+        // console.log("numbers", index);
         return { ...item, [event.target.name]: Number(event.target.value) };
       } else {
         return item;
@@ -60,7 +82,7 @@ const Attendance = props => {
   };
 
   const handleCheckbox = (event, index) => {
-    console.log("checkbox", event.target.value);
+    // console.log("checkbox", event.target.value);
     if (event.target.value === "Start") {
       setForm({
         ...form,
@@ -112,17 +134,22 @@ const Attendance = props => {
       [event.target.name]: event.target.value,
       unitSelected: true
     });
-    console.log(form.unit);
+    // console.log(form.unit);
   };
 
-  const handleSubmit = () => {
-    console.log("submitting", formData);
+  const handleSubmit = async() => {
+    // console.log("submitting", formData);
     if (form.standUp !== true && form.startOfClass !== true) {
       // console.log(form.standUp, form.startOfClass)
       setForm({ ...form, requiredWarning: true });
     } else {
         postAttendance(formData, props.context.actions.updateState);
         props.context.actions.updateState("attendanceTaken", true);
+        const user = getUser(updateState)
+        getStudentData(updateState, user.id)
+        await new Promise(r => setTimeout(r, 1500));
+        setForm(initialFormState)
+        props.context.actions.updateState("attendanceTaken", false);
     }
   };
 
@@ -243,12 +270,12 @@ const Attendance = props => {
                         <div className="names">
                           {student.first_name} {`${student.last_name}`}
                         </div>
-                        <textarea
+                        <input
                           className="notes"
                           type="text"
                           name="notes"
                           onChange={e => handleAttendance(e, index)}
-                        ></textarea>
+                        ></input>
                         <label>
                         <input
                           type="checkbox"
@@ -319,4 +346,4 @@ const Attendance = props => {
   );
 };
 
-export default Attendance;
+export default AttendanceForm;

@@ -17,7 +17,7 @@ const MissingWork = ({context}) => {
         } else if (itemA < itemB) {
           comparison = -1;
         }
-        return comparison * -1;
+        return comparison;
     }
 
     const checkIfRetroExistsForAssignment = () => {

@@ -2,14 +2,14 @@ import { axiosWithAuth } from './axiosWithAuth';
 import { getStudentData } from './getStudentData'
 
 export const postGrade = (data, updateState, redirect) => {
-    updateState('isLoading', true);
+    // updateState('isLoading', true);
     axiosWithAuth()
         .post(`/grades`, data)
         .then(res => {
             console.log('grade posted:', res.data)
             getStudentData(updateState, data.teamlead_id)
             updateState('retro', {})
-            updateState('isLoading', false)
+            // updateState('isLoading', false)
             redirect()
         })
         .catch(err => {

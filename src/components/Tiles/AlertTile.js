@@ -7,7 +7,7 @@ import { ReactComponent as Submitted } from './../../assets/alert-2.svg';
 import { ReactComponent as Ticket } from './../../assets/alert-3.svg';
 import { ReactComponent as Missing } from './../../assets/alert-4.svg';
 
-export default (props) => {
+const AlertTile = (props) => {
     const context = props.context
     const { tickets } = context;
 
@@ -17,7 +17,7 @@ export default (props) => {
 
     const handleAlertItemClick = (event, id, status) => {
         event.preventDefault()
-        console.log('ticket click', id, status)
+        // console.log('ticket click', id, status)
         if (status === 'In-Progress'){
             const ticket = {
                 id: id,
@@ -37,10 +37,10 @@ export default (props) => {
     const handleTicketToDelete = (event, shouldDelete) =>{
         event.preventDefault()
         if (shouldDelete){
-            console.log('deleting...', ticketToDelete)
+            // console.log('deleting...', ticketToDelete)
             delTicket(ticketToDelete, context.actions.updateState)
         } else {
-            console.log('update')
+            // console.log('update')
             putTicket({id: ticketToDelete.id, status:"In-Progress"}, context.actions.updateState)
         }
         setTicketToDelete({warn: false})
@@ -90,7 +90,7 @@ export default (props) => {
                                     <span><span id={`${status}`}>{"\u2713"}</span></span>
                                 </AlertsItemLogo>
                                 <div className={`tile__alert__container__list--item__right--${status}`}>
-                                    <p>{getAbrevName(posted_by)} {description}</p>
+                                    <p>{getAbrevName(posted_by)}: {description}</p>
                                 </div>
                             </div>
                         ))
@@ -108,6 +108,8 @@ export default (props) => {
         </div>
     )
 }
+
+export default AlertTile
 
 const getAbrevName = name => `${name.split(" ")[0]} ${name.split(" ")[1].split("")[0]}.`
 

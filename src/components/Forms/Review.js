@@ -1,27 +1,60 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { getCurrentDate, starLogic, postGrade, getUser } from "../../utils";
 
+const updateName = (students, retro, setCurrentName, setFormData) => {
+  if (students.length > 0){
+    // console.log('student id:', retro.student_id)
+    const names = students.filter(student => student.id === retro.student_id)
+    // console.log(names)
+    setCurrentName({
+      first_name: names[0]?.first_name,
+      last_name: names[0]?.last_name
+    })
+    setFormData({
+      date: getCurrentDate("-"),
+      grade: null,
+      notes: "",
+      student_id: retro?.student_id,
+      assignment_id: retro?.assignment_id,
+      teamlead_id: getUser().id,
+      retro_id: retro?.id || 0
+    })
+  }
+}
+
 const Review = props => {
-  //   console.log(context.retro.assignment_id);
+    // console.log(props.context.retro);
   // console.log('render review')
-  const { assignments, retro, students } = props.context;
+  const { students, assignments, retro } = props.context;
+
+  
+  // console.log('retro', retro)
 
   const currentAssignment = assignments[retro.assignment_id - 1];
 
+  const [currentName, setCurrentName] = useState({
+    first_name: "",
+    last_name: ""
+  })
+
   const [form, setForm] = useState({
     requiredWarning: false,
-    buttonDisable: false
+    buttonDisable: false,
+    loaded: false,
+    student_id: retro.student_id || 0
   });
 
   const [formData, setFormData] = useState({
     date: getCurrentDate("-"),
     grade: null,
     notes: "",
-    student_id: students[retro?.student_id - 1]?.id,
+    student_id: retro?.student_id,
     assignment_id: retro?.assignment_id,
     teamlead_id: getUser().id,
     retro_id: retro?.id || 0
   });
+
+  // console.log(formData)
 
   const [stars, setStars] = useState([false, false, false]);
 
@@ -75,9 +108,17 @@ const Review = props => {
     // console.log(formData);
   };
 
+
+
+  useEffect(() => {
+    updateName(students, retro, setCurrentName, setFormData)
+  }, [retro, students])
+
+  // console.log('form', formData)
+
   return (
     <div>
-      {students.length && (
+      {students.length > 0 && (
         <form className="review" method="dialog" onSubmit={handleSubmit}>
           <div className="review__container">
             <div className="review__container__header">
@@ -89,8 +130,8 @@ const Review = props => {
               </label>
               {retro?.id ? (
                 <div className="review__container__smallcontainer--selected">
-                  {students[retro.student_id - 1].first_name}{" "}
-                  {students[retro.student_id - 1].last_name}
+                  {currentName.first_name}{" "}
+                  {currentName.last_name}
                 </div>
               ) : (
                 <select
