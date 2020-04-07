@@ -36,48 +36,6 @@ export const Provider = ({ children }) => {
             removeAlert,
             updateState
         },  
-        alerts: [
-            {
-                id: 1,
-                type: 'support',
-                user: 'Roger Lind'
-            },
-            {
-                id: 2,
-                type: 'missing',
-                user: 'Katlyn Ullrich'
-            },
-            {
-                id: 3,
-                type: 'submitted',
-                user: 'Minerva Pacocha'
-            },
-            {
-                id: 4,
-                type: 'ticket',
-                user: 'Marie Rath'
-            },
-            {
-                id: 5,
-                type: 'ticket',
-                user: 'Pasquale Collins'
-            },
-            {
-                id: 6,
-                type: 'ticket',
-                user: 'Pasquale Collins'
-            },
-            {
-                id: 7,
-                type: 'ticket',
-                user: 'Pasquale Collins'
-            },
-            {
-                id: 8,
-                type: 'ticket',
-                user: 'Pasquale Collins'
-            }
-        ],
         retro: {}
     });
 

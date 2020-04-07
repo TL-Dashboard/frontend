@@ -1,19 +1,41 @@
 import React, { useState, useEffect } from "react";
-import { getCurrentDate, getUser, postAttendance } from "../../utils";
+import { getCurrentDate, getUser, postAttendance, getStudentData } from "../../utils";
 
-const AttendanceForm = props => {
-  const { students, assignments, attendanceTaken } = props.context;
-
-  const [form, setForm] = useState({
+const initialFormState = {
     startOfClass: false,
     standUp: false,
     requiredWarning: false,
     buttonDisable: false,
     unit: "",
     unitSelected: false
-  });
+  }
+
+const AttendanceForm = props => {
+  const { students, assignments, attendanceTaken } = props.context;
+
+  const { updateState } = props.context.actions;
+
+  const [form, setForm] = useState(initialFormState);
 
   const [formData, setFormData] = useState([]);
+
+  // const [reset, setReset] = useState(false)
+
+  // const resetFormData = () => {
+  //   setFormData(
+  //     students.map(student => {
+  //       return {
+  //         date: getCurrentDate("-"),
+  //         time_slot: "",
+  //         present: "true",
+  //         notes: "",
+  //         student_id: student.id,
+  //         assignment_id: null,
+  //         teamlead_id: getUser().id
+  //       };
+  //     })
+  //   );
+  // }
 
   useEffect(() => {
     if (students.length) {
@@ -115,7 +137,7 @@ const AttendanceForm = props => {
     console.log(form.unit);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
     // console.log("submitting", formData);
     if (form.standUp !== true && form.startOfClass !== true) {
       // console.log(form.standUp, form.startOfClass)
@@ -123,6 +145,11 @@ const AttendanceForm = props => {
     } else {
         postAttendance(formData, props.context.actions.updateState);
         props.context.actions.updateState("attendanceTaken", true);
+        const user = getUser(updateState)
+        getStudentData(updateState, user.id)
+        await new Promise(r => setTimeout(r, 1500));
+        setForm(initialFormState)
+        props.context.actions.updateState("attendanceTaken", false);
     }
   };
 

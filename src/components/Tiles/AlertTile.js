@@ -7,7 +7,7 @@ import { ReactComponent as Submitted } from './../../assets/alert-2.svg';
 import { ReactComponent as Ticket } from './../../assets/alert-3.svg';
 import { ReactComponent as Missing } from './../../assets/alert-4.svg';
 
-export default (props) => {
+const AlertTile = (props) => {
     const context = props.context
     const { tickets } = context;
 
@@ -108,6 +108,8 @@ export default (props) => {
         </div>
     )
 }
+
+export default AlertTile
 
 const getAbrevName = name => `${name.split(" ")[0]} ${name.split(" ")[1].split("")[0]}.`
 

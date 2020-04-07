@@ -133,8 +133,10 @@ const LogoWrapper = styled.div`
 const Sidebar = props => {
   // console.log('sidebar', props.context)
   // const cohorts = props.context.cohorts;
+  const { updateState } = props.context.actions
   const user = props.context.user;
   const { first_name, last_name, type, email, cohort_name } = user;
+
 
   const sidebarLinks = [
     {
@@ -165,6 +167,8 @@ const Sidebar = props => {
   ];
 
   const handleLogout = () => {
+    updateState('user', {})
+    updateState('students', [])
     sessionStorage.clear();
   };
 
