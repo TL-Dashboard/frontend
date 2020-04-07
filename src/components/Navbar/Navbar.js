@@ -20,11 +20,11 @@ const Navbar = (props) => {
       link: "/dashboard/tickets",
       current: false
     },
-    {
-      title: "Attendance",
-      link: "/dashboard/attendance",
-      current: false
-    },
+    // {
+    //   title: "Attendance",
+    //   link: "/dashboard/attendance",
+    //   current: false
+    // },
     {
       title: "Review Form",
       link: "/dashboard/review",
@@ -41,6 +41,7 @@ const Navbar = (props) => {
     updateState('user', {})
     updateState('students', [])
     sessionStorage.clear();
+    setOpen(!open)
   };
 
   return (
@@ -77,7 +78,7 @@ const Navbar = (props) => {
             <Link to="/" onClick={handleLogout}>
               <li className={`links__link`}>Logout</li>
             </Link>
-            <Link to="/dashboard/about">
+            <Link to="/dashboard/about" onClick={() => setOpen(!open)}>
               <li className={`links__link`} id="about">
                 About
               </li>
@@ -91,7 +92,7 @@ const Navbar = (props) => {
 
 const DropDown = styled.div`
   position: absolute;
-  top: 80px;
+  top: 50px;
   left: 0;
 
   background: #253040;
@@ -110,9 +111,9 @@ const DropDown = styled.div`
 const NavbarWrap = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-end;
   width: 100%;
-  height: 50px;
+  height: 100%;
   min-height: 50px;
   background-color: #1b212c;
   color: white;
@@ -120,7 +121,7 @@ const NavbarWrap = styled.div`
     display: none;
   }
   .menu {
-    margin: 0 10px;
+    margin: 0 20px;
     order: 1;
   }
   .title {
@@ -153,7 +154,7 @@ const SidebarUserInfo = styled.div`
 
 const StyledNav = styled.nav`
   width: 100%;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   ul {
     list-style: none;
     padding-left: 0;
