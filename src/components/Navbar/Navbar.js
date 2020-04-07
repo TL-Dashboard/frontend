@@ -92,7 +92,7 @@ const Navbar = (props) => {
 
 const DropDown = styled.div`
   position: absolute;
-  top: 80px;
+  top: 50px;
   left: 0;
 
   background: #253040;
@@ -111,9 +111,9 @@ const DropDown = styled.div`
 const NavbarWrap = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-end;
   width: 100%;
-  height: 50px;
+  height: 100%;
   min-height: 50px;
   background-color: #1b212c;
   color: white;
@@ -121,7 +121,7 @@ const NavbarWrap = styled.div`
     display: none;
   }
   .menu {
-    margin: 0 10px;
+    margin: 0 20px;
     order: 1;
   }
   .title {
@@ -154,7 +154,7 @@ const SidebarUserInfo = styled.div`
 
 const StyledNav = styled.nav`
   width: 100%;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   ul {
     list-style: none;
     padding-left: 0;
