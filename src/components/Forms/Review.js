@@ -89,7 +89,8 @@ const Review = props => {
     // console.log(formData);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     if (!formData.grade) {
       setForm({
         ...form,
@@ -119,7 +120,7 @@ const Review = props => {
   return (
     <div>
       {students.length > 0 && (
-        <form className="review" method="dialog" onSubmit={handleSubmit}>
+        <form className="review" onSubmit={(e) => handleSubmit(e)}>
           <div className="review__container">
             <div className="review__container__header">
               <p>Module Review</p>
@@ -236,11 +237,13 @@ const Review = props => {
               />
             </div>
             <div>
-              <input
+              <button
                 className="review__container__smallcontainer__submitBtn"
                 type="submit"
                 disabled={form.buttonDisable}
-              />
+              >
+              Submit
+              </button>
             </div>
           </div>
         </form>

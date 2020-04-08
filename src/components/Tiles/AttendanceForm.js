@@ -137,17 +137,19 @@ const AttendanceForm = props => {
     // console.log(form.unit);
   };
 
-  const handleSubmit = async() => {
-    // console.log("submitting", formData);
+  const handleSubmit = async(e) => {
+    e.preventDefault()
     if (form.standUp !== true && form.startOfClass !== true) {
       // console.log(form.standUp, form.startOfClass)
       setForm({ ...form, requiredWarning: true });
     } else {
+        console.log("submitting", formData);
         postAttendance(formData, props.context.actions.updateState);
         props.context.actions.updateState("attendanceTaken", true);
         const user = getUser(updateState)
+        await new Promise(r => setTimeout(r, 100));
         getStudentData(updateState, user.id)
-        await new Promise(r => setTimeout(r, 1500));
+        await new Promise(r => setTimeout(r, 1400));
         setForm(initialFormState)
         props.context.actions.updateState("attendanceTaken", false);
     }
@@ -158,8 +160,7 @@ const AttendanceForm = props => {
       {students.length && assignments.length ? (
         <form
           className="tile__attendance"
-          method="dialog"
-          onSubmit={handleSubmit}
+          onSubmit={(e) => handleSubmit(e)}
         >
           <div className="tile__attendance__container">
             <div className="tile__attendance__container__smallcontainer">
@@ -331,10 +332,12 @@ const AttendanceForm = props => {
               {attendanceTaken ? (
                 <div id="success">Attendance taken, thank you!</div>
               ) : (
-                <input
+                <button
                   className="tile__attendance__container__smallcontainer__submitBtn"
-                  type="submit"
-                />
+                  type='submit'
+                >
+                Submit
+                </button>
               )}
             </div>
           </div>

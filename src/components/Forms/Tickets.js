@@ -37,12 +37,12 @@ const Tickets = props => {
     // console.log(formData);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     console.log("submitting");
     setForm({ buttonDisable: true });
-    postTicket(formData, props.context.actions.updateState, () =>
-      props.history.push("/dashboard/overview")
-    );
+    postTicket(formData, props.context.actions.updateState)
+    props.history.push("/dashboard/overview")
   };
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const Tickets = props => {
   return (
     <div>
       {students.length && sectionleads.length ? (
-        <form className="review" method="dialog" onSubmit={handleSubmit}>
+        <form className="review" onSubmit={(e) => handleSubmit(e)}>
           <div className="review__container">
             <div className="review__container__header">
               <p>Create New Ticket</p>
@@ -144,11 +144,13 @@ const Tickets = props => {
               />
             </div>
             <div>
-              <input
+              <button
                 className="review__container__smallcontainer__submitBtn"
-                type="submit"
+                type='submit'
                 disabled={form.buttonDisable}
-              />
+              >
+                Submit
+                </button>
             </div>
           </div>
         </form>

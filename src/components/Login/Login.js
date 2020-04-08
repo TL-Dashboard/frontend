@@ -20,8 +20,8 @@ const Login = (props) => {
         })
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
+    const handleSubmit = (e) => {
+        e.preventDefault()
         const { updateState } = props.context.actions;
         authenticateUser(login, updateState, () => props.history.push('/dashboard/overview'));
     }
@@ -29,7 +29,7 @@ const Login = (props) => {
     return(
 
         <div className="login">
-            <form className="login__container" onSubmit={handleSubmit}>
+            <form className="login__container" method='dialog' onSubmit={(e) => handleSubmit(e)}>
             <Logo className="login__logo"/>
                 <div className="login__container__items">
                     <label>Email Address</label><br/>
@@ -42,7 +42,7 @@ const Login = (props) => {
                     </input>
                 </div>
                 <div className="login__container__items">
-                    <input className="login__container__items__input__submitButn" type="submit" />
+                    <button className="login__container__items__input__submitButn" type="submit">Login</button>
                 </div>            
                 {isLoading && <span>Loading...</span>}
                 {error && <span>Unable to login, please check your password.</span>}  

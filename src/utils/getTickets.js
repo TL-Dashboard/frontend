@@ -16,7 +16,7 @@ export const getTickets = (updateState, id) => {
             updateState('isLoading', false);
         })
 }
-export const postTicket = (ticket, updateState, redirect) => {
+export const postTicket = (ticket, updateState) => {
     // updateState('isLoading', true);
     axiosWithAuth()
         .post(`/tickets`, ticket)
@@ -24,7 +24,7 @@ export const postTicket = (ticket, updateState, redirect) => {
             console.log('ticket posted:', res.data)
             getTickets(updateState, getUser().id)
             // updateState('isLoading', false)
-            redirect()
+            // redirect()
         })
         .catch(err => {
             console.log(err)

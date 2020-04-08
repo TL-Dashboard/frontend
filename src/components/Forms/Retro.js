@@ -57,7 +57,8 @@ const Retro = props => {
     // console.log(formData);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     if (!formData.mood) {
       setForm({
         ...form,
@@ -79,7 +80,7 @@ const Retro = props => {
   return (
     <div>
       {students.length && (
-        <form className="review" method="dialog" onSubmit={handleSubmit}>
+        <form className="review" onSubmit={(e) => {handleSubmit(e)}}>
           <div className="review__container">
             <div className="review__container__header">
               <p>Retro Review</p>
@@ -195,7 +196,6 @@ const Retro = props => {
                 </span>
               </div>
             </div>
-
             <div className="review__container__smallcontainer">
               <label>Notes: </label>
               <textarea
@@ -208,11 +208,14 @@ const Retro = props => {
               />
             </div>
             <div>
-              <input
+              <button
                 className="review__container__smallcontainer__submitBtn"
-                type="submit"
+                type="button"
                 disabled={form.buttonDisable}
-              />
+                onClick={handleSubmit}
+              >
+                Submit
+                </button>
             </div>
           </div>
         </form>
