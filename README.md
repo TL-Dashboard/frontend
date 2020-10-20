@@ -1,5 +1,10 @@
 ### TL Dashboard
 
+## Deployed Site
+Link https://tldashboard.netlify.app/
+- Test Login: robert@gordon.com
+- Password: testtest
+
 ## Problem Core
 The Lambda Team Lead Dashboard is very slow, and has bugs/errors loading.  Overall user experience is very poor.
 
