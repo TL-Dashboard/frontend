@@ -42,14 +42,16 @@ const Login = (props) => {
                     </input>
                 </div>
                 <div className="login__container__items">
-                {isLoading ? (
-                    <div>Loading...</div>
-                ) : (
-                    <button className="login__container__items__input__submitButn" type="submit">Login</button>
-                )}
-                </div> 
-                {error && <span>Unable to login, please check your password.</span>}  
+                    {isLoading ? (
+                            <div>Loading...</div>
+                        ) : (
+                            <button className="login__container__items__input__submitButn" type="submit">Login</button>
+                    )}
+                </div>   
                 <div className="login__container__forgotText">
+                    {error && (
+                            <span>Unable to login, please check your password.</span>
+                    )}
                     <p>Forgot <a className="login__container__forgotText__forgotLinks" href="/">Username/Password?</a></p>
                 </div>
             </form>

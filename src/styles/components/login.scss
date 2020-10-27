@@ -31,6 +31,9 @@
 
         &__forgotText {
             margin-top: 15px;
+            span{
+                color: red;
+            }
 
             &__forgotLinks {
                 text-decoration: none;
