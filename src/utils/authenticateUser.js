@@ -1,7 +1,7 @@
 import { axiosWithAuth } from './axiosWithAuth';
 
 export const authenticateUser = (values, updateState, redirect) => {
-    // updateState('isLoading', true);
+    updateState('isLoading', true);
     axiosWithAuth()
         .post('/auth/login', values)
         .then(res => {
@@ -18,7 +18,7 @@ export const authenticateUser = (values, updateState, redirect) => {
             sessionStorage.setItem('cohort_id', JSON.stringify(res.data.cohort_id || null))
             // updateState('user', res.data)
             updateState('isAuthenticated', true);
-            // updateState('isLoading', false);
+            updateState('isLoading', false);
             updateState('error', false);
             redirect();
         })
