@@ -40,7 +40,7 @@ const SidebarUserInfo = styled.div`
 
     border-radius: 15%;
 
-    background: url("https://api.adorable.io/avatars/130/play@adorable.io.png")
+    background: url("https://ca.slack-edge.com/T4JUEB3ME-UN66JA72N-811a63af5d29-512")
       center center no-repeat;
     background-size: cover;
   }
